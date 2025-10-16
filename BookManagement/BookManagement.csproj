@@ -69,7 +69,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\1ae6798b1823f44c55fb08cb7449e7a2.jpg" />
     <None Include="Resources\2f8e2d5655ab14960527c724f3a87793 %281%29.jpg" />
     <Content Include="Resources\dangxuat-removebg-preview.png" />
     <Content Include="Resources\kh-removebg-preview.png" />
