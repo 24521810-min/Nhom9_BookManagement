@@ -49,5 +49,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\1ae6798b1823f44c55fb08cb7449e7a2.jpg" />
+    <Content Include="Resources\dangxuat-removebg-preview.png" />
+    <Content Include="Resources\kh-removebg-preview.png" />
+    <Content Include="Resources\muonsach.jpg" />
+    <Content Include="Resources\nen1.jpg" />
+    <Content Include="Resources\nv.png" />
+    <Content Include="Resources\pngtree-to-do-list-icon-in-comic-style-document-checklist-cartoon-vector-png-image_128610101.png" />
+    <Content Include="Resources\quyengopsach.jpg" />
+    <Content Include="Resources\z7092554007969_d04d396926354e33afc89cbec684fd2c.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
