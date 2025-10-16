@@ -21,8 +21,8 @@ namespace BookManagement
         private void lbUnaccount_Click(object sender, EventArgs e)
         {
             this.Hide();
-            //DangKy dangKyForm = new DangKy();
-            //dangKyForm.ShowDialog();
+            DangKy dangKyForm = new DangKy();
+            dangKyForm.ShowDialog();
             this.Show();
         }
     }
