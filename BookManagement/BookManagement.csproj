@@ -57,6 +57,12 @@
     <Compile Include="DangKy.Designer.cs">
       <DependentUpon>DangKy.cs</DependentUpon>
     </Compile>
+    <Compile Include="Dangnhap-admin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Dangnhap-admin.Designer.cs">
+      <DependentUpon>Dangnhap-admin.cs</DependentUpon>
+    </Compile>
     <Compile Include="DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
   <ItemGroup>
     <EmbeddedResource Include="DangKy.resx">
       <DependentUpon>DangKy.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Dangnhap-admin.resx">
+      <DependentUpon>Dangnhap-admin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
