@@ -25,5 +25,16 @@ namespace BookManagement
             dangnhapForm.ShowDialog();
             this.Show();
         }
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Dangnhap_admin dangnhapForm = new Dangnhap_admin();
+            if (dangnhapForm.ShowDialog() == DialogResult.OK)
+            {
+                Admin adminForm = new Admin();
+                adminForm.ShowDialog(); // Chờ admin đóng
+            }
+        }
     }
 }

@@ -15,49 +15,40 @@ namespace BookManagement
         public Dangnhap_admin()
         {
             InitializeComponent();
+            txtPassword.UseSystemPasswordChar = true;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            string usernameoremail = txtusername.Text.Trim();
+            string password = txtPassword.Text.Trim();
 
-        }
+            string adminUser = "admin";
+            string adminEmail = "admin@gmail.com";
+            string adminPass = "123456";
 
-        private void txtUsername_TextChanged(object sender, EventArgs e)
-        {
+            if (string.IsNullOrWhiteSpace(usernameoremail) || string.IsNullOrWhiteSpace(password))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ Username/Password!");
+                return;
+            }
 
-        }
+            if ((usernameoremail.Equals(adminUser, StringComparison.OrdinalIgnoreCase) ||
+                 usernameoremail.Equals(adminEmail, StringComparison.OrdinalIgnoreCase))
+                 && password == adminPass)
+            {
+                MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-        private void lbUnaccount_Click(object sender, EventArgs e)
-        {
-
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Username/Email hoặc Password sai, vui lòng thử lại!");
+            }
         }
 
         private void lbForgot_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPassword_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
         {
 
         }

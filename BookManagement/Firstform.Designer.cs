@@ -48,6 +48,7 @@
             this.btnAdmin.TabIndex = 4;
             this.btnAdmin.Text = "ADMIN";
             this.btnAdmin.UseVisualStyleBackColor = false;
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
             // 
             // btnUsers
             // 
