@@ -50,7 +50,9 @@ namespace BookManagement
 
         private void lbForgot_Click(object sender, EventArgs e)
         {
-
+            this.Hide();
+            Forgotpassword forgotForm = new Forgotpassword(this);
+            forgotForm.ShowDialog();
         }
     }
 }
