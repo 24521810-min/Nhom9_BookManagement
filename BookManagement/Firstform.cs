@@ -22,8 +22,8 @@ namespace BookManagement
         {
             this.Hide();
             DangNhap dangnhapForm = new DangNhap();
-            dangnhapForm.ShowDialog();
-            this.Show();
+            dangnhapForm.ShowDialog(); 
+            this.Close(); 
         }
 
         private void btnAdmin_Click(object sender, EventArgs e)
@@ -33,7 +33,7 @@ namespace BookManagement
             if (dangnhapForm.ShowDialog() == DialogResult.OK)
             {
                 Admin adminForm = new Admin();
-                adminForm.ShowDialog(); // Chờ admin đóng
+                adminForm.ShowDialog(); 
             }
         }
     }

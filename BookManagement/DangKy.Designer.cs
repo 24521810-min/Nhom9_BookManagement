@@ -161,6 +161,7 @@ namespace BookManagement
             this.lbAccount.Size = new System.Drawing.Size(162, 16);
             this.lbAccount.TabIndex = 31;
             this.lbAccount.Text = "Already have an account?";
+            this.lbAccount.Click += new System.EventHandler(this.lbAccount_Click);
             // 
             // txtFullname
             // 
@@ -209,6 +210,7 @@ namespace BookManagement
             this.txtPassword.Location = new System.Drawing.Point(258, 308);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(295, 27);
             this.txtPassword.TabIndex = 54;
             // 
@@ -219,6 +221,7 @@ namespace BookManagement
             this.txtConfirmpassword.Location = new System.Drawing.Point(258, 362);
             this.txtConfirmpassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtConfirmpassword.Name = "txtConfirmpassword";
+            this.txtConfirmpassword.PasswordChar = '*';
             this.txtConfirmpassword.Size = new System.Drawing.Size(295, 27);
             this.txtConfirmpassword.TabIndex = 55;
             // 

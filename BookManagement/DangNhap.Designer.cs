@@ -156,6 +156,7 @@ namespace BookManagement
             this.txtPassword.Location = new System.Drawing.Point(253, 222);
             this.txtPassword.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(295, 27);
             this.txtPassword.TabIndex = 51;
             // 
