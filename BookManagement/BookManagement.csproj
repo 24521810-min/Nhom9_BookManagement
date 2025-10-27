@@ -96,12 +96,30 @@
     <Compile Include="Forgotpassword.Designer.cs">
       <DependentUpon>Forgotpassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="KhoSach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="KhoSach.Designer.cs">
+      <DependentUpon>KhoSach.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyMuonTra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyMuonTra.Designer.cs">
+      <DependentUpon>QuanLyMuonTra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuanLyNguoiDung.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyNguoiDung.Designer.cs">
+      <DependentUpon>QuanLyNguoiDung.cs</DependentUpon>
     </Compile>
     <Compile Include="Users.cs">
       <SubType>Form</SubType>
@@ -119,16 +137,25 @@
     <Content Include="BookManagementDB_log.ldf">
       <DependentUpon>BookManagementDB.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\add.png" />
+    <None Include="Resources\clear.png" />
     <Content Include="Resources\dangxuat-removebg-preview.png" />
+    <None Include="Resources\edit.png" />
+    <None Include="Resources\icons8-exit-100 %281%29.png" />
+    <None Include="Resources\exit.png" />
     <Content Include="Resources\kh-removebg-preview.png" />
     <Content Include="Resources\muonsach.jpg" />
     <Content Include="Resources\nen1.jpg" />
     <Content Include="Resources\nv.png" />
     <Content Include="Resources\pngtree-to-do-list-icon-in-comic-style-document-checklist-cartoon-vector-png-image_128610101.png" />
     <Content Include="Resources\quyengopsach.jpg" />
+    <None Include="Resources\save.png" />
     <Content Include="Resources\z7092554007969_d04d396926354e33afc89cbec684fd2c.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Admin.resx">
+      <DependentUpon>Admin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DangKy.resx">
       <DependentUpon>DangKy.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,9 +171,21 @@
     <EmbeddedResource Include="Forgotpassword.resx">
       <DependentUpon>Forgotpassword.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="KhoSach.resx">
+      <DependentUpon>KhoSach.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyMuonTra.resx">
+      <DependentUpon>QuanLyMuonTra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyNguoiDung.resx">
+      <DependentUpon>QuanLyNguoiDung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Users.resx">
+      <DependentUpon>Users.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
