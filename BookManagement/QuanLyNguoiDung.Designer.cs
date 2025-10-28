@@ -28,11 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnexit = new System.Windows.Forms.Button();
-            this.btnclear = new System.Windows.Forms.Button();
-            this.btnedit = new System.Windows.Forms.Button();
-            this.btnsave = new System.Windows.Forms.Button();
-            this.btnadd = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.dateMuon = new System.Windows.Forms.DateTimePicker();
             this.label4 = new System.Windows.Forms.Label();
@@ -46,65 +41,15 @@
             this.txtMaDocGia = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button11 = new System.Windows.Forms.Button();
+            this.btnexit = new System.Windows.Forms.Button();
+            this.btnclear = new System.Windows.Forms.Button();
+            this.btnedit = new System.Windows.Forms.Button();
+            this.btnadd = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBoxGioitinh.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // btnexit
-            // 
-            this.btnexit.BackgroundImage = global::BookManagement.Properties.Resources.icons8_exit_100__1_;
-            this.btnexit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnexit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnexit.Location = new System.Drawing.Point(705, 267);
-            this.btnexit.Name = "btnexit";
-            this.btnexit.Size = new System.Drawing.Size(96, 94);
-            this.btnexit.TabIndex = 12;
-            this.btnexit.UseVisualStyleBackColor = true;
-            // 
-            // btnclear
-            // 
-            this.btnclear.BackgroundImage = global::BookManagement.Properties.Resources.clear;
-            this.btnclear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnclear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnclear.Location = new System.Drawing.Point(552, 267);
-            this.btnclear.Name = "btnclear";
-            this.btnclear.Size = new System.Drawing.Size(96, 94);
-            this.btnclear.TabIndex = 11;
-            this.btnclear.UseVisualStyleBackColor = true;
-            // 
-            // btnedit
-            // 
-            this.btnedit.BackgroundImage = global::BookManagement.Properties.Resources.edit;
-            this.btnedit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnedit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnedit.Location = new System.Drawing.Point(403, 267);
-            this.btnedit.Name = "btnedit";
-            this.btnedit.Size = new System.Drawing.Size(96, 94);
-            this.btnedit.TabIndex = 10;
-            this.btnedit.UseVisualStyleBackColor = true;
-            // 
-            // btnsave
-            // 
-            this.btnsave.BackgroundImage = global::BookManagement.Properties.Resources.save;
-            this.btnsave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnsave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnsave.Location = new System.Drawing.Point(252, 267);
-            this.btnsave.Name = "btnsave";
-            this.btnsave.Size = new System.Drawing.Size(96, 94);
-            this.btnsave.TabIndex = 9;
-            this.btnsave.UseVisualStyleBackColor = true;
-            // 
-            // btnadd
-            // 
-            this.btnadd.BackgroundImage = global::BookManagement.Properties.Resources.add;
-            this.btnadd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnadd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnadd.Location = new System.Drawing.Point(102, 267);
-            this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(93, 94);
-            this.btnadd.TabIndex = 8;
-            this.btnadd.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -245,19 +190,74 @@
             this.dataGridView1.Size = new System.Drawing.Size(874, 232);
             this.dataGridView1.TabIndex = 13;
             // 
+            // button11
+            // 
+            this.button11.BackgroundImage = global::BookManagement.Properties.Resources.view;
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.Location = new System.Drawing.Point(137, 264);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(93, 94);
+            this.button11.TabIndex = 12;
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // btnexit
+            // 
+            this.btnexit.BackgroundImage = global::BookManagement.Properties.Resources.icons8_exit_100__1_;
+            this.btnexit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnexit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnexit.Location = new System.Drawing.Point(674, 264);
+            this.btnexit.Name = "btnexit";
+            this.btnexit.Size = new System.Drawing.Size(96, 94);
+            this.btnexit.TabIndex = 11;
+            this.btnexit.UseVisualStyleBackColor = true;
+            // 
+            // btnclear
+            // 
+            this.btnclear.BackgroundImage = global::BookManagement.Properties.Resources.clear;
+            this.btnclear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnclear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnclear.Location = new System.Drawing.Point(543, 264);
+            this.btnclear.Name = "btnclear";
+            this.btnclear.Size = new System.Drawing.Size(96, 94);
+            this.btnclear.TabIndex = 10;
+            this.btnclear.UseVisualStyleBackColor = true;
+            // 
+            // btnedit
+            // 
+            this.btnedit.BackgroundImage = global::BookManagement.Properties.Resources.edit;
+            this.btnedit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnedit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnedit.Location = new System.Drawing.Point(414, 264);
+            this.btnedit.Name = "btnedit";
+            this.btnedit.Size = new System.Drawing.Size(96, 94);
+            this.btnedit.TabIndex = 9;
+            this.btnedit.UseVisualStyleBackColor = true;
+            // 
+            // btnadd
+            // 
+            this.btnadd.BackgroundImage = global::BookManagement.Properties.Resources.add;
+            this.btnadd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnadd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnadd.Location = new System.Drawing.Point(274, 264);
+            this.btnadd.Name = "btnadd";
+            this.btnadd.Size = new System.Drawing.Size(93, 94);
+            this.btnadd.TabIndex = 8;
+            this.btnadd.UseVisualStyleBackColor = true;
+            // 
             // QuanLyNguoiDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Tan;
             this.ClientSize = new System.Drawing.Size(902, 634);
+            this.Controls.Add(this.button11);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnexit);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnclear);
             this.Controls.Add(this.btnedit);
-            this.Controls.Add(this.btnsave);
             this.Controls.Add(this.btnadd);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dataGridView1);
             this.Name = "QuanLyNguoiDung";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QuanLyNguoiDung";
@@ -271,12 +271,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Button btnexit;
-        private System.Windows.Forms.Button btnclear;
-        private System.Windows.Forms.Button btnedit;
-        private System.Windows.Forms.Button btnsave;
-        private System.Windows.Forms.Button btnadd;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox txtDiachi;
         private System.Windows.Forms.Label label3;
@@ -290,5 +284,10 @@
         private System.Windows.Forms.RadioButton radioButton2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.DateTimePicker dateMuon;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btnexit;
+        private System.Windows.Forms.Button btnclear;
+        private System.Windows.Forms.Button btnedit;
+        private System.Windows.Forms.Button btnadd;
     }
 }

@@ -31,11 +31,6 @@
             this.tabControlKhoSach = new System.Windows.Forms.TabControl();
             this.tabPageSach = new System.Windows.Forms.TabPage();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnexit = new System.Windows.Forms.Button();
-            this.btnclear = new System.Windows.Forms.Button();
-            this.btnedit = new System.Windows.Forms.Button();
-            this.btnsave = new System.Windows.Forms.Button();
-            this.btnadd = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbLoaiSach = new System.Windows.Forms.ComboBox();
@@ -56,11 +51,6 @@
             this.txtMaLoaiSach = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.tabPageTacGia = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
@@ -70,6 +60,16 @@
             this.txtMaTacGia = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.button11 = new System.Windows.Forms.Button();
+            this.btnexit = new System.Windows.Forms.Button();
+            this.btnclear = new System.Windows.Forms.Button();
+            this.btnedit = new System.Windows.Forms.Button();
+            this.btnadd = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.button6 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -105,11 +105,11 @@
             // tabPageSach
             // 
             this.tabPageSach.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.tabPageSach.Controls.Add(this.button11);
             this.tabPageSach.Controls.Add(this.dataGridView1);
             this.tabPageSach.Controls.Add(this.btnexit);
             this.tabPageSach.Controls.Add(this.btnclear);
             this.tabPageSach.Controls.Add(this.btnedit);
-            this.tabPageSach.Controls.Add(this.btnsave);
             this.tabPageSach.Controls.Add(this.btnadd);
             this.tabPageSach.Controls.Add(this.groupBox1);
             this.tabPageSach.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -129,61 +129,6 @@
             this.dataGridView1.RowTemplate.Height = 28;
             this.dataGridView1.Size = new System.Drawing.Size(874, 232);
             this.dataGridView1.TabIndex = 6;
-            // 
-            // btnexit
-            // 
-            this.btnexit.BackgroundImage = global::BookManagement.Properties.Resources.icons8_exit_100__1_;
-            this.btnexit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnexit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnexit.Location = new System.Drawing.Point(704, 247);
-            this.btnexit.Name = "btnexit";
-            this.btnexit.Size = new System.Drawing.Size(96, 94);
-            this.btnexit.TabIndex = 5;
-            this.btnexit.UseVisualStyleBackColor = true;
-            // 
-            // btnclear
-            // 
-            this.btnclear.BackgroundImage = global::BookManagement.Properties.Resources.clear;
-            this.btnclear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnclear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnclear.Location = new System.Drawing.Point(551, 247);
-            this.btnclear.Name = "btnclear";
-            this.btnclear.Size = new System.Drawing.Size(96, 94);
-            this.btnclear.TabIndex = 4;
-            this.btnclear.UseVisualStyleBackColor = true;
-            // 
-            // btnedit
-            // 
-            this.btnedit.BackgroundImage = global::BookManagement.Properties.Resources.edit;
-            this.btnedit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnedit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnedit.Location = new System.Drawing.Point(402, 247);
-            this.btnedit.Name = "btnedit";
-            this.btnedit.Size = new System.Drawing.Size(96, 94);
-            this.btnedit.TabIndex = 3;
-            this.btnedit.UseVisualStyleBackColor = true;
-            // 
-            // btnsave
-            // 
-            this.btnsave.BackgroundImage = global::BookManagement.Properties.Resources.save;
-            this.btnsave.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnsave.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnsave.Location = new System.Drawing.Point(251, 247);
-            this.btnsave.Name = "btnsave";
-            this.btnsave.Size = new System.Drawing.Size(96, 94);
-            this.btnsave.TabIndex = 2;
-            this.btnsave.UseVisualStyleBackColor = true;
-            // 
-            // btnadd
-            // 
-            this.btnadd.BackgroundImage = global::BookManagement.Properties.Resources.add;
-            this.btnadd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnadd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnadd.Location = new System.Drawing.Point(101, 247);
-            this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(93, 94);
-            this.btnadd.TabIndex = 1;
-            this.btnadd.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -300,10 +245,10 @@
             // tabPageLoaiSach
             // 
             this.tabPageLoaiSach.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.tabPageLoaiSach.Controls.Add(this.groupBox2);
-            this.tabPageLoaiSach.Controls.Add(this.dataGridView2);
             this.tabPageLoaiSach.Controls.Add(this.button1);
+            this.tabPageLoaiSach.Controls.Add(this.groupBox2);
             this.tabPageLoaiSach.Controls.Add(this.button2);
+            this.tabPageLoaiSach.Controls.Add(this.dataGridView2);
             this.tabPageLoaiSach.Controls.Add(this.button3);
             this.tabPageLoaiSach.Controls.Add(this.button4);
             this.tabPageLoaiSach.Controls.Add(this.button5);
@@ -395,68 +340,13 @@
             this.dataGridView2.Size = new System.Drawing.Size(874, 232);
             this.dataGridView2.TabIndex = 13;
             // 
-            // button1
-            // 
-            this.button1.BackgroundImage = global::BookManagement.Properties.Resources.icons8_exit_100__1_;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(701, 248);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(96, 94);
-            this.button1.TabIndex = 12;
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.BackgroundImage = global::BookManagement.Properties.Resources.clear;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(548, 248);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(96, 94);
-            this.button2.TabIndex = 11;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.BackgroundImage = global::BookManagement.Properties.Resources.edit;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(399, 248);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(96, 94);
-            this.button3.TabIndex = 10;
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.BackgroundImage = global::BookManagement.Properties.Resources.save;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(248, 248);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(96, 94);
-            this.button4.TabIndex = 9;
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.BackgroundImage = global::BookManagement.Properties.Resources.add;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(98, 248);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(93, 94);
-            this.button5.TabIndex = 8;
-            this.button5.UseVisualStyleBackColor = true;
-            // 
             // tabPageTacGia
             // 
             this.tabPageTacGia.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.tabPageTacGia.Controls.Add(this.groupBox3);
-            this.tabPageTacGia.Controls.Add(this.dataGridView3);
             this.tabPageTacGia.Controls.Add(this.button6);
+            this.tabPageTacGia.Controls.Add(this.groupBox3);
             this.tabPageTacGia.Controls.Add(this.button7);
+            this.tabPageTacGia.Controls.Add(this.dataGridView3);
             this.tabPageTacGia.Controls.Add(this.button8);
             this.tabPageTacGia.Controls.Add(this.button9);
             this.tabPageTacGia.Controls.Add(this.button10);
@@ -547,48 +437,158 @@
             this.dataGridView3.Size = new System.Drawing.Size(874, 232);
             this.dataGridView3.TabIndex = 13;
             // 
+            // button11
+            // 
+            this.button11.BackgroundImage = global::BookManagement.Properties.Resources.view;
+            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button11.Location = new System.Drawing.Point(140, 243);
+            this.button11.Name = "button11";
+            this.button11.Size = new System.Drawing.Size(93, 94);
+            this.button11.TabIndex = 7;
+            this.button11.UseVisualStyleBackColor = true;
+            // 
+            // btnexit
+            // 
+            this.btnexit.BackgroundImage = global::BookManagement.Properties.Resources.icons8_exit_100__1_;
+            this.btnexit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnexit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnexit.Location = new System.Drawing.Point(677, 243);
+            this.btnexit.Name = "btnexit";
+            this.btnexit.Size = new System.Drawing.Size(96, 94);
+            this.btnexit.TabIndex = 5;
+            this.btnexit.UseVisualStyleBackColor = true;
+            // 
+            // btnclear
+            // 
+            this.btnclear.BackgroundImage = global::BookManagement.Properties.Resources.clear;
+            this.btnclear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnclear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnclear.Location = new System.Drawing.Point(546, 243);
+            this.btnclear.Name = "btnclear";
+            this.btnclear.Size = new System.Drawing.Size(96, 94);
+            this.btnclear.TabIndex = 4;
+            this.btnclear.UseVisualStyleBackColor = true;
+            // 
+            // btnedit
+            // 
+            this.btnedit.BackgroundImage = global::BookManagement.Properties.Resources.edit;
+            this.btnedit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnedit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnedit.Location = new System.Drawing.Point(417, 243);
+            this.btnedit.Name = "btnedit";
+            this.btnedit.Size = new System.Drawing.Size(96, 94);
+            this.btnedit.TabIndex = 3;
+            this.btnedit.UseVisualStyleBackColor = true;
+            // 
+            // btnadd
+            // 
+            this.btnadd.BackgroundImage = global::BookManagement.Properties.Resources.add;
+            this.btnadd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnadd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnadd.Location = new System.Drawing.Point(277, 243);
+            this.btnadd.Name = "btnadd";
+            this.btnadd.Size = new System.Drawing.Size(93, 94);
+            this.btnadd.TabIndex = 1;
+            this.btnadd.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImage = global::BookManagement.Properties.Resources.view;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(120, 242);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(93, 94);
+            this.button1.TabIndex = 12;
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.BackgroundImage = global::BookManagement.Properties.Resources.icons8_exit_100__1_;
+            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(657, 242);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(96, 94);
+            this.button2.TabIndex = 11;
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.BackgroundImage = global::BookManagement.Properties.Resources.clear;
+            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Location = new System.Drawing.Point(526, 242);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(96, 94);
+            this.button3.TabIndex = 10;
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.BackgroundImage = global::BookManagement.Properties.Resources.edit;
+            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button4.Location = new System.Drawing.Point(397, 242);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(96, 94);
+            this.button4.TabIndex = 9;
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.BackgroundImage = global::BookManagement.Properties.Resources.add;
+            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.Location = new System.Drawing.Point(257, 242);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(93, 94);
+            this.button5.TabIndex = 8;
+            this.button5.UseVisualStyleBackColor = true;
+            // 
             // button6
             // 
-            this.button6.BackgroundImage = global::BookManagement.Properties.Resources.icons8_exit_100__1_;
+            this.button6.BackgroundImage = global::BookManagement.Properties.Resources.view;
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(701, 248);
+            this.button6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.Location = new System.Drawing.Point(142, 243);
             this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(96, 94);
-            this.button6.TabIndex = 12;
+            this.button6.Size = new System.Drawing.Size(93, 94);
+            this.button6.TabIndex = 16;
             this.button6.UseVisualStyleBackColor = true;
             // 
             // button7
             // 
-            this.button7.BackgroundImage = global::BookManagement.Properties.Resources.clear;
+            this.button7.BackgroundImage = global::BookManagement.Properties.Resources.icons8_exit_100__1_;
             this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(548, 248);
+            this.button7.Location = new System.Drawing.Point(679, 243);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(96, 94);
-            this.button7.TabIndex = 11;
+            this.button7.TabIndex = 15;
             this.button7.UseVisualStyleBackColor = true;
             // 
             // button8
             // 
-            this.button8.BackgroundImage = global::BookManagement.Properties.Resources.edit;
+            this.button8.BackgroundImage = global::BookManagement.Properties.Resources.clear;
             this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(399, 248);
+            this.button8.Location = new System.Drawing.Point(548, 243);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(96, 94);
-            this.button8.TabIndex = 10;
+            this.button8.TabIndex = 14;
             this.button8.UseVisualStyleBackColor = true;
             // 
             // button9
             // 
-            this.button9.BackgroundImage = global::BookManagement.Properties.Resources.save;
+            this.button9.BackgroundImage = global::BookManagement.Properties.Resources.edit;
             this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(248, 248);
+            this.button9.Location = new System.Drawing.Point(419, 243);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(96, 94);
-            this.button9.TabIndex = 9;
+            this.button9.TabIndex = 13;
             this.button9.UseVisualStyleBackColor = true;
             // 
             // button10
@@ -596,10 +596,10 @@
             this.button10.BackgroundImage = global::BookManagement.Properties.Resources.add;
             this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(98, 248);
+            this.button10.Location = new System.Drawing.Point(279, 243);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(93, 94);
-            this.button10.TabIndex = 8;
+            this.button10.TabIndex = 12;
             this.button10.UseVisualStyleBackColor = true;
             // 
             // KhoSach
@@ -648,7 +648,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMasach;
         private System.Windows.Forms.Button btnadd;
-        private System.Windows.Forms.Button btnsave;
         private System.Windows.Forms.Button btnedit;
         private System.Windows.Forms.Button btnclear;
         private System.Windows.Forms.Button btnexit;
@@ -661,23 +660,24 @@
         private System.Windows.Forms.TextBox txtMaLoaiSach;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.DataGridView dataGridView2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dataGridView3;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
         private System.Windows.Forms.TextBox txtDiaChi;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtTenTacGia;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtMaTacGia;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.Button button10;
     }
 }

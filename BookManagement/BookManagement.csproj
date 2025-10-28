@@ -121,6 +121,12 @@
     <Compile Include="QuanLyNguoiDung.Designer.cs">
       <DependentUpon>QuanLyNguoiDung.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuanLyQuyenGop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuanLyQuyenGop.Designer.cs">
+      <DependentUpon>QuanLyQuyenGop.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,7 @@
     <Content Include="Resources\pngtree-to-do-list-icon-in-comic-style-document-checklist-cartoon-vector-png-image_128610101.png" />
     <Content Include="Resources\quyengopsach.jpg" />
     <None Include="Resources\save.png" />
+    <None Include="Resources\view.png" />
     <Content Include="Resources\z7092554007969_d04d396926354e33afc89cbec684fd2c.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -183,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyNguoiDung.resx">
       <DependentUpon>QuanLyNguoiDung.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuanLyQuyenGop.resx">
+      <DependentUpon>QuanLyQuyenGop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
