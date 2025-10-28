@@ -40,5 +40,13 @@ namespace BookManagement
             qlborrowForm.ShowDialog();
             this.Show();
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            QuanLyQuyenGop qldonateForm = new QuanLyQuyenGop();
+            qldonateForm.ShowDialog();
+            this.Show();
+        }
     }
 }

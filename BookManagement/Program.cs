@@ -19,7 +19,7 @@ namespace BookManagement
             string baseDir = AppDomain.CurrentDomain.BaseDirectory;
             AppDomain.CurrentDomain.SetData("DataDirectory", Path.Combine(baseDir, ""));
 
-            Application.Run(new Admin());
+            Application.Run(new Firstform());
         }
     }
 }
