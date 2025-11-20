@@ -16,5 +16,10 @@ namespace BookManagement
         {
             InitializeComponent();
         }
+
+        private void btnShow_Click(object sender, EventArgs e)
+        {
+            txtPassword.UseSystemPasswordChar = !txtPassword.UseSystemPasswordChar;
+        }
     }
 }

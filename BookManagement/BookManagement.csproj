@@ -138,6 +138,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\2f8e2d5655ab14960527c724f3a87793 %281%29.jpg" />
     <Content Include="BookManagementDB.mdf" />
     <Content Include="BookManagementDB_log.ldf">
@@ -149,6 +150,7 @@
     <None Include="Resources\edit.png" />
     <None Include="Resources\icons8-exit-100 %281%29.png" />
     <None Include="Resources\exit.png" />
+    <None Include="Resources\icons8-show.gif" />
     <Content Include="Resources\kh-removebg-preview.png" />
     <Content Include="Resources\muonsach.jpg" />
     <Content Include="Resources\nen1.jpg" />
