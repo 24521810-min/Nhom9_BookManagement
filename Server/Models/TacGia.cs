@@ -1,10 +1,10 @@
-﻿namespace BookApi.Models
-{
-    public class TacGia
-    {
-        public int IDTacGia { get; set; }
-        public string HoTen { get; set; }
+﻿using System.ComponentModel.DataAnnotations;
 
-        public List<Sach> Saches { get; set; }  // Navigation
-    }
+public class TacGia
+{
+    [Key]
+    public int IDTacGia { get; set; }
+    public required string HoTen { get; set; }
+
+    public ICollection<Sach>? Sachs { get; set; }
 }

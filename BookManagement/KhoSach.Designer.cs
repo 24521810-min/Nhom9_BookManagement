@@ -28,26 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlKhoSach = new System.Windows.Forms.TabControl();
             this.tabPageSach = new System.Windows.Forms.TabPage();
-            this.button11 = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnfind = new System.Windows.Forms.Button();
+            this.dsSach = new System.Windows.Forms.DataGridView();
             this.btnexit = new System.Windows.Forms.Button();
             this.btnclear = new System.Windows.Forms.Button();
             this.btnedit = new System.Windows.Forms.Button();
             this.btnadd = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtLoaiSach = new System.Windows.Forms.TextBox();
+            this.txtTacGia = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.cmbLoaiSach = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.cmbTacGia = new System.Windows.Forms.ComboBox();
-            this.txtSoluong = new System.Windows.Forms.TextBox();
+            this.txtSoLuong = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTenSach = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtMasach = new System.Windows.Forms.TextBox();
+            this.txtMaSach = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageLoaiSach = new System.Windows.Forms.TabPage();
+            this.dsLoaiSach = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtTenLoaiSach = new System.Windows.Forms.TextBox();
@@ -66,21 +70,20 @@
             this.txtMaTacGia = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.button7 = new System.Windows.Forms.Button();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.dsTacGia = new System.Windows.Forms.DataGridView();
             this.button8 = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button10 = new System.Windows.Forms.Button();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.tabControlKhoSach.SuspendLayout();
             this.tabPageSach.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsSach)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.tabPageLoaiSach.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dsLoaiSach)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tabPageTacGia.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsTacGia)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlKhoSach
@@ -101,8 +104,8 @@
             // tabPageSach
             // 
             this.tabPageSach.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.tabPageSach.Controls.Add(this.button11);
-            this.tabPageSach.Controls.Add(this.dataGridView1);
+            this.tabPageSach.Controls.Add(this.btnfind);
+            this.tabPageSach.Controls.Add(this.dsSach);
             this.tabPageSach.Controls.Add(this.btnexit);
             this.tabPageSach.Controls.Add(this.btnclear);
             this.tabPageSach.Controls.Add(this.btnedit);
@@ -116,26 +119,36 @@
             this.tabPageSach.TabIndex = 0;
             this.tabPageSach.Text = "Sách";
             // 
-            // button11
+            // btnfind
             // 
-            this.button11.BackgroundImage = global::BookManagement.Properties.Resources.view;
-            this.button11.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button11.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button11.Location = new System.Drawing.Point(140, 243);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(93, 94);
-            this.button11.TabIndex = 7;
-            this.button11.UseVisualStyleBackColor = true;
+            this.btnfind.BackgroundImage = global::BookManagement.Properties.Resources.view;
+            this.btnfind.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnfind.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnfind.Location = new System.Drawing.Point(140, 243);
+            this.btnfind.Name = "btnfind";
+            this.btnfind.Size = new System.Drawing.Size(93, 94);
+            this.btnfind.TabIndex = 7;
+            this.btnfind.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dsSach
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 356);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 62;
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(874, 232);
-            this.dataGridView1.TabIndex = 6;
+            this.dsSach.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dsSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dsSach.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dsSach.Location = new System.Drawing.Point(12, 356);
+            this.dsSach.Name = "dsSach";
+            this.dsSach.RowHeadersWidth = 62;
+            this.dsSach.RowTemplate.Height = 28;
+            this.dsSach.Size = new System.Drawing.Size(874, 232);
+            this.dsSach.TabIndex = 6;
+            this.dsSach.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dsSach_CellContentClick);
             // 
             // btnexit
             // 
@@ -169,6 +182,7 @@
             this.btnedit.Size = new System.Drawing.Size(96, 94);
             this.btnedit.TabIndex = 3;
             this.btnedit.UseVisualStyleBackColor = true;
+            this.btnedit.Click += new System.EventHandler(this.btnedit_Click);
             // 
             // btnadd
             // 
@@ -180,18 +194,19 @@
             this.btnadd.Size = new System.Drawing.Size(93, 94);
             this.btnadd.TabIndex = 1;
             this.btnadd.UseVisualStyleBackColor = true;
+            this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtLoaiSach);
+            this.groupBox1.Controls.Add(this.txtTacGia);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.cmbLoaiSach);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.cmbTacGia);
-            this.groupBox1.Controls.Add(this.txtSoluong);
+            this.groupBox1.Controls.Add(this.txtSoLuong);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtTenSach);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtMasach);
+            this.groupBox1.Controls.Add(this.txtMaSach);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 6);
@@ -200,6 +215,22 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chi tiết Sách";
+            // 
+            // txtLoaiSach
+            // 
+            this.txtLoaiSach.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLoaiSach.Location = new System.Drawing.Point(564, 100);
+            this.txtLoaiSach.Name = "txtLoaiSach";
+            this.txtLoaiSach.Size = new System.Drawing.Size(257, 35);
+            this.txtLoaiSach.TabIndex = 11;
+            // 
+            // txtTacGia
+            // 
+            this.txtTacGia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTacGia.Location = new System.Drawing.Point(564, 42);
+            this.txtTacGia.Name = "txtTacGia";
+            this.txtTacGia.Size = new System.Drawing.Size(257, 35);
+            this.txtTacGia.TabIndex = 10;
             // 
             // label5
             // 
@@ -211,41 +242,23 @@
             this.label5.TabIndex = 9;
             this.label5.Text = "Mã Loại Sách:";
             // 
-            // cmbLoaiSach
-            // 
-            this.cmbLoaiSach.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbLoaiSach.FormattingEnabled = true;
-            this.cmbLoaiSach.Location = new System.Drawing.Point(564, 100);
-            this.cmbLoaiSach.Name = "cmbLoaiSach";
-            this.cmbLoaiSach.Size = new System.Drawing.Size(259, 35);
-            this.cmbLoaiSach.TabIndex = 8;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(458, 50);
+            this.label4.Location = new System.Drawing.Point(420, 50);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(94, 27);
+            this.label4.Size = new System.Drawing.Size(132, 27);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Tác Giả:";
+            this.label4.Text = "Mã Tác Giả:";
             // 
-            // cmbTacGia
+            // txtSoLuong
             // 
-            this.cmbTacGia.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbTacGia.FormattingEnabled = true;
-            this.cmbTacGia.Location = new System.Drawing.Point(564, 42);
-            this.cmbTacGia.Name = "cmbTacGia";
-            this.cmbTacGia.Size = new System.Drawing.Size(259, 35);
-            this.cmbTacGia.TabIndex = 6;
-            // 
-            // txtSoluong
-            // 
-            this.txtSoluong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSoluong.Location = new System.Drawing.Point(128, 158);
-            this.txtSoluong.Name = "txtSoluong";
-            this.txtSoluong.Size = new System.Drawing.Size(257, 35);
-            this.txtSoluong.TabIndex = 5;
+            this.txtSoLuong.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSoLuong.Location = new System.Drawing.Point(128, 158);
+            this.txtSoLuong.Name = "txtSoLuong";
+            this.txtSoLuong.Size = new System.Drawing.Size(257, 35);
+            this.txtSoLuong.TabIndex = 5;
             // 
             // label3
             // 
@@ -275,13 +288,13 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Tên Sách:";
             // 
-            // txtMasach
+            // txtMaSach
             // 
-            this.txtMasach.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMasach.Location = new System.Drawing.Point(128, 42);
-            this.txtMasach.Name = "txtMasach";
-            this.txtMasach.Size = new System.Drawing.Size(257, 35);
-            this.txtMasach.TabIndex = 1;
+            this.txtMaSach.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaSach.Location = new System.Drawing.Point(128, 42);
+            this.txtMaSach.Name = "txtMaSach";
+            this.txtMaSach.Size = new System.Drawing.Size(257, 35);
+            this.txtMaSach.TabIndex = 1;
             // 
             // label1
             // 
@@ -296,7 +309,7 @@
             // tabPageLoaiSach
             // 
             this.tabPageLoaiSach.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.tabPageLoaiSach.Controls.Add(this.dataGridView2);
+            this.tabPageLoaiSach.Controls.Add(this.dsLoaiSach);
             this.tabPageLoaiSach.Controls.Add(this.button1);
             this.tabPageLoaiSach.Controls.Add(this.groupBox2);
             this.tabPageLoaiSach.Controls.Add(this.button2);
@@ -311,12 +324,23 @@
             this.tabPageLoaiSach.TabIndex = 1;
             this.tabPageLoaiSach.Text = "Loại sách";
             // 
+            // dsLoaiSach
+            // 
+            this.dsLoaiSach.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dsLoaiSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dsLoaiSach.Location = new System.Drawing.Point(34, 307);
+            this.dsLoaiSach.Name = "dsLoaiSach";
+            this.dsLoaiSach.RowHeadersWidth = 62;
+            this.dsLoaiSach.RowTemplate.Height = 28;
+            this.dsLoaiSach.Size = new System.Drawing.Size(687, 281);
+            this.dsLoaiSach.TabIndex = 14;
+            // 
             // button1
             // 
             this.button1.BackgroundImage = global::BookManagement.Properties.Resources.view;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(128, 199);
+            this.button1.Location = new System.Drawing.Point(47, 189);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(93, 94);
             this.button1.TabIndex = 12;
@@ -377,7 +401,7 @@
             this.button2.BackgroundImage = global::BookManagement.Properties.Resources.icons8_exit_100__1_;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(665, 199);
+            this.button2.Location = new System.Drawing.Point(584, 189);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(96, 94);
             this.button2.TabIndex = 11;
@@ -388,7 +412,7 @@
             this.button3.BackgroundImage = global::BookManagement.Properties.Resources.clear;
             this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(534, 199);
+            this.button3.Location = new System.Drawing.Point(453, 189);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(96, 94);
             this.button3.TabIndex = 10;
@@ -399,7 +423,7 @@
             this.button4.BackgroundImage = global::BookManagement.Properties.Resources.edit;
             this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(405, 199);
+            this.button4.Location = new System.Drawing.Point(324, 189);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(96, 94);
             this.button4.TabIndex = 9;
@@ -410,7 +434,7 @@
             this.button5.BackgroundImage = global::BookManagement.Properties.Resources.add;
             this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(265, 199);
+            this.button5.Location = new System.Drawing.Point(184, 189);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(93, 94);
             this.button5.TabIndex = 8;
@@ -422,7 +446,7 @@
             this.tabPageTacGia.Controls.Add(this.button6);
             this.tabPageTacGia.Controls.Add(this.groupBox3);
             this.tabPageTacGia.Controls.Add(this.button7);
-            this.tabPageTacGia.Controls.Add(this.dataGridView3);
+            this.tabPageTacGia.Controls.Add(this.dsTacGia);
             this.tabPageTacGia.Controls.Add(this.button8);
             this.tabPageTacGia.Controls.Add(this.button9);
             this.tabPageTacGia.Controls.Add(this.button10);
@@ -438,7 +462,7 @@
             this.button6.BackgroundImage = global::BookManagement.Properties.Resources.view;
             this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(139, 196);
+            this.button6.Location = new System.Drawing.Point(30, 192);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(93, 94);
             this.button6.TabIndex = 16;
@@ -499,28 +523,45 @@
             this.button7.BackgroundImage = global::BookManagement.Properties.Resources.icons8_exit_100__1_;
             this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(676, 196);
+            this.button7.Location = new System.Drawing.Point(567, 192);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(96, 94);
             this.button7.TabIndex = 15;
             this.button7.UseVisualStyleBackColor = true;
             // 
-            // dataGridView3
+            // dsTacGia
             // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Location = new System.Drawing.Point(9, 308);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowHeadersWidth = 62;
-            this.dataGridView3.RowTemplate.Height = 28;
-            this.dataGridView3.Size = new System.Drawing.Size(874, 281);
-            this.dataGridView3.TabIndex = 13;
+            this.dsTacGia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dsTacGia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dsTacGia.DefaultCellStyle = dataGridViewCellStyle5;
+            this.dsTacGia.Location = new System.Drawing.Point(9, 308);
+            this.dsTacGia.Name = "dsTacGia";
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dsTacGia.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dsTacGia.RowHeadersWidth = 62;
+            this.dsTacGia.RowTemplate.Height = 28;
+            this.dsTacGia.Size = new System.Drawing.Size(660, 281);
+            this.dsTacGia.TabIndex = 13;
             // 
             // button8
             // 
             this.button8.BackgroundImage = global::BookManagement.Properties.Resources.clear;
             this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(545, 196);
+            this.button8.Location = new System.Drawing.Point(436, 192);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(96, 94);
             this.button8.TabIndex = 14;
@@ -531,7 +572,7 @@
             this.button9.BackgroundImage = global::BookManagement.Properties.Resources.edit;
             this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(416, 196);
+            this.button9.Location = new System.Drawing.Point(307, 192);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(96, 94);
             this.button9.TabIndex = 13;
@@ -542,21 +583,11 @@
             this.button10.BackgroundImage = global::BookManagement.Properties.Resources.add;
             this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(276, 196);
+            this.button10.Location = new System.Drawing.Point(167, 192);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(93, 94);
             this.button10.TabIndex = 12;
             this.button10.UseVisualStyleBackColor = true;
-            // 
-            // dataGridView2
-            // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(9, 309);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersWidth = 62;
-            this.dataGridView2.RowTemplate.Height = 28;
-            this.dataGridView2.Size = new System.Drawing.Size(874, 281);
-            this.dataGridView2.TabIndex = 14;
             // 
             // KhoSach
             // 
@@ -571,17 +602,17 @@
             this.Text = "KhoSach";
             this.tabControlKhoSach.ResumeLayout(false);
             this.tabPageSach.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsSach)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPageLoaiSach.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dsLoaiSach)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.tabPageTacGia.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dsTacGia)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -595,31 +626,29 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cmbLoaiSach;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cmbTacGia;
-        private System.Windows.Forms.TextBox txtSoluong;
+        private System.Windows.Forms.TextBox txtSoLuong;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtTenSach;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtMasach;
+        private System.Windows.Forms.TextBox txtMaSach;
         private System.Windows.Forms.Button btnadd;
         private System.Windows.Forms.Button btnedit;
         private System.Windows.Forms.Button btnclear;
         private System.Windows.Forms.Button btnexit;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dsSach;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtTenLoaiSach;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtMaLoaiSach;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataGridView dataGridView3;
+        private System.Windows.Forms.DataGridView dsTacGia;
         private System.Windows.Forms.TextBox txtTenTacGia;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtMaTacGia;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button11;
+        private System.Windows.Forms.Button btnfind;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
@@ -630,6 +659,8 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dsLoaiSach;
+        private System.Windows.Forms.TextBox txtLoaiSach;
+        private System.Windows.Forms.TextBox txtTacGia;
     }
 }
