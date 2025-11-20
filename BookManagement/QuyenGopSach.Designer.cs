@@ -28,31 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button_TrangChu = new System.Windows.Forms.Button();
             this.button_Tra = new System.Windows.Forms.Button();
             this.button_QuyenGop = new System.Windows.Forms.Button();
             this.button_Muon = new System.Windows.Forms.Button();
-            this.panel = new System.Windows.Forms.Panel();
+            this.panel_thanhngang = new System.Windows.Forms.Panel();
             this.button_DXuat = new System.Windows.Forms.Button();
             this.button_HSDKy = new System.Windows.Forms.Button();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel_kedoc = new System.Windows.Forms.Panel();
             this.panel_thongtin = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.button_huy = new System.Windows.Forms.Button();
+            this.button_guiyc = new System.Windows.Forms.Button();
+            this.textBox_ghichu = new System.Windows.Forms.TextBox();
+            this.textBox_tt = new System.Windows.Forms.TextBox();
+            this.textBox_sluong = new System.Windows.Forms.TextBox();
+            this.textBox_tacgia = new System.Windows.Forms.TextBox();
+            this.textBox_tensach = new System.Windows.Forms.TextBox();
+            this.label_ghichu = new System.Windows.Forms.Label();
+            this.label_tacgia = new System.Windows.Forms.Label();
+            this.label_tt = new System.Windows.Forms.Label();
+            this.label_tensach = new System.Windows.Forms.Label();
+            this.label_soluong = new System.Windows.Forms.Label();
+            this.label_thongtin = new System.Windows.Forms.Label();
+            this.label_danhsach = new System.Windows.Forms.Label();
+            this.bangds = new System.Windows.Forms.DataGridView();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tensach = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_tacgia = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -60,7 +60,7 @@
             this.Column_nggui = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_tt = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_thongtin.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bangds)).BeginInit();
             this.SuspendLayout();
             // 
             // button_TrangChu
@@ -115,13 +115,13 @@
             this.button_Muon.UseVisualStyleBackColor = true;
             this.button_Muon.Click += new System.EventHandler(this.button4_Click);
             // 
-            // panel
+            // panel_thanhngang
             // 
-            this.panel.BackColor = System.Drawing.Color.Black;
-            this.panel.Location = new System.Drawing.Point(-2, 85);
-            this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(1259, 1);
-            this.panel.TabIndex = 1;
+            this.panel_thanhngang.BackColor = System.Drawing.Color.Black;
+            this.panel_thanhngang.Location = new System.Drawing.Point(-2, 85);
+            this.panel_thanhngang.Name = "panel_thanhngang";
+            this.panel_thanhngang.Size = new System.Drawing.Size(1259, 1);
+            this.panel_thanhngang.TabIndex = 1;
             // 
             // button_DXuat
             // 
@@ -147,193 +147,193 @@
             this.button_HSDKy.Text = "Hồ sơ đăng ký";
             this.button_HSDKy.UseVisualStyleBackColor = true;
             // 
-            // panel2
+            // panel_kedoc
             // 
-            this.panel2.BackColor = System.Drawing.Color.Black;
-            this.panel2.Location = new System.Drawing.Point(1075, 86);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1, 36);
-            this.panel2.TabIndex = 6;
+            this.panel_kedoc.BackColor = System.Drawing.Color.Black;
+            this.panel_kedoc.Location = new System.Drawing.Point(1075, 86);
+            this.panel_kedoc.Name = "panel_kedoc";
+            this.panel_kedoc.Size = new System.Drawing.Size(1, 36);
+            this.panel_kedoc.TabIndex = 6;
             // 
             // panel_thongtin
             // 
             this.panel_thongtin.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.panel_thongtin.Controls.Add(this.button2);
-            this.panel_thongtin.Controls.Add(this.button1);
-            this.panel_thongtin.Controls.Add(this.textBox5);
-            this.panel_thongtin.Controls.Add(this.textBox4);
-            this.panel_thongtin.Controls.Add(this.textBox3);
-            this.panel_thongtin.Controls.Add(this.textBox2);
-            this.panel_thongtin.Controls.Add(this.textBox1);
-            this.panel_thongtin.Controls.Add(this.label8);
-            this.panel_thongtin.Controls.Add(this.label4);
-            this.panel_thongtin.Controls.Add(this.label7);
-            this.panel_thongtin.Controls.Add(this.label1);
-            this.panel_thongtin.Controls.Add(this.label6);
-            this.panel_thongtin.Controls.Add(this.label2);
+            this.panel_thongtin.Controls.Add(this.button_huy);
+            this.panel_thongtin.Controls.Add(this.button_guiyc);
+            this.panel_thongtin.Controls.Add(this.textBox_ghichu);
+            this.panel_thongtin.Controls.Add(this.textBox_tt);
+            this.panel_thongtin.Controls.Add(this.textBox_sluong);
+            this.panel_thongtin.Controls.Add(this.textBox_tacgia);
+            this.panel_thongtin.Controls.Add(this.textBox_tensach);
+            this.panel_thongtin.Controls.Add(this.label_ghichu);
+            this.panel_thongtin.Controls.Add(this.label_tacgia);
+            this.panel_thongtin.Controls.Add(this.label_tt);
+            this.panel_thongtin.Controls.Add(this.label_tensach);
+            this.panel_thongtin.Controls.Add(this.label_soluong);
+            this.panel_thongtin.Controls.Add(this.label_thongtin);
             this.panel_thongtin.Location = new System.Drawing.Point(37, 137);
             this.panel_thongtin.Name = "panel_thongtin";
             this.panel_thongtin.Size = new System.Drawing.Size(461, 381);
             this.panel_thongtin.TabIndex = 7;
             // 
-            // label1
+            // button_huy
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(26, 72);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 25);
-            this.label1.TabIndex = 8;
-            this.label1.Text = "Tên sách";
+            this.button_huy.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_huy.Location = new System.Drawing.Point(295, 321);
+            this.button_huy.Name = "button_huy";
+            this.button_huy.Size = new System.Drawing.Size(138, 42);
+            this.button_huy.TabIndex = 19;
+            this.button_huy.Text = "Huỷ";
+            this.button_huy.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // button_guiyc
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI Black", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(112, 17);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(241, 25);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Thông tin sách quyên góp";
+            this.button_guiyc.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_guiyc.Location = new System.Drawing.Point(151, 321);
+            this.button_guiyc.Name = "button_guiyc";
+            this.button_guiyc.Size = new System.Drawing.Size(138, 42);
+            this.button_guiyc.TabIndex = 18;
+            this.button_guiyc.Text = "Gửi yêu cầu";
+            this.button_guiyc.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // textBox_ghichu
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(26, 123);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 25);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Tác giả";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.textBox_ghichu.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_ghichu.Location = new System.Drawing.Point(179, 261);
+            this.textBox_ghichu.Name = "textBox_ghichu";
+            this.textBox_ghichu.Size = new System.Drawing.Size(254, 31);
+            this.textBox_ghichu.TabIndex = 17;
             // 
-            // label6
+            // textBox_tt
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(26, 168);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(87, 25);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Số lượng";
+            this.textBox_tt.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_tt.Location = new System.Drawing.Point(179, 215);
+            this.textBox_tt.Name = "textBox_tt";
+            this.textBox_tt.Size = new System.Drawing.Size(254, 31);
+            this.textBox_tt.TabIndex = 16;
             // 
-            // label7
+            // textBox_sluong
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(26, 218);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(138, 25);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Tình trạng sách";
+            this.textBox_sluong.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_sluong.Location = new System.Drawing.Point(179, 168);
+            this.textBox_sluong.Name = "textBox_sluong";
+            this.textBox_sluong.Size = new System.Drawing.Size(254, 31);
+            this.textBox_sluong.TabIndex = 15;
             // 
-            // label8
+            // textBox_tacgia
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(26, 264);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(147, 25);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "Ghi chú (nếu có)";
+            this.textBox_tacgia.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_tacgia.Location = new System.Drawing.Point(179, 120);
+            this.textBox_tacgia.Name = "textBox_tacgia";
+            this.textBox_tacgia.Size = new System.Drawing.Size(254, 31);
+            this.textBox_tacgia.TabIndex = 14;
             // 
-            // textBox1
+            // textBox_tensach
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(179, 69);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(254, 31);
-            this.textBox1.TabIndex = 13;
+            this.textBox_tensach.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_tensach.Location = new System.Drawing.Point(179, 69);
+            this.textBox_tensach.Name = "textBox_tensach";
+            this.textBox_tensach.Size = new System.Drawing.Size(254, 31);
+            this.textBox_tensach.TabIndex = 13;
             // 
-            // textBox2
+            // label_ghichu
             // 
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(179, 120);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(254, 31);
-            this.textBox2.TabIndex = 14;
+            this.label_ghichu.AutoSize = true;
+            this.label_ghichu.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ghichu.Location = new System.Drawing.Point(26, 264);
+            this.label_ghichu.Name = "label_ghichu";
+            this.label_ghichu.Size = new System.Drawing.Size(147, 25);
+            this.label_ghichu.TabIndex = 12;
+            this.label_ghichu.Text = "Ghi chú (nếu có)";
             // 
-            // textBox3
+            // label_tacgia
             // 
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(179, 168);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(254, 31);
-            this.textBox3.TabIndex = 15;
+            this.label_tacgia.AutoSize = true;
+            this.label_tacgia.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_tacgia.Location = new System.Drawing.Point(26, 123);
+            this.label_tacgia.Name = "label_tacgia";
+            this.label_tacgia.Size = new System.Drawing.Size(67, 25);
+            this.label_tacgia.TabIndex = 10;
+            this.label_tacgia.Text = "Tác giả";
+            this.label_tacgia.Click += new System.EventHandler(this.label4_Click);
             // 
-            // textBox4
+            // label_tt
             // 
-            this.textBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(179, 215);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(254, 31);
-            this.textBox4.TabIndex = 16;
+            this.label_tt.AutoSize = true;
+            this.label_tt.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_tt.Location = new System.Drawing.Point(26, 218);
+            this.label_tt.Name = "label_tt";
+            this.label_tt.Size = new System.Drawing.Size(138, 25);
+            this.label_tt.TabIndex = 11;
+            this.label_tt.Text = "Tình trạng sách";
             // 
-            // textBox5
+            // label_tensach
             // 
-            this.textBox5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(179, 261);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(254, 31);
-            this.textBox5.TabIndex = 17;
+            this.label_tensach.AutoSize = true;
+            this.label_tensach.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_tensach.Location = new System.Drawing.Point(26, 72);
+            this.label_tensach.Name = "label_tensach";
+            this.label_tensach.Size = new System.Drawing.Size(81, 25);
+            this.label_tensach.TabIndex = 8;
+            this.label_tensach.Text = "Tên sách";
             // 
-            // button1
+            // label_soluong
             // 
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(151, 321);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(138, 42);
-            this.button1.TabIndex = 18;
-            this.button1.Text = "Gửi yêu cầu";
-            this.button1.UseVisualStyleBackColor = true;
+            this.label_soluong.AutoSize = true;
+            this.label_soluong.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_soluong.Location = new System.Drawing.Point(26, 168);
+            this.label_soluong.Name = "label_soluong";
+            this.label_soluong.Size = new System.Drawing.Size(87, 25);
+            this.label_soluong.TabIndex = 10;
+            this.label_soluong.Text = "Số lượng";
             // 
-            // button2
+            // label_thongtin
             // 
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(295, 321);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(138, 42);
-            this.button2.TabIndex = 19;
-            this.button2.Text = "Huỷ";
-            this.button2.UseVisualStyleBackColor = true;
+            this.label_thongtin.AutoSize = true;
+            this.label_thongtin.Font = new System.Drawing.Font("Segoe UI Black", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_thongtin.Location = new System.Drawing.Point(112, 17);
+            this.label_thongtin.Name = "label_thongtin";
+            this.label_thongtin.Size = new System.Drawing.Size(241, 25);
+            this.label_thongtin.TabIndex = 0;
+            this.label_thongtin.Text = "Thông tin sách quyên góp";
             // 
-            // label3
+            // label_danhsach
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(723, 170);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(344, 28);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "DANH SÁCH SÁCH ĐÃ QUYÊN GÓP";
+            this.label_danhsach.AutoSize = true;
+            this.label_danhsach.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_danhsach.Location = new System.Drawing.Point(723, 170);
+            this.label_danhsach.Name = "label_danhsach";
+            this.label_danhsach.Size = new System.Drawing.Size(344, 28);
+            this.label_danhsach.TabIndex = 8;
+            this.label_danhsach.Text = "DANH SÁCH SÁCH ĐÃ QUYÊN GÓP";
             // 
-            // dataGridView1
+            // bangds
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dataGridView1.ColumnHeadersHeight = 29;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.bangds.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.bangds.ColumnHeadersHeight = 29;
+            this.bangds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.bangds.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
             this.tensach,
             this.Column_tacgia,
             this.Column_sluong,
             this.Column_nggui,
             this.Column_tt});
-            this.dataGridView1.Location = new System.Drawing.Point(530, 209);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 40;
-            this.dataGridView1.Size = new System.Drawing.Size(707, 183);
-            this.dataGridView1.TabIndex = 9;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.bangds.Location = new System.Drawing.Point(530, 209);
+            this.bangds.Name = "bangds";
+            this.bangds.RowHeadersVisible = false;
+            this.bangds.RowHeadersWidth = 51;
+            this.bangds.RowTemplate.Height = 40;
+            this.bangds.Size = new System.Drawing.Size(707, 183);
+            this.bangds.TabIndex = 9;
+            this.bangds.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // STT
             // 
@@ -384,11 +384,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(1258, 564);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.bangds);
+            this.Controls.Add(this.label_danhsach);
             this.Controls.Add(this.panel_thongtin);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel);
+            this.Controls.Add(this.panel_kedoc);
+            this.Controls.Add(this.panel_thanhngang);
             this.Controls.Add(this.button_Muon);
             this.Controls.Add(this.button_QuyenGop);
             this.Controls.Add(this.button_Tra);
@@ -401,7 +401,7 @@
             this.Load += new System.EventHandler(this.QuyenGopSach_Load);
             this.panel_thongtin.ResumeLayout(false);
             this.panel_thongtin.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bangds)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -413,26 +413,26 @@
         private System.Windows.Forms.Button button_Tra;
         private System.Windows.Forms.Button button_QuyenGop;
         private System.Windows.Forms.Button button_Muon;
-        private System.Windows.Forms.Panel panel;
+        private System.Windows.Forms.Panel panel_thanhngang;
         private System.Windows.Forms.Button button_DXuat;
         private System.Windows.Forms.Button button_HSDKy;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel_kedoc;
         private System.Windows.Forms.Panel panel_thongtin;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label_tacgia;
+        private System.Windows.Forms.Label label_tensach;
+        private System.Windows.Forms.Label label_thongtin;
+        private System.Windows.Forms.Label label_soluong;
+        private System.Windows.Forms.Label label_tt;
+        private System.Windows.Forms.Label label_ghichu;
+        private System.Windows.Forms.TextBox textBox_ghichu;
+        private System.Windows.Forms.TextBox textBox_tt;
+        private System.Windows.Forms.TextBox textBox_sluong;
+        private System.Windows.Forms.TextBox textBox_tacgia;
+        private System.Windows.Forms.TextBox textBox_tensach;
+        private System.Windows.Forms.Button button_huy;
+        private System.Windows.Forms.Button button_guiyc;
+        private System.Windows.Forms.Label label_danhsach;
+        private System.Windows.Forms.DataGridView bangds;
         private System.Windows.Forms.DataGridViewTextBoxColumn STT;
         private System.Windows.Forms.DataGridViewTextBoxColumn tensach;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_tacgia;
