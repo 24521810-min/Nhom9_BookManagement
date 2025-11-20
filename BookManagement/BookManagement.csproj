@@ -96,6 +96,12 @@
     <Compile Include="Forgotpassword.Designer.cs">
       <DependentUpon>Forgotpassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="QuyenGopSach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuyenGopSach.Designer.cs">
+      <DependentUpon>QuyenGopSach.cs</DependentUpon>
+    </Compile>
     <Compile Include="KhoSach.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,6 +199,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyQuyenGop.resx">
       <DependentUpon>QuanLyQuyenGop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuyenGopSach.resx">
+      <DependentUpon>QuyenGopSach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
