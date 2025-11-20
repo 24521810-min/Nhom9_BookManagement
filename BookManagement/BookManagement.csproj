@@ -96,6 +96,12 @@
     <Compile Include="Forgotpassword.Designer.cs">
       <DependentUpon>Forgotpassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="MuonSach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MuonSach.Designer.cs">
+      <DependentUpon>MuonSach.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuyenGopSach.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +192,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KhoSach.resx">
       <DependentUpon>KhoSach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MuonSach.resx">
+      <DependentUpon>MuonSach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
