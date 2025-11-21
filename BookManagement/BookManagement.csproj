@@ -99,6 +99,24 @@
     <Compile Include="Forgotpassword.Designer.cs">
       <DependentUpon>Forgotpassword.cs</DependentUpon>
     </Compile>
+    <Compile Include="TraSach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TraSach.Designer.cs">
+      <DependentUpon>TraSach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MuonSach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MuonSach.Designer.cs">
+      <DependentUpon>MuonSach.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QuyenGopSach.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QuyenGopSach.Designer.cs">
+      <DependentUpon>QuyenGopSach.cs</DependentUpon>
+    </Compile>
     <Compile Include="KhoSach.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +204,9 @@
     <EmbeddedResource Include="KhoSach.resx">
       <DependentUpon>KhoSach.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MuonSach.resx">
+      <DependentUpon>MuonSach.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -198,6 +219,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuanLyQuyenGop.resx">
       <DependentUpon>QuanLyQuyenGop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QuyenGopSach.resx">
+      <DependentUpon>QuyenGopSach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TraSach.resx">
+      <DependentUpon>TraSach.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Users.resx">
       <DependentUpon>Users.cs</DependentUpon>
