@@ -1,0 +1,373 @@
+﻿namespace BookManagement
+{
+    partial class MuonSach
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.panel_kedoc = new System.Windows.Forms.Panel();
+            this.panel_thanhngang = new System.Windows.Forms.Panel();
+            this.button_Muon = new System.Windows.Forms.Button();
+            this.button_Tra = new System.Windows.Forms.Button();
+            this.button_TrangChu = new System.Windows.Forms.Button();
+            this.button_HSDKy = new System.Windows.Forms.Button();
+            this.button_DXuat = new System.Windows.Forms.Button();
+            this.button_quyengop = new System.Windows.Forms.Button();
+            this.label_timkiem = new System.Windows.Forms.Label();
+            this.textBox_timkiem = new System.Windows.Forms.TextBox();
+            this.label_ds = new System.Windows.Forms.Label();
+            this.bangds = new System.Windows.Forms.DataGridView();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tensach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_masach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_tacgia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_sluongmuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_slconlai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_chon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.label_ngmuon = new System.Windows.Forms.Label();
+            this.label_ngtradk = new System.Windows.Forms.Label();
+            this.dateTimePicker_muon = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePicker_tradk = new System.Windows.Forms.DateTimePicker();
+            this.button_muonsach = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.bangds)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // panel_kedoc
+            // 
+            this.panel_kedoc.BackColor = System.Drawing.Color.Black;
+            this.panel_kedoc.Location = new System.Drawing.Point(807, 64);
+            this.panel_kedoc.Margin = new System.Windows.Forms.Padding(2);
+            this.panel_kedoc.Name = "panel_kedoc";
+            this.panel_kedoc.Size = new System.Drawing.Size(1, 29);
+            this.panel_kedoc.TabIndex = 14;
+            // 
+            // panel_thanhngang
+            // 
+            this.panel_thanhngang.BackColor = System.Drawing.Color.Black;
+            this.panel_thanhngang.Location = new System.Drawing.Point(-1, 63);
+            this.panel_thanhngang.Margin = new System.Windows.Forms.Padding(2);
+            this.panel_thanhngang.Name = "panel_thanhngang";
+            this.panel_thanhngang.Size = new System.Drawing.Size(944, 1);
+            this.panel_thanhngang.TabIndex = 8;
+            // 
+            // button_Muon
+            // 
+            this.button_Muon.BackColor = System.Drawing.Color.Linen;
+            this.button_Muon.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button_Muon.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Muon.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.button_Muon.Location = new System.Drawing.Point(164, 21);
+            this.button_Muon.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Muon.Name = "button_Muon";
+            this.button_Muon.Size = new System.Drawing.Size(171, 43);
+            this.button_Muon.TabIndex = 11;
+            this.button_Muon.Text = "MƯỢN SÁCH";
+            this.button_Muon.UseVisualStyleBackColor = false;
+            // 
+            // button_Tra
+            // 
+            this.button_Tra.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button_Tra.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_Tra.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.button_Tra.Location = new System.Drawing.Point(328, 21);
+            this.button_Tra.Margin = new System.Windows.Forms.Padding(2);
+            this.button_Tra.Name = "button_Tra";
+            this.button_Tra.Size = new System.Drawing.Size(171, 43);
+            this.button_Tra.TabIndex = 9;
+            this.button_Tra.Text = "TRẢ SÁCH";
+            this.button_Tra.UseVisualStyleBackColor = true;
+            // 
+            // button_TrangChu
+            // 
+            this.button_TrangChu.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button_TrangChu.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_TrangChu.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.button_TrangChu.Location = new System.Drawing.Point(-1, 21);
+            this.button_TrangChu.Margin = new System.Windows.Forms.Padding(2);
+            this.button_TrangChu.Name = "button_TrangChu";
+            this.button_TrangChu.Size = new System.Drawing.Size(171, 43);
+            this.button_TrangChu.TabIndex = 7;
+            this.button_TrangChu.Text = "TRANG CHỦ";
+            this.button_TrangChu.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.button_TrangChu.UseVisualStyleBackColor = true;
+            // 
+            // button_HSDKy
+            // 
+            this.button_HSDKy.FlatAppearance.BorderColor = System.Drawing.Color.FloralWhite;
+            this.button_HSDKy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_HSDKy.Font = new System.Drawing.Font("Segoe UI Black", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_HSDKy.Location = new System.Drawing.Point(807, 65);
+            this.button_HSDKy.Margin = new System.Windows.Forms.Padding(2);
+            this.button_HSDKy.Name = "button_HSDKy";
+            this.button_HSDKy.Size = new System.Drawing.Size(152, 35);
+            this.button_HSDKy.TabIndex = 13;
+            this.button_HSDKy.Text = "Hồ sơ đăng ký";
+            this.button_HSDKy.UseVisualStyleBackColor = true;
+            // 
+            // button_DXuat
+            // 
+            this.button_DXuat.FlatAppearance.BorderColor = System.Drawing.Color.FloralWhite;
+            this.button_DXuat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button_DXuat.Font = new System.Drawing.Font("Segoe UI Black", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_DXuat.Location = new System.Drawing.Point(698, 61);
+            this.button_DXuat.Margin = new System.Windows.Forms.Padding(2);
+            this.button_DXuat.Name = "button_DXuat";
+            this.button_DXuat.Size = new System.Drawing.Size(108, 42);
+            this.button_DXuat.TabIndex = 12;
+            this.button_DXuat.Text = "Đăng xuất";
+            this.button_DXuat.UseVisualStyleBackColor = true;
+            // 
+            // button_quyengop
+            // 
+            this.button_quyengop.Cursor = System.Windows.Forms.Cursors.Default;
+            this.button_quyengop.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_quyengop.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.button_quyengop.Location = new System.Drawing.Point(496, 21);
+            this.button_quyengop.Margin = new System.Windows.Forms.Padding(2);
+            this.button_quyengop.Name = "button_quyengop";
+            this.button_quyengop.Size = new System.Drawing.Size(171, 43);
+            this.button_quyengop.TabIndex = 15;
+            this.button_quyengop.Text = "QUYÊN GÓP SÁCH";
+            this.button_quyengop.UseVisualStyleBackColor = true;
+            this.button_quyengop.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label_timkiem
+            // 
+            this.label_timkiem.AutoSize = true;
+            this.label_timkiem.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_timkiem.Location = new System.Drawing.Point(31, 127);
+            this.label_timkiem.Name = "label_timkiem";
+            this.label_timkiem.Size = new System.Drawing.Size(81, 21);
+            this.label_timkiem.TabIndex = 16;
+            this.label_timkiem.Text = "Tìm kiếm";
+            // 
+            // textBox_timkiem
+            // 
+            this.textBox_timkiem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox_timkiem.Location = new System.Drawing.Point(116, 124);
+            this.textBox_timkiem.Name = "textBox_timkiem";
+            this.textBox_timkiem.Size = new System.Drawing.Size(308, 27);
+            this.textBox_timkiem.TabIndex = 17;
+            // 
+            // label_ds
+            // 
+            this.label_ds.AutoSize = true;
+            this.label_ds.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ds.Location = new System.Drawing.Point(31, 165);
+            this.label_ds.Name = "label_ds";
+            this.label_ds.Size = new System.Drawing.Size(203, 21);
+            this.label_ds.TabIndex = 18;
+            this.label_ds.Text = "Danh sách sách khả dụng";
+            // 
+            // bangds
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.bangds.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.bangds.ColumnHeadersHeight = 50;
+            this.bangds.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.STT,
+            this.tensach,
+            this.Column_masach,
+            this.Column_tacgia,
+            this.Column_sluongmuon,
+            this.Column_slconlai,
+            this.Column_chon});
+            this.bangds.Location = new System.Drawing.Point(14, 196);
+            this.bangds.Margin = new System.Windows.Forms.Padding(2);
+            this.bangds.Name = "bangds";
+            this.bangds.RowHeadersVisible = false;
+            this.bangds.RowHeadersWidth = 51;
+            this.bangds.RowTemplate.Height = 40;
+            this.bangds.Size = new System.Drawing.Size(705, 149);
+            this.bangds.TabIndex = 19;
+            // 
+            // STT
+            // 
+            this.STT.HeaderText = "STT";
+            this.STT.MaxInputLength = 327;
+            this.STT.MinimumWidth = 10;
+            this.STT.Name = "STT";
+            this.STT.Width = 50;
+            // 
+            // tensach
+            // 
+            this.tensach.HeaderText = "Tên sách";
+            this.tensach.MinimumWidth = 10;
+            this.tensach.Name = "tensach";
+            this.tensach.Width = 127;
+            // 
+            // Column_masach
+            // 
+            this.Column_masach.HeaderText = "Mã sách";
+            this.Column_masach.Name = "Column_masach";
+            // 
+            // Column_tacgia
+            // 
+            this.Column_tacgia.HeaderText = "Tác giả";
+            this.Column_tacgia.MinimumWidth = 10;
+            this.Column_tacgia.Name = "Column_tacgia";
+            this.Column_tacgia.Width = 125;
+            // 
+            // Column_sluongmuon
+            // 
+            this.Column_sluongmuon.HeaderText = "Số lượng\nmượn";
+            this.Column_sluongmuon.MinimumWidth = 10;
+            this.Column_sluongmuon.Name = "Column_sluongmuon";
+            this.Column_sluongmuon.Width = 125;
+            // 
+            // Column_slconlai
+            // 
+            this.Column_slconlai.HeaderText = "Số lượng\ncòn lại";
+            this.Column_slconlai.MinimumWidth = 10;
+            this.Column_slconlai.Name = "Column_slconlai";
+            this.Column_slconlai.Width = 125;
+            // 
+            // Column_chon
+            // 
+            this.Column_chon.HeaderText = "Chọn";
+            this.Column_chon.MinimumWidth = 10;
+            this.Column_chon.Name = "Column_chon";
+            this.Column_chon.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column_chon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Column_chon.Width = 50;
+            // 
+            // label_ngmuon
+            // 
+            this.label_ngmuon.AutoSize = true;
+            this.label_ngmuon.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ngmuon.Location = new System.Drawing.Point(747, 196);
+            this.label_ngmuon.Name = "label_ngmuon";
+            this.label_ngmuon.Size = new System.Drawing.Size(101, 21);
+            this.label_ngmuon.TabIndex = 20;
+            this.label_ngmuon.Text = "Ngày mượn";
+            // 
+            // label_ngtradk
+            // 
+            this.label_ngtradk.AutoSize = true;
+            this.label_ngtradk.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_ngtradk.Location = new System.Drawing.Point(747, 263);
+            this.label_ngtradk.Name = "label_ngtradk";
+            this.label_ngtradk.Size = new System.Drawing.Size(138, 21);
+            this.label_ngtradk.TabIndex = 21;
+            this.label_ngtradk.Text = "Ngày trả dự kiến";
+            // 
+            // dateTimePicker_muon
+            // 
+            this.dateTimePicker_muon.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker_muon.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker_muon.Location = new System.Drawing.Point(764, 223);
+            this.dateTimePicker_muon.Name = "dateTimePicker_muon";
+            this.dateTimePicker_muon.Size = new System.Drawing.Size(167, 29);
+            this.dateTimePicker_muon.TabIndex = 22;
+            this.dateTimePicker_muon.Value = new System.DateTime(2025, 11, 20, 19, 21, 19, 0);
+            // 
+            // dateTimePicker_tradk
+            // 
+            this.dateTimePicker_tradk.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker_tradk.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker_tradk.Location = new System.Drawing.Point(764, 289);
+            this.dateTimePicker_tradk.Name = "dateTimePicker_tradk";
+            this.dateTimePicker_tradk.Size = new System.Drawing.Size(167, 29);
+            this.dateTimePicker_tradk.TabIndex = 23;
+            this.dateTimePicker_tradk.Value = new System.DateTime(2025, 11, 20, 19, 21, 19, 0);
+            // 
+            // button_muonsach
+            // 
+            this.button_muonsach.BackColor = System.Drawing.Color.Linen;
+            this.button_muonsach.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button_muonsach.Location = new System.Drawing.Point(669, 377);
+            this.button_muonsach.Name = "button_muonsach";
+            this.button_muonsach.Size = new System.Drawing.Size(170, 44);
+            this.button_muonsach.TabIndex = 24;
+            this.button_muonsach.Text = "Mượn sách";
+            this.button_muonsach.UseVisualStyleBackColor = false;
+            // 
+            // MuonSach
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FloralWhite;
+            this.ClientSize = new System.Drawing.Size(943, 454);
+            this.Controls.Add(this.button_muonsach);
+            this.Controls.Add(this.dateTimePicker_tradk);
+            this.Controls.Add(this.dateTimePicker_muon);
+            this.Controls.Add(this.label_ngtradk);
+            this.Controls.Add(this.label_ngmuon);
+            this.Controls.Add(this.bangds);
+            this.Controls.Add(this.label_ds);
+            this.Controls.Add(this.textBox_timkiem);
+            this.Controls.Add(this.label_timkiem);
+            this.Controls.Add(this.panel_kedoc);
+            this.Controls.Add(this.panel_thanhngang);
+            this.Controls.Add(this.button_Muon);
+            this.Controls.Add(this.button_Tra);
+            this.Controls.Add(this.button_TrangChu);
+            this.Controls.Add(this.button_HSDKy);
+            this.Controls.Add(this.button_DXuat);
+            this.Controls.Add(this.button_quyengop);
+            this.Name = "MuonSach";
+            this.Text = "Mượn Sách";
+            ((System.ComponentModel.ISupportInitialize)(this.bangds)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        #endregion
+
+        private System.Windows.Forms.Panel panel_kedoc;
+        private System.Windows.Forms.Panel panel_thanhngang;
+        private System.Windows.Forms.Button button_Muon;
+        private System.Windows.Forms.Button button_Tra;
+        private System.Windows.Forms.Button button_TrangChu;
+        private System.Windows.Forms.Button button_HSDKy;
+        private System.Windows.Forms.Button button_DXuat;
+        private System.Windows.Forms.Button button_quyengop;
+        private System.Windows.Forms.Label label_timkiem;
+        private System.Windows.Forms.TextBox textBox_timkiem;
+        private System.Windows.Forms.Label label_ds;
+        private System.Windows.Forms.DataGridView bangds;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tensach;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_masach;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_tacgia;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_sluongmuon;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_slconlai;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Column_chon;
+        private System.Windows.Forms.Label label_ngmuon;
+        private System.Windows.Forms.Label label_ngtradk;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_muon;
+        private System.Windows.Forms.DateTimePicker dateTimePicker_tradk;
+        private System.Windows.Forms.Button button_muonsach;
+    }
+}
