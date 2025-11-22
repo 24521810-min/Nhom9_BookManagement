@@ -5,4 +5,7 @@
     public int IDTacGia { get; set; }
     public int IDLoaiSach { get; set; }
     public int SoLuong { get; set; }
+    public TacGia TacGia { get; set; }
+    public LoaiSach LoaiSach { get; set; }
+
 }

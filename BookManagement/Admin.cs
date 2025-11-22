@@ -19,10 +19,10 @@ namespace BookManagement
 
         private void btnKhoSach_Click(object sender, EventArgs e)
         {
+            KhoSach f = new KhoSach();
+            f.FormClosed += (s, args) => this.Show();
             this.Hide();
-            KhoSach khosachForm = new KhoSach();
-            khosachForm.ShowDialog();
-            this.Show();
+            f.Show();
         }
 
         private void btnQuanLyNguoiDung_Click(object sender, EventArgs e)

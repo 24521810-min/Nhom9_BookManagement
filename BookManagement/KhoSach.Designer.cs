@@ -28,17 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControlKhoSach = new System.Windows.Forms.TabControl();
             this.tabPageSach = new System.Windows.Forms.TabPage();
-            this.btnfind = new System.Windows.Forms.Button();
+            this.btnsearchSach = new System.Windows.Forms.Button();
+            this.btnviewSach = new System.Windows.Forms.Button();
             this.dsSach = new System.Windows.Forms.DataGridView();
-            this.btnexit = new System.Windows.Forms.Button();
-            this.btnclear = new System.Windows.Forms.Button();
-            this.btnedit = new System.Windows.Forms.Button();
-            this.btnadd = new System.Windows.Forms.Button();
+            this.btnexitSach = new System.Windows.Forms.Button();
+            this.btnclearSach = new System.Windows.Forms.Button();
+            this.btneditSach = new System.Windows.Forms.Button();
+            this.btnaddSach = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtLoaiSach = new System.Windows.Forms.TextBox();
             this.txtTacGia = new System.Windows.Forms.TextBox();
@@ -51,29 +49,31 @@
             this.txtMaSach = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPageLoaiSach = new System.Windows.Forms.TabPage();
+            this.btnsearchLoaiSach = new System.Windows.Forms.Button();
+            this.btnviewLoaiSach = new System.Windows.Forms.Button();
+            this.btnexitLoaiSach = new System.Windows.Forms.Button();
+            this.btnclearLoaiSach = new System.Windows.Forms.Button();
+            this.btneditLoaiSach = new System.Windows.Forms.Button();
+            this.btnaddLoaiSach = new System.Windows.Forms.Button();
             this.dsLoaiSach = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtTenLoaiSach = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.txtMaLoaiSach = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
             this.tabPageTacGia = new System.Windows.Forms.TabPage();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btnsearchTacGia = new System.Windows.Forms.Button();
+            this.btnviewTacGia = new System.Windows.Forms.Button();
+            this.btnexitTacGia = new System.Windows.Forms.Button();
+            this.btnclearTacGia = new System.Windows.Forms.Button();
+            this.btneditTacGia = new System.Windows.Forms.Button();
+            this.btnaddTacGia = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtTenTacGia = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.txtMaTacGia = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
             this.dsTacGia = new System.Windows.Forms.DataGridView();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
             this.tabControlKhoSach.SuspendLayout();
             this.tabPageSach.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsSach)).BeginInit();
@@ -104,12 +104,13 @@
             // tabPageSach
             // 
             this.tabPageSach.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.tabPageSach.Controls.Add(this.btnfind);
+            this.tabPageSach.Controls.Add(this.btnsearchSach);
+            this.tabPageSach.Controls.Add(this.btnviewSach);
             this.tabPageSach.Controls.Add(this.dsSach);
-            this.tabPageSach.Controls.Add(this.btnexit);
-            this.tabPageSach.Controls.Add(this.btnclear);
-            this.tabPageSach.Controls.Add(this.btnedit);
-            this.tabPageSach.Controls.Add(this.btnadd);
+            this.tabPageSach.Controls.Add(this.btnexitSach);
+            this.tabPageSach.Controls.Add(this.btnclearSach);
+            this.tabPageSach.Controls.Add(this.btneditSach);
+            this.tabPageSach.Controls.Add(this.btnaddSach);
             this.tabPageSach.Controls.Add(this.groupBox1);
             this.tabPageSach.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPageSach.Location = new System.Drawing.Point(4, 34);
@@ -119,82 +120,89 @@
             this.tabPageSach.TabIndex = 0;
             this.tabPageSach.Text = "Sách";
             // 
-            // btnfind
+            // btnsearchSach
             // 
-            this.btnfind.BackgroundImage = global::BookManagement.Properties.Resources.view;
-            this.btnfind.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnfind.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnfind.Location = new System.Drawing.Point(140, 243);
-            this.btnfind.Name = "btnfind";
-            this.btnfind.Size = new System.Drawing.Size(93, 94);
-            this.btnfind.TabIndex = 7;
-            this.btnfind.UseVisualStyleBackColor = true;
+            this.btnsearchSach.BackgroundImage = global::BookManagement.Properties.Resources.search;
+            this.btnsearchSach.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnsearchSach.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnsearchSach.Location = new System.Drawing.Point(196, 243);
+            this.btnsearchSach.Name = "btnsearchSach";
+            this.btnsearchSach.Size = new System.Drawing.Size(93, 94);
+            this.btnsearchSach.TabIndex = 8;
+            this.btnsearchSach.UseVisualStyleBackColor = true;
+            this.btnsearchSach.Click += new System.EventHandler(this.btnsearchSach_Click);
+            // 
+            // btnviewSach
+            // 
+            this.btnviewSach.BackgroundImage = global::BookManagement.Properties.Resources.view;
+            this.btnviewSach.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnviewSach.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnviewSach.Location = new System.Drawing.Point(69, 243);
+            this.btnviewSach.Name = "btnviewSach";
+            this.btnviewSach.Size = new System.Drawing.Size(93, 94);
+            this.btnviewSach.TabIndex = 7;
+            this.btnviewSach.UseVisualStyleBackColor = true;
+            this.btnviewSach.Click += new System.EventHandler(this.btnviewSach_Click);
             // 
             // dsSach
             // 
             this.dsSach.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dsSach.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dsSach.DefaultCellStyle = dataGridViewCellStyle4;
             this.dsSach.Location = new System.Drawing.Point(12, 356);
             this.dsSach.Name = "dsSach";
             this.dsSach.RowHeadersWidth = 62;
             this.dsSach.RowTemplate.Height = 28;
             this.dsSach.Size = new System.Drawing.Size(874, 232);
             this.dsSach.TabIndex = 6;
-            this.dsSach.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dsSach_CellContentClick);
+            this.dsSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dsSach_CellClick);
             // 
-            // btnexit
+            // btnexitSach
             // 
-            this.btnexit.BackgroundImage = global::BookManagement.Properties.Resources.icons8_exit_100__1_;
-            this.btnexit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnexit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnexit.Location = new System.Drawing.Point(677, 243);
-            this.btnexit.Name = "btnexit";
-            this.btnexit.Size = new System.Drawing.Size(96, 94);
-            this.btnexit.TabIndex = 5;
-            this.btnexit.UseVisualStyleBackColor = true;
+            this.btnexitSach.BackgroundImage = global::BookManagement.Properties.Resources.icons8_exit_100__1_;
+            this.btnexitSach.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnexitSach.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnexitSach.Location = new System.Drawing.Point(720, 243);
+            this.btnexitSach.Name = "btnexitSach";
+            this.btnexitSach.Size = new System.Drawing.Size(96, 94);
+            this.btnexitSach.TabIndex = 5;
+            this.btnexitSach.UseVisualStyleBackColor = true;
+            this.btnexitSach.Click += new System.EventHandler(this.btnexitSach_Click);
             // 
-            // btnclear
+            // btnclearSach
             // 
-            this.btnclear.BackgroundImage = global::BookManagement.Properties.Resources.clear;
-            this.btnclear.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnclear.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnclear.Location = new System.Drawing.Point(546, 243);
-            this.btnclear.Name = "btnclear";
-            this.btnclear.Size = new System.Drawing.Size(96, 94);
-            this.btnclear.TabIndex = 4;
-            this.btnclear.UseVisualStyleBackColor = true;
+            this.btnclearSach.BackgroundImage = global::BookManagement.Properties.Resources.clear;
+            this.btnclearSach.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnclearSach.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnclearSach.Location = new System.Drawing.Point(587, 243);
+            this.btnclearSach.Name = "btnclearSach";
+            this.btnclearSach.Size = new System.Drawing.Size(96, 94);
+            this.btnclearSach.TabIndex = 4;
+            this.btnclearSach.UseVisualStyleBackColor = true;
+            this.btnclearSach.Click += new System.EventHandler(this.btnclearSach_Click);
             // 
-            // btnedit
+            // btneditSach
             // 
-            this.btnedit.BackgroundImage = global::BookManagement.Properties.Resources.edit;
-            this.btnedit.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnedit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnedit.Location = new System.Drawing.Point(417, 243);
-            this.btnedit.Name = "btnedit";
-            this.btnedit.Size = new System.Drawing.Size(96, 94);
-            this.btnedit.TabIndex = 3;
-            this.btnedit.UseVisualStyleBackColor = true;
-            this.btnedit.Click += new System.EventHandler(this.btnedit_Click);
+            this.btneditSach.BackgroundImage = global::BookManagement.Properties.Resources.edit;
+            this.btneditSach.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btneditSach.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btneditSach.Location = new System.Drawing.Point(454, 243);
+            this.btneditSach.Name = "btneditSach";
+            this.btneditSach.Size = new System.Drawing.Size(96, 94);
+            this.btneditSach.TabIndex = 3;
+            this.btneditSach.UseVisualStyleBackColor = true;
+            this.btneditSach.Click += new System.EventHandler(this.btneditSach_Click);
             // 
-            // btnadd
+            // btnaddSach
             // 
-            this.btnadd.BackgroundImage = global::BookManagement.Properties.Resources.add;
-            this.btnadd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnadd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnadd.Location = new System.Drawing.Point(277, 243);
-            this.btnadd.Name = "btnadd";
-            this.btnadd.Size = new System.Drawing.Size(93, 94);
-            this.btnadd.TabIndex = 1;
-            this.btnadd.UseVisualStyleBackColor = true;
-            this.btnadd.Click += new System.EventHandler(this.btnadd_Click);
+            this.btnaddSach.BackgroundImage = global::BookManagement.Properties.Resources.add;
+            this.btnaddSach.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnaddSach.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnaddSach.Location = new System.Drawing.Point(322, 243);
+            this.btnaddSach.Name = "btnaddSach";
+            this.btnaddSach.Size = new System.Drawing.Size(93, 94);
+            this.btnaddSach.TabIndex = 1;
+            this.btnaddSach.UseVisualStyleBackColor = true;
+            this.btnaddSach.Click += new System.EventHandler(this.btnaddSach_Click);
             // 
             // groupBox1
             // 
@@ -238,9 +246,9 @@
             this.label5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(400, 108);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(152, 27);
+            this.label5.Size = new System.Drawing.Size(114, 27);
             this.label5.TabIndex = 9;
-            this.label5.Text = "Mã Loại Sách:";
+            this.label5.Text = "Loại Sách:";
             // 
             // label4
             // 
@@ -248,9 +256,9 @@
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(420, 50);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(132, 27);
+            this.label4.Size = new System.Drawing.Size(94, 27);
             this.label4.TabIndex = 7;
-            this.label4.Text = "Mã Tác Giả:";
+            this.label4.Text = "Tác Giả:";
             // 
             // txtSoLuong
             // 
@@ -309,13 +317,14 @@
             // tabPageLoaiSach
             // 
             this.tabPageLoaiSach.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.tabPageLoaiSach.Controls.Add(this.btnsearchLoaiSach);
+            this.tabPageLoaiSach.Controls.Add(this.btnviewLoaiSach);
+            this.tabPageLoaiSach.Controls.Add(this.btnexitLoaiSach);
+            this.tabPageLoaiSach.Controls.Add(this.btnclearLoaiSach);
+            this.tabPageLoaiSach.Controls.Add(this.btneditLoaiSach);
+            this.tabPageLoaiSach.Controls.Add(this.btnaddLoaiSach);
             this.tabPageLoaiSach.Controls.Add(this.dsLoaiSach);
-            this.tabPageLoaiSach.Controls.Add(this.button1);
             this.tabPageLoaiSach.Controls.Add(this.groupBox2);
-            this.tabPageLoaiSach.Controls.Add(this.button2);
-            this.tabPageLoaiSach.Controls.Add(this.button3);
-            this.tabPageLoaiSach.Controls.Add(this.button4);
-            this.tabPageLoaiSach.Controls.Add(this.button5);
             this.tabPageLoaiSach.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabPageLoaiSach.Location = new System.Drawing.Point(4, 34);
             this.tabPageLoaiSach.Name = "tabPageLoaiSach";
@@ -323,6 +332,78 @@
             this.tabPageLoaiSach.Size = new System.Drawing.Size(894, 596);
             this.tabPageLoaiSach.TabIndex = 1;
             this.tabPageLoaiSach.Text = "Loại sách";
+            // 
+            // btnsearchLoaiSach
+            // 
+            this.btnsearchLoaiSach.BackgroundImage = global::BookManagement.Properties.Resources.search;
+            this.btnsearchLoaiSach.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnsearchLoaiSach.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnsearchLoaiSach.Location = new System.Drawing.Point(133, 189);
+            this.btnsearchLoaiSach.Name = "btnsearchLoaiSach";
+            this.btnsearchLoaiSach.Size = new System.Drawing.Size(93, 94);
+            this.btnsearchLoaiSach.TabIndex = 20;
+            this.btnsearchLoaiSach.UseVisualStyleBackColor = true;
+            this.btnsearchLoaiSach.Click += new System.EventHandler(this.btnsearchLoaiSach_Click);
+            // 
+            // btnviewLoaiSach
+            // 
+            this.btnviewLoaiSach.BackgroundImage = global::BookManagement.Properties.Resources.view;
+            this.btnviewLoaiSach.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnviewLoaiSach.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnviewLoaiSach.Location = new System.Drawing.Point(6, 189);
+            this.btnviewLoaiSach.Name = "btnviewLoaiSach";
+            this.btnviewLoaiSach.Size = new System.Drawing.Size(93, 94);
+            this.btnviewLoaiSach.TabIndex = 19;
+            this.btnviewLoaiSach.UseVisualStyleBackColor = true;
+            this.btnviewLoaiSach.Click += new System.EventHandler(this.btnviewLoaiSach_Click);
+            // 
+            // btnexitLoaiSach
+            // 
+            this.btnexitLoaiSach.BackgroundImage = global::BookManagement.Properties.Resources.icons8_exit_100__1_;
+            this.btnexitLoaiSach.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnexitLoaiSach.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnexitLoaiSach.Location = new System.Drawing.Point(657, 189);
+            this.btnexitLoaiSach.Name = "btnexitLoaiSach";
+            this.btnexitLoaiSach.Size = new System.Drawing.Size(96, 94);
+            this.btnexitLoaiSach.TabIndex = 18;
+            this.btnexitLoaiSach.UseVisualStyleBackColor = true;
+            this.btnexitLoaiSach.Click += new System.EventHandler(this.btnexitLoaiSach_Click);
+            // 
+            // btnclearLoaiSach
+            // 
+            this.btnclearLoaiSach.BackgroundImage = global::BookManagement.Properties.Resources.clear;
+            this.btnclearLoaiSach.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnclearLoaiSach.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnclearLoaiSach.Location = new System.Drawing.Point(524, 189);
+            this.btnclearLoaiSach.Name = "btnclearLoaiSach";
+            this.btnclearLoaiSach.Size = new System.Drawing.Size(96, 94);
+            this.btnclearLoaiSach.TabIndex = 17;
+            this.btnclearLoaiSach.UseVisualStyleBackColor = true;
+            this.btnclearLoaiSach.Click += new System.EventHandler(this.btnclearLoaiSach_Click);
+            // 
+            // btneditLoaiSach
+            // 
+            this.btneditLoaiSach.BackgroundImage = global::BookManagement.Properties.Resources.edit;
+            this.btneditLoaiSach.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btneditLoaiSach.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btneditLoaiSach.Location = new System.Drawing.Point(391, 189);
+            this.btneditLoaiSach.Name = "btneditLoaiSach";
+            this.btneditLoaiSach.Size = new System.Drawing.Size(96, 94);
+            this.btneditLoaiSach.TabIndex = 16;
+            this.btneditLoaiSach.UseVisualStyleBackColor = true;
+            this.btneditLoaiSach.Click += new System.EventHandler(this.btneditLoaiSach_Click);
+            // 
+            // btnaddLoaiSach
+            // 
+            this.btnaddLoaiSach.BackgroundImage = global::BookManagement.Properties.Resources.add;
+            this.btnaddLoaiSach.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnaddLoaiSach.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnaddLoaiSach.Location = new System.Drawing.Point(259, 189);
+            this.btnaddLoaiSach.Name = "btnaddLoaiSach";
+            this.btnaddLoaiSach.Size = new System.Drawing.Size(93, 94);
+            this.btnaddLoaiSach.TabIndex = 15;
+            this.btnaddLoaiSach.UseVisualStyleBackColor = true;
+            this.btnaddLoaiSach.Click += new System.EventHandler(this.btnaddLoaiSach_Click);
             // 
             // dsLoaiSach
             // 
@@ -334,17 +415,7 @@
             this.dsLoaiSach.RowTemplate.Height = 28;
             this.dsLoaiSach.Size = new System.Drawing.Size(687, 281);
             this.dsLoaiSach.TabIndex = 14;
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImage = global::BookManagement.Properties.Resources.view;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(47, 189);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 94);
-            this.button1.TabIndex = 12;
-            this.button1.UseVisualStyleBackColor = true;
+            this.dsLoaiSach.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dsLoaiSach_CellClick);
             // 
             // groupBox2
             // 
@@ -396,60 +467,17 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Mã Loại Sách:";
             // 
-            // button2
-            // 
-            this.button2.BackgroundImage = global::BookManagement.Properties.Resources.icons8_exit_100__1_;
-            this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(584, 189);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(96, 94);
-            this.button2.TabIndex = 11;
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.BackgroundImage = global::BookManagement.Properties.Resources.clear;
-            this.button3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(453, 189);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(96, 94);
-            this.button3.TabIndex = 10;
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.BackgroundImage = global::BookManagement.Properties.Resources.edit;
-            this.button4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(324, 189);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(96, 94);
-            this.button4.TabIndex = 9;
-            this.button4.UseVisualStyleBackColor = true;
-            // 
-            // button5
-            // 
-            this.button5.BackgroundImage = global::BookManagement.Properties.Resources.add;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.Location = new System.Drawing.Point(184, 189);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(93, 94);
-            this.button5.TabIndex = 8;
-            this.button5.UseVisualStyleBackColor = true;
-            // 
             // tabPageTacGia
             // 
             this.tabPageTacGia.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.tabPageTacGia.Controls.Add(this.button6);
+            this.tabPageTacGia.Controls.Add(this.btnsearchTacGia);
+            this.tabPageTacGia.Controls.Add(this.btnviewTacGia);
+            this.tabPageTacGia.Controls.Add(this.btnexitTacGia);
+            this.tabPageTacGia.Controls.Add(this.btnclearTacGia);
+            this.tabPageTacGia.Controls.Add(this.btneditTacGia);
+            this.tabPageTacGia.Controls.Add(this.btnaddTacGia);
             this.tabPageTacGia.Controls.Add(this.groupBox3);
-            this.tabPageTacGia.Controls.Add(this.button7);
             this.tabPageTacGia.Controls.Add(this.dsTacGia);
-            this.tabPageTacGia.Controls.Add(this.button8);
-            this.tabPageTacGia.Controls.Add(this.button9);
-            this.tabPageTacGia.Controls.Add(this.button10);
             this.tabPageTacGia.Location = new System.Drawing.Point(4, 34);
             this.tabPageTacGia.Name = "tabPageTacGia";
             this.tabPageTacGia.Padding = new System.Windows.Forms.Padding(3);
@@ -457,16 +485,77 @@
             this.tabPageTacGia.TabIndex = 2;
             this.tabPageTacGia.Text = "Tác giả";
             // 
-            // button6
+            // btnsearchTacGia
             // 
-            this.button6.BackgroundImage = global::BookManagement.Properties.Resources.view;
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(30, 192);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(93, 94);
-            this.button6.TabIndex = 16;
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnsearchTacGia.BackgroundImage = global::BookManagement.Properties.Resources.search;
+            this.btnsearchTacGia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnsearchTacGia.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnsearchTacGia.Location = new System.Drawing.Point(142, 193);
+            this.btnsearchTacGia.Name = "btnsearchTacGia";
+            this.btnsearchTacGia.Size = new System.Drawing.Size(93, 94);
+            this.btnsearchTacGia.TabIndex = 26;
+            this.btnsearchTacGia.UseVisualStyleBackColor = true;
+            this.btnsearchTacGia.Click += new System.EventHandler(this.btnsearchTacGia_Click);
+            // 
+            // btnviewTacGia
+            // 
+            this.btnviewTacGia.BackgroundImage = global::BookManagement.Properties.Resources.view;
+            this.btnviewTacGia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnviewTacGia.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnviewTacGia.Location = new System.Drawing.Point(15, 193);
+            this.btnviewTacGia.Name = "btnviewTacGia";
+            this.btnviewTacGia.Size = new System.Drawing.Size(93, 94);
+            this.btnviewTacGia.TabIndex = 25;
+            this.btnviewTacGia.UseVisualStyleBackColor = true;
+            this.btnviewTacGia.Click += new System.EventHandler(this.btnviewTacGia_Click);
+            // 
+            // btnexitTacGia
+            // 
+            this.btnexitTacGia.BackgroundImage = global::BookManagement.Properties.Resources.icons8_exit_100__1_;
+            this.btnexitTacGia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnexitTacGia.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnexitTacGia.Location = new System.Drawing.Point(666, 193);
+            this.btnexitTacGia.Name = "btnexitTacGia";
+            this.btnexitTacGia.Size = new System.Drawing.Size(96, 94);
+            this.btnexitTacGia.TabIndex = 24;
+            this.btnexitTacGia.UseVisualStyleBackColor = true;
+            this.btnexitTacGia.Click += new System.EventHandler(this.btnexitTacGia_Click);
+            // 
+            // btnclearTacGia
+            // 
+            this.btnclearTacGia.BackgroundImage = global::BookManagement.Properties.Resources.clear;
+            this.btnclearTacGia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnclearTacGia.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnclearTacGia.Location = new System.Drawing.Point(533, 193);
+            this.btnclearTacGia.Name = "btnclearTacGia";
+            this.btnclearTacGia.Size = new System.Drawing.Size(96, 94);
+            this.btnclearTacGia.TabIndex = 23;
+            this.btnclearTacGia.UseVisualStyleBackColor = true;
+            this.btnclearTacGia.Click += new System.EventHandler(this.btnclearTacGia_Click);
+            // 
+            // btneditTacGia
+            // 
+            this.btneditTacGia.BackgroundImage = global::BookManagement.Properties.Resources.edit;
+            this.btneditTacGia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btneditTacGia.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btneditTacGia.Location = new System.Drawing.Point(400, 193);
+            this.btneditTacGia.Name = "btneditTacGia";
+            this.btneditTacGia.Size = new System.Drawing.Size(96, 94);
+            this.btneditTacGia.TabIndex = 22;
+            this.btneditTacGia.UseVisualStyleBackColor = true;
+            this.btneditTacGia.Click += new System.EventHandler(this.btneditTacGia_Click);
+            // 
+            // btnaddTacGia
+            // 
+            this.btnaddTacGia.BackgroundImage = global::BookManagement.Properties.Resources.add;
+            this.btnaddTacGia.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnaddTacGia.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnaddTacGia.Location = new System.Drawing.Point(268, 193);
+            this.btnaddTacGia.Name = "btnaddTacGia";
+            this.btnaddTacGia.Size = new System.Drawing.Size(93, 94);
+            this.btnaddTacGia.TabIndex = 21;
+            this.btnaddTacGia.UseVisualStyleBackColor = true;
+            this.btnaddTacGia.Click += new System.EventHandler(this.btnaddTacGia_Click);
             // 
             // groupBox3
             // 
@@ -518,76 +607,17 @@
             this.label11.TabIndex = 6;
             this.label11.Text = "Mã Tác Giả:";
             // 
-            // button7
-            // 
-            this.button7.BackgroundImage = global::BookManagement.Properties.Resources.icons8_exit_100__1_;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(567, 192);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(96, 94);
-            this.button7.TabIndex = 15;
-            this.button7.UseVisualStyleBackColor = true;
-            // 
             // dsTacGia
             // 
             this.dsTacGia.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dsTacGia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dsTacGia.DefaultCellStyle = dataGridViewCellStyle5;
-            this.dsTacGia.Location = new System.Drawing.Point(9, 308);
+            this.dsTacGia.Location = new System.Drawing.Point(34, 307);
             this.dsTacGia.Name = "dsTacGia";
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dsTacGia.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dsTacGia.RowHeadersWidth = 62;
             this.dsTacGia.RowTemplate.Height = 28;
             this.dsTacGia.Size = new System.Drawing.Size(660, 281);
             this.dsTacGia.TabIndex = 13;
-            // 
-            // button8
-            // 
-            this.button8.BackgroundImage = global::BookManagement.Properties.Resources.clear;
-            this.button8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(436, 192);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(96, 94);
-            this.button8.TabIndex = 14;
-            this.button8.UseVisualStyleBackColor = true;
-            // 
-            // button9
-            // 
-            this.button9.BackgroundImage = global::BookManagement.Properties.Resources.edit;
-            this.button9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.Location = new System.Drawing.Point(307, 192);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(96, 94);
-            this.button9.TabIndex = 13;
-            this.button9.UseVisualStyleBackColor = true;
-            // 
-            // button10
-            // 
-            this.button10.BackgroundImage = global::BookManagement.Properties.Resources.add;
-            this.button10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button10.Location = new System.Drawing.Point(167, 192);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(93, 94);
-            this.button10.TabIndex = 12;
-            this.button10.UseVisualStyleBackColor = true;
+            this.dsTacGia.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dsTacGia_CellClick);
             // 
             // KhoSach
             // 
@@ -622,7 +652,6 @@
         private System.Windows.Forms.TabControl tabControlKhoSach;
         private System.Windows.Forms.TabPage tabPageSach;
         private System.Windows.Forms.TabPage tabPageLoaiSach;
-        private System.Windows.Forms.TabPage tabPageTacGia;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
@@ -632,35 +661,39 @@
         private System.Windows.Forms.TextBox txtTenSach;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtMaSach;
-        private System.Windows.Forms.Button btnadd;
-        private System.Windows.Forms.Button btnedit;
-        private System.Windows.Forms.Button btnclear;
-        private System.Windows.Forms.Button btnexit;
+        private System.Windows.Forms.Button btnaddSach;
+        private System.Windows.Forms.Button btneditSach;
+        private System.Windows.Forms.Button btnclearSach;
+        private System.Windows.Forms.Button btnexitSach;
         private System.Windows.Forms.DataGridView dsSach;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtTenLoaiSach;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtMaLoaiSach;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btnviewSach;
+        private System.Windows.Forms.DataGridView dsLoaiSach;
+        private System.Windows.Forms.TextBox txtLoaiSach;
+        private System.Windows.Forms.TextBox txtTacGia;
+        private System.Windows.Forms.Button btnsearchSach;
+        private System.Windows.Forms.Button btnsearchLoaiSach;
+        private System.Windows.Forms.Button btnviewLoaiSach;
+        private System.Windows.Forms.Button btnexitLoaiSach;
+        private System.Windows.Forms.Button btnclearLoaiSach;
+        private System.Windows.Forms.Button btneditLoaiSach;
+        private System.Windows.Forms.Button btnaddLoaiSach;
+        private System.Windows.Forms.TabPage tabPageTacGia;
+        private System.Windows.Forms.Button btnsearchTacGia;
+        private System.Windows.Forms.Button btnviewTacGia;
+        private System.Windows.Forms.Button btnexitTacGia;
+        private System.Windows.Forms.Button btnclearTacGia;
+        private System.Windows.Forms.Button btneditTacGia;
+        private System.Windows.Forms.Button btnaddTacGia;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.DataGridView dsTacGia;
         private System.Windows.Forms.TextBox txtTenTacGia;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtMaTacGia;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button btnfind;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.DataGridView dsLoaiSach;
-        private System.Windows.Forms.TextBox txtLoaiSach;
-        private System.Windows.Forms.TextBox txtTacGia;
+        private System.Windows.Forms.DataGridView dsTacGia;
     }
 }

@@ -16,7 +16,7 @@ namespace BookManagement
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            Application.Run(new KhoSach());
+            Application.Run(new Firstform());
         }
     }
 }
