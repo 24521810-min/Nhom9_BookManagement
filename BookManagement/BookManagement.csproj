@@ -149,6 +149,7 @@
     <None Include="Resources\add.png" />
     <None Include="Resources\clear.png" />
     <Content Include="BookManagementDB.sql" />
+    <Content Include="BookManagement_AdminMuonTra.sql" />
     <Content Include="Resources\dangxuat-removebg-preview.png" />
     <None Include="Resources\edit.png" />
     <None Include="Resources\icons8-exit-100 %281%29.png" />
