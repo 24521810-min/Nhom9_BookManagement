@@ -153,7 +153,6 @@
             this.button_quyengop.TabIndex = 15;
             this.button_quyengop.Text = "QUYÊN GÓP SÁCH";
             this.button_quyengop.UseVisualStyleBackColor = true;
-            this.button_quyengop.Click += new System.EventHandler(this.button1_Click);
             // 
             // label_timkiem
             // 
