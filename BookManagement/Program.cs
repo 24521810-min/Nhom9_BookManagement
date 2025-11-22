@@ -16,10 +16,7 @@ namespace BookManagement
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-            AppDomain.CurrentDomain.SetData("DataDirectory", Path.Combine(baseDir, ""));
-
-            Application.Run(new MuonSach());
+            Application.Run(new KhoSach());
         }
     }
 }

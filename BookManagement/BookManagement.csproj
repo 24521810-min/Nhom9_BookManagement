@@ -48,6 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -120,6 +123,9 @@
     <Compile Include="KhoSach.Designer.cs">
       <DependentUpon>KhoSach.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoaiSach.cs" />
+    <Compile Include="Models\Sach.cs" />
+    <Compile Include="Models\TacGia.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -156,17 +162,16 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="packages.config" />
     <None Include="Resources\2f8e2d5655ab14960527c724f3a87793 %281%29.jpg" />
-    <Content Include="BookManagementDB.mdf" />
-    <Content Include="BookManagementDB_log.ldf">
-      <DependentUpon>BookManagementDB.mdf</DependentUpon>
-    </Content>
     <None Include="Resources\add.png" />
     <None Include="Resources\clear.png" />
+    <Content Include="BookManagementDB.sql" />
     <Content Include="Resources\dangxuat-removebg-preview.png" />
     <None Include="Resources\edit.png" />
     <None Include="Resources\icons8-exit-100 %281%29.png" />
     <None Include="Resources\exit.png" />
+    <None Include="Resources\icons8-show.gif" />
     <Content Include="Resources\kh-removebg-preview.png" />
     <Content Include="Resources\muonsach.jpg" />
     <Content Include="Resources\nen1.jpg" />
