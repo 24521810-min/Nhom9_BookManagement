@@ -10,5 +10,10 @@
         public string PasswordHash { get; set; } = string.Empty;
         public string Role { get; set; } = string.Empty;
         public bool IsLocked { get; set; } = false;
+
+        // ===== Navigation Properties =====
+        public ICollection<MuonSach>? MuonSachs { get; set; }
+        public ICollection<TraSach>? TraSachs { get; set; }
+        public ICollection<QuyenGop>? QuyenGops { get; set; }
     }
 }

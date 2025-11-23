@@ -14,6 +14,9 @@ namespace BookApi.Data
         public DbSet<LoaiSach> LoaiSach { get; set; }
         public DbSet<TacGia> TacGia { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<MuonSach> MuonSach { get; set; }
+        public DbSet<TraSach> TraSach { get; set; }
+        public DbSet<QuyenGop> QuyenGop { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
