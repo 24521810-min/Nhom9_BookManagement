@@ -154,6 +154,7 @@ namespace BookManagement
                 MessageBox.Show("Không thể xóa người dùng!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        /*
         private async void btnlockUser_Click(object sender, EventArgs e)
         {
             if (dsUsers.CurrentRow == null)
@@ -179,7 +180,7 @@ namespace BookManagement
                 await LoadUsers();
             }
             else MessageBox.Show("Thao tác thất bại!");
-        }
+        }*/
         private void btnexitUser_Click(object sender, EventArgs e)
         {
             var confirm = MessageBox.Show("Bạn có chắc muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

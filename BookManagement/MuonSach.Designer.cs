@@ -1,6 +1,6 @@
 ﻿namespace BookManagement
 {
-    partial class MuonSach
+    partial class Muonsach
     {
         /// <summary>
         /// Required designer variable.

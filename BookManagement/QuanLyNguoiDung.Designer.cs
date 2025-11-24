@@ -292,7 +292,7 @@
             this.btnlockUser.Size = new System.Drawing.Size(96, 94);
             this.btnlockUser.TabIndex = 19;
             this.btnlockUser.UseVisualStyleBackColor = true;
-            this.btnlockUser.Click += new System.EventHandler(this.btnlockUser_Click);
+            //this.btnlockUser.Click += new System.EventHandler(this.btnlockUser_Click);
             // 
             // QuanLyNguoiDung
             // 

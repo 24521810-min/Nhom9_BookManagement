@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BookManagement
 {
-    public partial class MuonSach : Form
+    public partial class Muonsach : Form
     {
-        public MuonSach()
+        public Muonsach()
         {
             InitializeComponent();
         }

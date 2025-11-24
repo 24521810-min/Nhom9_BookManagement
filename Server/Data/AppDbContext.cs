@@ -20,6 +20,7 @@ namespace BookApi.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            // ====== Bảng Sách ======
             modelBuilder.Entity<Sach>()
                 .ToTable("Sach");
 
@@ -28,17 +29,26 @@ namespace BookApi.Data
 
             modelBuilder.Entity<Sach>()
                 .HasOne(s => s.TacGia)
-                .WithMany(t => t.Sachs)               
+                .WithMany(t => t.Sachs)
                 .HasForeignKey(s => s.IDTacGia)
                 .HasConstraintName("FK_Sach_TacGia");
 
             modelBuilder.Entity<Sach>()
                 .HasOne(s => s.LoaiSach)
-                .WithMany(l => l.Sachs)              
+                .WithMany(l => l.Sachs)
                 .HasForeignKey(s => s.IDLoaiSach)
                 .HasConstraintName("FK_Sach_LoaiSach");
 
-            modelBuilder.Entity<User>().HasKey(u => u.IDUser);
+            // ====== Bảng User ======
+            modelBuilder.Entity<User>()
+                .HasKey(u => u.IDUser);
+
+            // ⭐⭐⭐ THÊM QUAN HỆ CHO QUYÊN GÓP ⭐⭐⭐
+            modelBuilder.Entity<QuyenGop>()
+    .HasOne(q => q.User)
+    .WithMany(u => u.QuyenGops)
+    .HasForeignKey(q => q.IDUser)
+    .HasConstraintName("FK_QuyenGop_User");
         }
     }
 }

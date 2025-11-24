@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace BookManagement
 {
-    public partial class TraSach : Form
+    public partial class Trasach : Form
     {
-        public TraSach()
+        public Trasach()
         {
             InitializeComponent();
         }

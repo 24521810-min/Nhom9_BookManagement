@@ -1,6 +1,6 @@
 ﻿namespace BookManagement
 {
-    partial class TraSach
+    partial class Trasach
     {
         /// <summary>
         /// Required designer variable.

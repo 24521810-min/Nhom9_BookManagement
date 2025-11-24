@@ -62,7 +62,7 @@ namespace BookApi.Controllers
 
             return Ok(new { message = "Cập nhật thành công!" });
         }
-        [HttpPut("lock/{id}")]
+        /*[HttpPut("lock/{id}")]
         public async Task<IActionResult> LockUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
@@ -84,7 +84,7 @@ namespace BookApi.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "Mở khóa người dùng thành công!" });
-        }
+        }*/
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {

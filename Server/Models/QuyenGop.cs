@@ -14,7 +14,7 @@ public class QuyenGop
 
     public DateTime NgayQuyenGop { get; set; }
     public string TrangThai { get; set; } = string.Empty;
-
     // Navigation
     public User? User { get; set; }
+
 }
