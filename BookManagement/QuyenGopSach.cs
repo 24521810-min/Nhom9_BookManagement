@@ -140,6 +140,18 @@ namespace BookManagement
             this.Hide();   // Ẩn form Quyên Góp Sách
         }
 
+        private void button_DangXuat_Click(object sender, EventArgs e)
+        {
+            // Khi đăng xuất thì xóa user hiện tại (nếu có dùng)
+            Program.LoggedUserID = -1;
+
+            // Mở form đăng nhập
+            DangNhap dn = new DangNhap();
+            dn.Show();
+
+            // Ẩn form hiện tại
+            this.Hide();
+        }
 
     }
 }

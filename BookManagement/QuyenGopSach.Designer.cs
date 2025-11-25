@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.button_TrangChu = new System.Windows.Forms.Button();
             this.button_Tra = new System.Windows.Forms.Button();
             this.button_QuyenGop = new System.Windows.Forms.Button();
@@ -139,13 +139,14 @@
             this.button_DXuat.TabIndex = 4;
             this.button_DXuat.Text = "Đăng xuất";
             this.button_DXuat.UseVisualStyleBackColor = true;
+            this.button_DXuat.Click += new System.EventHandler(this.button_DangXuat_Click);
             // 
             // button_HSDKy
             // 
             this.button_HSDKy.FlatAppearance.BorderColor = System.Drawing.Color.FloralWhite;
             this.button_HSDKy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_HSDKy.Font = new System.Drawing.Font("Segoe UI Black", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_HSDKy.Location = new System.Drawing.Point(1079, 87);
+            this.button_HSDKy.Location = new System.Drawing.Point(1077, 86);
             this.button_HSDKy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button_HSDKy.Name = "button_HSDKy";
             this.button_HSDKy.Size = new System.Drawing.Size(203, 43);
@@ -327,14 +328,14 @@
             // 
             // bangds
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.bangds.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.bangds.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.bangds.ColumnHeadersHeight = 29;
             this.bangds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.bangds.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
