@@ -76,7 +76,7 @@
             // 
             // button_Muon
             // 
-            this.button_Muon.BackColor = System.Drawing.Color.Linen;
+            this.button_Muon.BackColor = System.Drawing.Color.Tan;
             this.button_Muon.Cursor = System.Windows.Forms.Cursors.Default;
             this.button_Muon.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Muon.ForeColor = System.Drawing.Color.SaddleBrown;
@@ -281,8 +281,7 @@
             // 
             this.label_ngtradk.AutoSize = true;
             this.label_ngtradk.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_ngtradk.Location = new System.Drawing.Point(1494, 506);
-            this.label_ngtradk.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label_ngtradk.Location = new System.Drawing.Point(747, 263);
             this.label_ngtradk.Name = "label_ngtradk";
             this.label_ngtradk.Size = new System.Drawing.Size(272, 45);
             this.label_ngtradk.TabIndex = 21;
@@ -312,7 +311,7 @@
             // 
             // button_muonsach
             // 
-            this.button_muonsach.BackColor = System.Drawing.Color.Linen;
+            this.button_muonsach.BackColor = System.Drawing.Color.Tan;
             this.button_muonsach.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_muonsach.Location = new System.Drawing.Point(1338, 725);
             this.button_muonsach.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);

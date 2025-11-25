@@ -27,6 +27,18 @@ namespace BookApi.Controllers
             return Ok(data);
         }
 
+        // GET: api/QuyenGop/user/5
+        [HttpGet("user/{idUser}")]
+        public async Task<IActionResult> GetByUser(int idUser)
+        {
+            var list = await _context.QuyenGop
+                .Where(q => q.IDUser == idUser)
+                .OrderByDescending(q => q.NgayQuyenGop)
+                .ToListAsync();
+
+            return Ok(list);
+        }
+
         // GET: api/QuyenGop/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
@@ -45,10 +57,16 @@ namespace BookApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Create(QuyenGop model)
         {
+            model.NgayQuyenGop = DateTime.Now;
+            model.TrangThai = "Chờ duyệt";
+
             _context.QuyenGop.Add(model);
+
             await _context.SaveChangesAsync();
+
             return Ok(model);
         }
+
 
         // PUT: api/QuyenGop/5
         [HttpPut("{id}")]

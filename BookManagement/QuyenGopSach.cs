@@ -6,6 +6,9 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Net.Http;
+using Newtonsoft.Json;
+
 using System.Windows.Forms;
 
 namespace BookManagement
@@ -19,42 +22,136 @@ namespace BookManagement
 
         private void QuyenGopSach_Load(object sender, EventArgs e)
         {
-
+            LoadDanhSachQuyenGop();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void button_guiyc_Click(object sender, EventArgs e)
         {
+            string tenSach = textBox_tensach.Text.Trim();
+            string tacGia = textBox_tacgia.Text.Trim();
+            string soLuongStr = textBox_sluong.Text.Trim();
+            string tinhTrang = textBox_tt.Text.Trim();
+            string ghiChu = textBox_ghichu.Text.Trim();
 
+            if (string.IsNullOrEmpty(tenSach) || string.IsNullOrEmpty(tacGia) ||
+                string.IsNullOrEmpty(soLuongStr))
+            {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin bắt buộc!");
+                return;
+            }
+
+            if (!int.TryParse(soLuongStr, out int soLuong) || soLuong <= 0)
+            {
+                MessageBox.Show("Số lượng phải là số nguyên > 0!");
+                return;
+            }
+
+            // Lấy ID user đang đăng nhập (bạn phải gán khi đăng nhập)
+            int idUser = Program.LoggedUserID;
+
+            var model = new
+            {
+                IDUser = idUser,
+                TenSach = tenSach,
+                TacGia = tacGia,
+                SoLuong = soLuong,
+                TinhTrang = tinhTrang,
+                GhiChu = ghiChu
+            };
+
+            string json = JsonConvert.SerializeObject(model);
+
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("https://localhost:7214");
+
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
+                var response = await client.PostAsync("/api/QuyenGop", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Gửi yêu cầu thành công!");
+                    LoadDanhSachQuyenGop();  // Cập nhật lại bảng bên phải
+                    ClearForm();
+                }
+                else
+                {
+                    string err = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show("Gửi yêu cầu thất bại:\n" + response.StatusCode + "\n" + err);
+                }
+
+            }
         }
-
-        private void button4_Click(object sender, EventArgs e)
+        private void ClearForm()
         {
-
+            textBox_tensach.Clear();
+            textBox_tacgia.Clear();
+            textBox_sluong.Clear();
+            textBox_tt.Clear();
+            textBox_ghichu.Clear();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void button_huy_Click(object sender, EventArgs e)
         {
-
+            ClearForm();
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private async void LoadDanhSachQuyenGop()
         {
+            int idUser = Program.LoggedUserID;
 
+            using (HttpClient client = new HttpClient())
+            {
+                string url = $"https://localhost:7214/api/QuyenGop/user/{idUser}";
+
+                var response = await client.GetAsync(url);
+
+                if (!response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Không thể tải danh sách!");
+                    return;
+                }
+
+                string data = await response.Content.ReadAsStringAsync();
+
+                var list = JsonConvert.DeserializeObject<List<QuyenGopModel>>(data);
+
+                bangds.Rows.Clear();
+                int stt = 1;
+
+                foreach (var item in list)
+                {
+                    bangds.Rows.Add(
+                        stt++,
+                        item.TenSach,
+                        item.TacGia,
+                        item.SoLuong,
+                        item.NgayQuyenGop.ToString("dd/MM/yyyy"),
+                        item.TrangThai
+                    );
+                }
+            }
         }
-
-        private void label5_Click(object sender, EventArgs e)
+        
+        private void button_TrangChu_Click(object sender, EventArgs e)
         {
-
+            Users f = new Users();
+            f.Show();
+            this.Hide();   // Ẩn form Quyên Góp Sách
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void button_DangXuat_Click(object sender, EventArgs e)
         {
+            // Khi đăng xuất thì xóa user hiện tại (nếu có dùng)
+            Program.LoggedUserID = -1;
 
+            // Mở form đăng nhập
+            DangNhap dn = new DangNhap();
+            dn.Show();
+
+            // Ẩn form hiện tại
+            this.Hide();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
     }
 }

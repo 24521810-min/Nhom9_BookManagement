@@ -10,7 +10,11 @@ namespace BookManagement
 {
     internal static class Program
     {
+
+        public static int LoggedUserID = 0;
+
         [STAThread]
+        
         static void Main()
         {
             Application.EnableVisualStyles();
