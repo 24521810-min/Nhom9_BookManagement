@@ -7,32 +7,40 @@ namespace BookManagement
 {
     public partial class Muonsach : Form
     {
-        // Chuỗi kết nối giống DangNhap.cs
+        // Chuỗi kết nối: dùng (localdb)\MSSQLLocalDB, DB tên BookManagementDB
         private string connectionString =
-            @"Data Source=localhost;Initial Catalog=BookManagementDB;Integrated Security=True;";
+            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=BookManagementDB;Integrated Security=True;";
 
-        // 0 nghĩa là chưa biết user nào, sẽ tự lấy từ DB khi mượn sách
-        
-        private int currentUserId = 0;
+        // ID user đang mượn sách
+        private int currentUserId;
 
+        // Constructor cũ – dùng cho trường hợp test khi chưa truyền userId
         public Muonsach()
         {
             InitializeComponent();
-           
 
-            // Gán event (vì Designer của bạn chưa gán)
+            // Tạm set = 1 để mượn sách thử
+            currentUserId = 1;
+
+            // Gắn event
             this.Load += MuonSach_Load;
             textBox_timkiem.TextChanged += textBox_timkiem_TextChanged;
             button_muonsach.Click += button_muonsach_Click;
         }
 
-        // ====== FORM LOAD ======
+        // Constructor mới: nhận ID user thật từ form Users
+        public Muonsach(int userId) : this()
+        {
+            currentUserId = userId;
+        }
+
+        // Khi form load thì tải danh sách sách
         private void MuonSach_Load(object sender, EventArgs e)
         {
             LoadDanhSachSach();
         }
 
-        // ====== LOAD DANH SÁCH SÁCH ======
+        // Load danh sách sách khả dụng lên DataGridView
         private void LoadDanhSachSach()
         {
             try
@@ -51,22 +59,19 @@ namespace BookManagement
                         DataTable dt = new DataTable();
                         da.Fill(dt);
 
-                        // Nếu muốn debug:
-                        // MessageBox.Show("Số sách lấy được: " + dt.Rows.Count);
-
                         bangds.Rows.Clear();
                         int stt = 1;
 
                         foreach (DataRow r in dt.Rows)
                         {
                             int index = bangds.Rows.Add();
-                            bangds.Rows[index].Cells[0].Value = stt++;
-                            bangds.Rows[index].Cells[1].Value = r["TenSach"];
-                            bangds.Rows[index].Cells[2].Value = r["IDSach"];
-                            bangds.Rows[index].Cells[3].Value = r["TacGia"];
-                            bangds.Rows[index].Cells[4].Value = 1;               // Số lượng mượn mặc định
-                            bangds.Rows[index].Cells[5].Value = r["SoLuong"];     // Số lượng còn lại
-                            bangds.Rows[index].Cells[6].Value = false;           // Chưa chọn
+                            bangds.Rows[index].Cells[0].Value = stt++;              // STT
+                            bangds.Rows[index].Cells[1].Value = r["TenSach"];        // Tên sách
+                            bangds.Rows[index].Cells[2].Value = r["IDSach"];         // Mã sách (ID)
+                            bangds.Rows[index].Cells[3].Value = r["TacGia"];         // Tác giả
+                            bangds.Rows[index].Cells[4].Value = 1;                   // Số lượng mượn mặc định = 1
+                            bangds.Rows[index].Cells[5].Value = r["SoLuong"];        // Số lượng còn lại
+                            bangds.Rows[index].Cells[6].Value = false;               // Chưa chọn
                         }
                     }
                 }
@@ -74,18 +79,14 @@ namespace BookManagement
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    "Lỗi khi tải danh sách sách. Vui lòng kiểm tra:\n" +
-                    "1. SQL Server đã bật chưa.\n" +
-                    "2. Chuỗi kết nối có đúng không.\n" +
-                    "3. Database 'BookManagementDB' đã tồn tại chưa.\n\n" +
-                    "Thông tin lỗi: " + ex.Message,
+                    "Lỗi khi tải danh sách sách.\n\nChi tiết: " + ex.Message,
                     "Lỗi Kết Nối Cơ Sở Dữ Liệu",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
         }
 
-        // ====== TÌM KIẾM THEO TÊN SÁCH ======
+        // Lọc theo tên sách khi gõ trong ô tìm kiếm
         private void textBox_timkiem_TextChanged(object sender, EventArgs e)
         {
             string keyword = textBox_timkiem.Text.Trim().ToLower();
@@ -95,44 +96,22 @@ namespace BookManagement
                 if (row.IsNewRow) continue;
 
                 string tenSach = row.Cells[1].Value?.ToString().ToLower() ?? "";
+
+                // Ẩn/hiện theo từ khóa
                 row.Visible = tenSach.Contains(keyword);
             }
         }
 
-        // ====== HÀM LẤY TẠM MỘT IDUSER BẤT KỲ TRONG BẢNG USERS ======
-        // (để không sửa DangNhap.cs mà vẫn không lỗi FK)
-        private int GetAnyUserId()
-        {
-            using (SqlConnection conn = new SqlConnection(connectionString))
-            {
-                conn.Open();
-                string sql = "SELECT TOP 1 IDUser FROM Users ORDER BY IDUser";
-
-                object result = new SqlCommand(sql, conn).ExecuteScalar();
-
-                if (result == null || result == DBNull.Value)
-                    throw new Exception("Chưa có user nào trong bảng Users. Hãy đăng ký ít nhất một tài khoản.");
-
-                return Convert.ToInt32(result);
-            }
-        }
-
-        // ====== NÚT MƯỢN SÁCH ======
+        // Xử lý mượn sách
         private void button_muonsach_Click(object sender, EventArgs e)
         {
+            DateTime ngayMuon = dateTimePicker_muon.Value;
+            DateTime ngayTra = dateTimePicker_tradk.Value;
+
+            bool daMuonDuocSach = false;
+
             try
             {
-                // Nếu chưa có userId thì tạm lấy 1 user bất kỳ trong bảng Users
-                if (currentUserId == 0)
-                {
-                    currentUserId = GetAnyUserId();
-                }
-
-                DateTime ngayMuon = dateTimePicker_muon.Value;
-                DateTime ngayTra = dateTimePicker_tradk.Value;
-
-                bool daMuonDuocSach = false;
-
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     conn.Open();
@@ -147,7 +126,7 @@ namespace BookManagement
 
                         if (!isChecked) continue;
 
-                        int idSach = Convert.ToInt32(row.Cells[2].Value);
+                        int idSach = Convert.ToInt32(row.Cells[2].Value);   // IDSach
                         int soLuongMuon = Convert.ToInt32(row.Cells[4].Value);
                         int soLuongCon = Convert.ToInt32(row.Cells[5].Value);
 
@@ -163,7 +142,7 @@ namespace BookManagement
                             continue;
                         }
 
-                        // INSERT vào bảng MuonSach
+                        // 1. Lưu vào bảng MuonSach
                         string sqlInsert = @"
                             INSERT INTO MuonSach (IDUser, IDSach, NgayMuon, NgayTraDuKien)
                             VALUES (@IDUser, @IDSach, @NgayMuon, @NgayTraDuKien)";
@@ -177,7 +156,7 @@ namespace BookManagement
                             cmdInsert.ExecuteNonQuery();
                         }
 
-                        // Cập nhật lại số lượng sách
+                        // 2. Trừ số lượng trong bảng Sach
                         string sqlUpdate = @"
                             UPDATE Sach SET SoLuong = SoLuong - @SL WHERE IDSach = @IDSach";
 
@@ -195,17 +174,20 @@ namespace BookManagement
                 if (daMuonDuocSach)
                 {
                     MessageBox.Show("Mượn sách thành công!");
-                    LoadDanhSachSach();
+                    LoadDanhSachSach(); // load lại danh sách sau khi trừ số lượng
                 }
                 else
                 {
-                    MessageBox.Show("Bạn chưa chọn sách.");
+                    MessageBox.Show("Bạn chưa chọn sách nào.");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi mượn sách:\n" + ex.Message,
-                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "Lỗi khi mượn sách:\n" + ex.Message,
+                    "Lỗi",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
     }
