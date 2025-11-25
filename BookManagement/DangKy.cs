@@ -1,155 +1,99 @@
 ﻿using System;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
 using System.Windows.Forms;
 
 namespace BookManagement
 {
     public partial class DangKy : Form
     {
+        // Connection string 
+        string connectionString =
+            @"Data Source=localhost;Initial Catalog=BookManagementDB;Integrated Security=True;";
+
         public DangKy()
         {
             InitializeComponent();
-            btnSignup.Click += BtnSignup_Click;
-           
 
+            //Gắn event cho nút Sign Up
+            btnSignup.Click += BtnSignup_Click;
         }
 
-        // Nút Signup
         private void BtnSignup_Click(object sender, EventArgs e)
         {
-            if (ValidateInputs())
-            {
-                RegisterUser();
-            }
-        }
-
-        // Kiểm tra dữ liệu hợp lệ 
-        private bool ValidateInputs()
-        {
-            if (string.IsNullOrWhiteSpace(txtFullname.Text) ||
-                string.IsNullOrWhiteSpace(txtUsername.Text) ||
-                string.IsNullOrWhiteSpace(txtEmail.Text) ||
-                string.IsNullOrWhiteSpace(txtPhone.Text) ||
-                string.IsNullOrWhiteSpace(txtPassword.Text) ||
-                string.IsNullOrWhiteSpace(txtConfirmpassword.Text))
-            {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin!", "Thông báo",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return false;
-            }
-
-            if (txtPassword.Text != txtConfirmpassword.Text)
-            {
-                MessageBox.Show("Mật khẩu xác nhận không trùng khớp!", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            if (!txtEmail.Text.Contains("@"))
-            {
-                MessageBox.Show("Email không hợp lệ!", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            if (txtPhone.Text.Length < 9 || !txtPhone.Text.All(char.IsDigit))
-            {
-                MessageBox.Show("Số điện thoại không hợp lệ!", "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
-            return true;
-        }
-
-        // Hàm băm mật khẩu SHA256 
-        private string HashPassword(string password)
-        {
-            using (SHA256 sha256 = SHA256.Create())
-            {
-                byte[] bytes = Encoding.UTF8.GetBytes(password);
-                byte[] hash = sha256.ComputeHash(bytes);
-                StringBuilder sb = new StringBuilder();
-                foreach (byte b in hash)
-                    sb.Append(b.ToString("x2"));
-                return sb.ToString();
-            }
-        }
-
-
-        private string GetConnectionString()
-        {
-            return @"Data Source=(LocalDB)\MSSQLLocalDB;
-             AttachDbFilename=|DataDirectory|\BookManagementDB.mdf;
-             Integrated Security=True";
-        }
-
-
-        // Ghi thông tin người dùng vào SQL Server 
-        private void RegisterUser()
-        {
-            string connectionString = GetConnectionString();
-
             string fullname = txtFullname.Text.Trim();
             string username = txtUsername.Text.Trim();
             string email = txtEmail.Text.Trim();
             string phone = txtPhone.Text.Trim();
-            string passwordHash = HashPassword(txtPassword.Text.Trim());
+            string password = txtPassword.Text;
+            string confirm = txtConfirmpassword.Text;
 
-            try
+            // Kiểm tra rỗng
+            if (fullname == "" || username == "" || email == "" ||
+                password == "" || confirm == "")
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                MessageBox.Show("Please fill in all required fields!");
+                return;
+            }
+
+            // Kiểm tra khớp mật khẩu
+            if (password != confirm)
+            {
+                MessageBox.Show("Passwords do not match!");
+                return;
+            }
+
+            // Hash mật khẩu
+            string passwordHash = PasswordHelper.HashPassword(password);
+
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+
+                // Kiểm tra trùng username/email
+                string checkQuery = @"SELECT COUNT(*) FROM Users 
+                                      WHERE UserName = @u OR Email = @e";
+
+                SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
+                checkCmd.Parameters.AddWithValue("@u", username);
+                checkCmd.Parameters.AddWithValue("@e", email);
+
+                int exists = (int)checkCmd.ExecuteScalar();
+                if (exists > 0)
                 {
-                    conn.Open();
-
-                    // Kiểm tra trùng username
-                    string checkQuery = "SELECT COUNT(*) FROM Users WHERE Username = @Username";
-                    SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
-                    checkCmd.Parameters.AddWithValue("@Username", username);
-                    int exists = (int)checkCmd.ExecuteScalar();
-
-                    if (exists > 0)
-                    {
-                        MessageBox.Show("Tên đăng nhập đã tồn tại!", "Lỗi",
-                            MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    // Thêm người dùng mới
-                    string insertQuery = @"INSERT INTO Users (FullName, Username, Email, Phone, PasswordHash)
-                                   VALUES (@FullName, @Username, @Email, @Phone, @PasswordHash)";
-                    SqlCommand cmd = new SqlCommand(insertQuery, conn);
-                    cmd.Parameters.AddWithValue("@FullName", fullname);
-                    cmd.Parameters.AddWithValue("@Username", username);
-                    cmd.Parameters.AddWithValue("@Email", email);
-                    cmd.Parameters.AddWithValue("@Phone", phone);
-                    cmd.Parameters.AddWithValue("@PasswordHash", passwordHash);
-                    cmd.ExecuteNonQuery();
-
-                    MessageBox.Show("Đăng ký thành công!", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Hide();
-                    DangNhap dangNhapForm = new DangNhap();
-                    dangNhapForm.ShowDialog();
-                    this.Close();
-
+                    MessageBox.Show("Username or Email already exists!");
+                    return;
                 }
+
+                // Thêm user vào DB
+                string insertQuery = @"
+                    INSERT INTO Users (FullName, UserName, Email, Phone, PasswordHash)
+                    VALUES (@f, @u, @e, @p, @pw)";
+
+                SqlCommand insertCmd = new SqlCommand(insertQuery, conn);
+
+                insertCmd.Parameters.AddWithValue("@f", fullname);
+                insertCmd.Parameters.AddWithValue("@u", username);
+                insertCmd.Parameters.AddWithValue("@e", email);
+                insertCmd.Parameters.AddWithValue("@p", phone);
+                insertCmd.Parameters.AddWithValue("@pw", passwordHash);
+
+                insertCmd.ExecuteNonQuery();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Lỗi khi kết nối hoặc ghi dữ liệu: " + ex.Message, "Lỗi",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+
+            MessageBox.Show("Sign up successfully!");
+
+            //Chuyển sang form đăng nhập
+            DangNhap login = new DangNhap();
+            login.Show();
+            this.Hide();
         }
 
+        // Already have an account?
         private void lbAccount_Click(object sender, EventArgs e)
         {
-            this.Hide(); // Ẩn form đăng ký hiện tại
-            DangNhap dangNhapForm = new DangNhap();
-            dangNhapForm.ShowDialog(); // Mở form đăng nhập
-            this.Close();
+            DangNhap login = new DangNhap();
+            login.Show();
+            this.Hide();
         }
     }
 }

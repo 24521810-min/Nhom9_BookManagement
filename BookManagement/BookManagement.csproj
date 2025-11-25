@@ -102,6 +102,7 @@
     <Compile Include="Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="PasswordHelper.cs" />
     <Compile Include="DangKy.cs">
       <SubType>Form</SubType>
     </Compile>
