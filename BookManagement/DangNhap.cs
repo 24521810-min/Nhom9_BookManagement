@@ -58,6 +58,9 @@ namespace BookManagement
                     string name = reader["FullName"].ToString();
                     string role = reader["Role"].ToString();
 
+                   
+                    Program.LoggedUserID = Convert.ToInt32(reader["IDUser"]);
+
                     MessageBox.Show($"Welcome back, {name}!");
 
                     // Mở form chính 
@@ -71,6 +74,7 @@ namespace BookManagement
                 }
             }
         }
+
         //Don't have an account
         private void lbUnaccount_Click(object sender, EventArgs e)
         {
@@ -78,6 +82,5 @@ namespace BookManagement
             dk.Show();
             this.Hide();
         }
-
     }
 }

@@ -16,5 +16,12 @@ namespace BookManagement
         {
             InitializeComponent();
         }
+        private void btnQuyenGop_Click(object sender, EventArgs e)
+        {
+            QuyenGopSach qg = new QuyenGopSach();
+            qg.Show();
+            this.Hide();   // Ẩn form Users
+        }
+
     }
 }
