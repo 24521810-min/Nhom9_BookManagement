@@ -1,92 +1,85 @@
 ﻿using System;
-using System.Data;
-using System.Data.SqlClient;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace BookManagement
 {
     public partial class Muonsach : Form
     {
-        // Chuỗi kết nối: dùng (localdb)\MSSQLLocalDB, DB tên BookManagementDB
-        private string connectionString =
-            @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=BookManagementDB;Integrated Security=True;";
-
-        // ID user đang mượn sách
+        // ID user đang đăng nhập
         private int currentUserId;
 
-        // Constructor cũ – dùng cho trường hợp test khi chưa truyền userId
+        private readonly string baseAddress = "https://localhost:7214";
+
         public Muonsach()
         {
             InitializeComponent();
 
-            // Tạm set = 1 để mượn sách thử
-            currentUserId = 1;
+            currentUserId = Program.LoggedUserID;   
 
-            // Gắn event
             this.Load += MuonSach_Load;
             textBox_timkiem.TextChanged += textBox_timkiem_TextChanged;
             button_muonsach.Click += button_muonsach_Click;
         }
 
-        // Constructor mới: nhận ID user thật từ form Users
         public Muonsach(int userId) : this()
         {
             currentUserId = userId;
         }
 
-        // Khi form load thì tải danh sách sách
-        private void MuonSach_Load(object sender, EventArgs e)
+        // ================== LOAD DANH SÁCH SÁCH TỪ API ==================
+        private async void MuonSach_Load(object sender, EventArgs e)
         {
-            LoadDanhSachSach();
+            await LoadDanhSachSachAsync();
         }
 
-        // Load danh sách sách khả dụng lên DataGridView
-        private void LoadDanhSachSach()
+        private async Task LoadDanhSachSachAsync()
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (HttpClient client = new HttpClient())
                 {
-                    conn.Open();
+                    client.BaseAddress = new Uri(baseAddress);
 
-                    string sql = @"
-                        SELECT S.IDSach, S.TenSach, TG.HoTen AS TacGia, S.SoLuong
-                        FROM Sach S
-                        LEFT JOIN TacGia TG ON S.IDTacGia = TG.IDTacGia";
+                    // API GetAll của SachController: GET /api/Sach
+                    var response = await client.GetAsync("/api/Sach");
 
-                    using (SqlDataAdapter da = new SqlDataAdapter(sql, conn))
+                    if (!response.IsSuccessStatusCode)
                     {
-                        DataTable dt = new DataTable();
-                        da.Fill(dt);
+                        MessageBox.Show("Không thể tải danh sách sách từ server!");
+                        return;
+                    }
 
-                        bangds.Rows.Clear();
-                        int stt = 1;
+                    string json = await response.Content.ReadAsStringAsync();
+                    var list = JsonConvert.DeserializeObject<List<SachDto>>(json);
 
-                        foreach (DataRow r in dt.Rows)
-                        {
-                            int index = bangds.Rows.Add();
-                            bangds.Rows[index].Cells[0].Value = stt++;              // STT
-                            bangds.Rows[index].Cells[1].Value = r["TenSach"];        // Tên sách
-                            bangds.Rows[index].Cells[2].Value = r["IDSach"];         // Mã sách (ID)
-                            bangds.Rows[index].Cells[3].Value = r["TacGia"];         // Tác giả
-                            bangds.Rows[index].Cells[4].Value = 1;                   // Số lượng mượn mặc định = 1
-                            bangds.Rows[index].Cells[5].Value = r["SoLuong"];        // Số lượng còn lại
-                            bangds.Rows[index].Cells[6].Value = false;               // Chưa chọn
-                        }
+                    bangds.Rows.Clear();
+                    int stt = 1;
+
+                    foreach (var s in list)
+                    {
+                        int index = bangds.Rows.Add();
+                        bangds.Rows[index].Cells[0].Value = stt++;                     // STT
+                        bangds.Rows[index].Cells[1].Value = s.TenSach;                 // Tên sách
+                        bangds.Rows[index].Cells[2].Value = s.IDSach;                  // Mã sách
+                        bangds.Rows[index].Cells[3].Value = s.TacGia?.HoTen ?? "";     // Tác giả
+                        bangds.Rows[index].Cells[4].Value = 1;                         // SL mượn mặc định
+                        bangds.Rows[index].Cells[5].Value = s.SoLuong;                 // SL còn
+                        bangds.Rows[index].Cells[6].Value = false;                     // Chưa chọn
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Lỗi khi tải danh sách sách.\n\nChi tiết: " + ex.Message,
-                    "Lỗi Kết Nối Cơ Sở Dữ Liệu",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi khi tải danh sách sách từ server:\n" + ex.Message);
             }
         }
 
-        // Lọc theo tên sách khi gõ trong ô tìm kiếm
+        // ================== TÌM KIẾM THEO TÊN SÁCH (lọc trên grid) ==================
         private void textBox_timkiem_TextChanged(object sender, EventArgs e)
         {
             string keyword = textBox_timkiem.Text.Trim().ToLower();
@@ -96,110 +89,167 @@ namespace BookManagement
                 if (row.IsNewRow) continue;
 
                 string tenSach = row.Cells[1].Value?.ToString().ToLower() ?? "";
-
-                // Ẩn/hiện theo từ khóa
                 row.Visible = tenSach.Contains(keyword);
             }
         }
 
-        // Xử lý mượn sách
-        private void button_muonsach_Click(object sender, EventArgs e)
+        // ================== GỬI YÊU CẦU MƯỢN SÁCH TỚI API ==================
+        private async void button_muonsach_Click(object sender, EventArgs e)
         {
+            if (currentUserId <= 0)
+            {
+                MessageBox.Show("Không xác định được người dùng đang đăng nhập!");
+                return;
+            }
+
             DateTime ngayMuon = dateTimePicker_muon.Value;
             DateTime ngayTra = dateTimePicker_tradk.Value;
 
-            bool daMuonDuocSach = false;
+            // Gom các sách được tick
+            List<MuonSachDto> danhSachGuiLen = new List<MuonSachDto>();
+
+            foreach (DataGridViewRow row in bangds.Rows)
+            {
+                if (row.IsNewRow) continue;
+
+                bool isChecked = false;
+                if (row.Cells[6].Value != null)
+                    isChecked = Convert.ToBoolean(row.Cells[6].Value);
+
+                if (!isChecked) continue;
+
+                int idSach = Convert.ToInt32(row.Cells[2].Value);
+                int soLuongMuon = Convert.ToInt32(row.Cells[4].Value);
+                int soLuongCon = Convert.ToInt32(row.Cells[5].Value);
+
+                if (soLuongMuon <= 0)
+                {
+                    MessageBox.Show("Số lượng mượn phải > 0.");
+                    continue;
+                }
+
+                if (soLuongMuon > soLuongCon)
+                {
+                    MessageBox.Show($"Sách ID {idSach} không đủ số lượng để mượn.");
+                    continue;
+                }
+
+                // 1 dòng = 1 record MuonSach gửi lên server
+                var item = new MuonSachDto
+                {
+                    IDUser = currentUserId,
+                    IDSach = idSach,
+                    NgayMuon = ngayMuon,
+                    NgayTraDuKien = ngayTra,
+                    TrangThai = "ChoDuyet"
+                   
+                };
+
+                danhSachGuiLen.Add(item);
+            }
+
+            if (danhSachGuiLen.Count == 0)
+            {
+                MessageBox.Show("Bạn chưa chọn sách nào để mượn.");
+                return;
+            }
+
+            bool allSuccess = true;
 
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (HttpClient client = new HttpClient())
                 {
-                    conn.Open();
+                    client.BaseAddress = new Uri(baseAddress);
 
-                    foreach (DataGridViewRow row in bangds.Rows)
+                    // MuonSachController hiện tại nhận 1 object MuonSach / lần POST
+                    foreach (var req in danhSachGuiLen)
                     {
-                        if (row.IsNewRow) continue;
+                        string json = JsonConvert.SerializeObject(req);
+                        var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                        bool isChecked = false;
-                        if (row.Cells[6].Value != null)
-                            isChecked = Convert.ToBoolean(row.Cells[6].Value);
+                        // POST: /api/MuonSach
+                        var response = await client.PostAsync("/api/MuonSach", content);
 
-                        if (!isChecked) continue;
-
-                        int idSach = Convert.ToInt32(row.Cells[2].Value);   // IDSach
-                        int soLuongMuon = Convert.ToInt32(row.Cells[4].Value);
-                        int soLuongCon = Convert.ToInt32(row.Cells[5].Value);
-
-                        if (soLuongMuon <= 0)
+                        if (!response.IsSuccessStatusCode)
                         {
-                            MessageBox.Show("Số lượng mượn phải lớn hơn 0.");
-                            continue;
+                            allSuccess = false;
+                            string err = await response.Content.ReadAsStringAsync();
+                            MessageBox.Show("Gửi yêu cầu mượn thất bại cho IDSach = "
+                                            + req.IDSach + ":\n"
+                                            + response.StatusCode + "\n" + err);
                         }
-
-                        if (soLuongMuon > soLuongCon)
-                        {
-                            MessageBox.Show($"Sách ID {idSach} không đủ số lượng để mượn.");
-                            continue;
-                        }
-
-                        // 1. Lưu vào bảng MuonSach
-                        string sqlInsert = @"
-                            INSERT INTO MuonSach (IDUser, IDSach, NgayMuon, NgayTraDuKien)
-                            VALUES (@IDUser, @IDSach, @NgayMuon, @NgayTraDuKien)";
-
-                        using (SqlCommand cmdInsert = new SqlCommand(sqlInsert, conn))
-                        {
-                            cmdInsert.Parameters.AddWithValue("@IDUser", currentUserId);
-                            cmdInsert.Parameters.AddWithValue("@IDSach", idSach);
-                            cmdInsert.Parameters.AddWithValue("@NgayMuon", ngayMuon);
-                            cmdInsert.Parameters.AddWithValue("@NgayTraDuKien", ngayTra);
-                            cmdInsert.ExecuteNonQuery();
-                        }
-
-                        // 2. Trừ số lượng trong bảng Sach
-                        string sqlUpdate = @"
-                            UPDATE Sach SET SoLuong = SoLuong - @SL WHERE IDSach = @IDSach";
-
-                        using (SqlCommand cmdUpdate = new SqlCommand(sqlUpdate, conn))
-                        {
-                            cmdUpdate.Parameters.AddWithValue("@SL", soLuongMuon);
-                            cmdUpdate.Parameters.AddWithValue("@IDSach", idSach);
-                            cmdUpdate.ExecuteNonQuery();
-                        }
-
-                        daMuonDuocSach = true;
                     }
                 }
 
-                if (daMuonDuocSach)
+                if (allSuccess)
                 {
-                    MessageBox.Show("Mượn sách thành công!");
-                    LoadDanhSachSach(); // load lại danh sách sau khi trừ số lượng
-                }
-                else
-                {
-                    MessageBox.Show("Bạn chưa chọn sách nào.");
+                    MessageBox.Show("Đã gửi yêu cầu mượn sách.\nVui lòng chờ admin duyệt!");
+                   
+                    await LoadDanhSachSachAsync();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
-                    "Lỗi khi mượn sách:\n" + ex.Message,
-                    "Lỗi",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi khi gửi yêu cầu mượn sách:\n" + ex.Message);
             }
         }
+
+        // ================== ĐIỀU HƯỚNG ==================
         private void button_TrangChu_Click(object sender, EventArgs e)
         {
             Users f = new Users();
             f.Show();
-            this.Hide();   // Ẩn form Quyên Góp Sách
+            this.Hide();
         }
 
         private void button_DangXuat_Click(object sender, EventArgs e)
         {
-            // Khi đăng xuất thì xóa user hiện tại (nếu có dùng)
+            Program.LoggedUserID = -1;
+            DangNhap dn = new DangNhap();
+            dn.Show();
+            this.Hide();
+        }
+
+        // ================== DTO PHÙ HỢP VỚI API SERVER ==================
+
+        // Dùng để nhận dữ liệu từ /api/Sach
+        private class SachDto
+        {
+            public int IDSach { get; set; }
+            public string TenSach { get; set; }
+            public int SoLuong { get; set; }
+
+            // Navigation object TacGia (server trả về: { "tacGia": { "hoTen": "..." } })
+            public TacGiaDto TacGia { get; set; }
+        }
+
+        private class TacGiaDto
+        {
+            public string HoTen { get; set; }
+        }
+
+        // Dùng để gửi dữ liệu lên /api/MuonSach (khớp với entity MuonSach)
+        private class MuonSachDto
+        {
+            public int IDUser { get; set; }
+            public int IDSach { get; set; }
+            public DateTime NgayMuon { get; set; }
+            public DateTime NgayTraDuKien { get; set; }
+            public string TrangThai { get; set; }
+            
+        }
+
+        private void button_TrangChu_Click_1(object sender, EventArgs e)
+        {
+            
+            Users f = new Users();
+            f.Show();
+            this.Hide();
+        }
+
+        private void button_DXuat_Click(object sender, EventArgs e)
+        {
             Program.LoggedUserID = -1;
 
             // Mở form đăng nhập
@@ -209,6 +259,19 @@ namespace BookManagement
             // Ẩn form hiện tại
             this.Hide();
         }
-    }
 
+        private void button_Tra_Click(object sender, EventArgs e)
+        {
+            Trasach f = new Trasach();
+            f.Show();
+            this.Hide();
+        }
+
+        private void button_quyengop_Click(object sender, EventArgs e)
+        {
+            QuyenGopSach f = new QuyenGopSach();
+            f.Show();
+            this.Hide();
+        }
+    }
 }

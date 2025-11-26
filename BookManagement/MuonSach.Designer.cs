@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_kedoc = new System.Windows.Forms.Panel();
             this.panel_thanhngang = new System.Windows.Forms.Panel();
             this.button_Muon = new System.Windows.Forms.Button();
@@ -60,7 +60,7 @@
             // 
             this.panel_kedoc.BackColor = System.Drawing.Color.Black;
             this.panel_kedoc.Location = new System.Drawing.Point(1614, 123);
-            this.panel_kedoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel_kedoc.Margin = new System.Windows.Forms.Padding(4);
             this.panel_kedoc.Name = "panel_kedoc";
             this.panel_kedoc.Size = new System.Drawing.Size(2, 56);
             this.panel_kedoc.TabIndex = 14;
@@ -69,7 +69,7 @@
             // 
             this.panel_thanhngang.BackColor = System.Drawing.Color.Black;
             this.panel_thanhngang.Location = new System.Drawing.Point(-2, 121);
-            this.panel_thanhngang.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel_thanhngang.Margin = new System.Windows.Forms.Padding(4);
             this.panel_thanhngang.Name = "panel_thanhngang";
             this.panel_thanhngang.Size = new System.Drawing.Size(1888, 2);
             this.panel_thanhngang.TabIndex = 8;
@@ -81,7 +81,7 @@
             this.button_Muon.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Muon.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button_Muon.Location = new System.Drawing.Point(328, 40);
-            this.button_Muon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Muon.Margin = new System.Windows.Forms.Padding(4);
             this.button_Muon.Name = "button_Muon";
             this.button_Muon.Size = new System.Drawing.Size(342, 83);
             this.button_Muon.TabIndex = 11;
@@ -94,12 +94,13 @@
             this.button_Tra.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_Tra.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button_Tra.Location = new System.Drawing.Point(656, 40);
-            this.button_Tra.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_Tra.Margin = new System.Windows.Forms.Padding(4);
             this.button_Tra.Name = "button_Tra";
             this.button_Tra.Size = new System.Drawing.Size(342, 83);
             this.button_Tra.TabIndex = 9;
             this.button_Tra.Text = "TRẢ SÁCH";
             this.button_Tra.UseVisualStyleBackColor = true;
+            this.button_Tra.Click += new System.EventHandler(this.button_Tra_Click);
             // 
             // button_TrangChu
             // 
@@ -107,13 +108,14 @@
             this.button_TrangChu.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_TrangChu.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button_TrangChu.Location = new System.Drawing.Point(-2, 40);
-            this.button_TrangChu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_TrangChu.Margin = new System.Windows.Forms.Padding(4);
             this.button_TrangChu.Name = "button_TrangChu";
             this.button_TrangChu.Size = new System.Drawing.Size(342, 83);
             this.button_TrangChu.TabIndex = 7;
             this.button_TrangChu.Text = "TRANG CHỦ";
             this.button_TrangChu.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.button_TrangChu.UseVisualStyleBackColor = true;
+            this.button_TrangChu.Click += new System.EventHandler(this.button_TrangChu_Click_1);
             // 
             // button_HSDKy
             // 
@@ -121,7 +123,7 @@
             this.button_HSDKy.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_HSDKy.Font = new System.Drawing.Font("Segoe UI Black", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_HSDKy.Location = new System.Drawing.Point(1614, 125);
-            this.button_HSDKy.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_HSDKy.Margin = new System.Windows.Forms.Padding(4);
             this.button_HSDKy.Name = "button_HSDKy";
             this.button_HSDKy.Size = new System.Drawing.Size(304, 67);
             this.button_HSDKy.TabIndex = 13;
@@ -134,12 +136,13 @@
             this.button_DXuat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button_DXuat.Font = new System.Drawing.Font("Segoe UI Black", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_DXuat.Location = new System.Drawing.Point(1396, 117);
-            this.button_DXuat.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_DXuat.Margin = new System.Windows.Forms.Padding(4);
             this.button_DXuat.Name = "button_DXuat";
             this.button_DXuat.Size = new System.Drawing.Size(216, 81);
             this.button_DXuat.TabIndex = 12;
             this.button_DXuat.Text = "Đăng xuất";
             this.button_DXuat.UseVisualStyleBackColor = true;
+            this.button_DXuat.Click += new System.EventHandler(this.button_DXuat_Click);
             // 
             // button_quyengop
             // 
@@ -147,12 +150,13 @@
             this.button_quyengop.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_quyengop.ForeColor = System.Drawing.Color.SaddleBrown;
             this.button_quyengop.Location = new System.Drawing.Point(992, 40);
-            this.button_quyengop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button_quyengop.Margin = new System.Windows.Forms.Padding(4);
             this.button_quyengop.Name = "button_quyengop";
             this.button_quyengop.Size = new System.Drawing.Size(342, 83);
             this.button_quyengop.TabIndex = 15;
             this.button_quyengop.Text = "QUYÊN GÓP SÁCH";
             this.button_quyengop.UseVisualStyleBackColor = true;
+            this.button_quyengop.Click += new System.EventHandler(this.button_quyengop_Click);
             // 
             // label_timkiem
             // 
@@ -169,7 +173,7 @@
             // 
             this.textBox_timkiem.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox_timkiem.Location = new System.Drawing.Point(232, 238);
-            this.textBox_timkiem.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.textBox_timkiem.Margin = new System.Windows.Forms.Padding(6);
             this.textBox_timkiem.Name = "textBox_timkiem";
             this.textBox_timkiem.Size = new System.Drawing.Size(612, 47);
             this.textBox_timkiem.TabIndex = 17;
@@ -188,14 +192,14 @@
             // 
             // bangds
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.bangds.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.bangds.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.bangds.ColumnHeadersHeight = 50;
             this.bangds.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
@@ -206,7 +210,7 @@
             this.Column_slconlai,
             this.Column_chon});
             this.bangds.Location = new System.Drawing.Point(28, 377);
-            this.bangds.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bangds.Margin = new System.Windows.Forms.Padding(4);
             this.bangds.Name = "bangds";
             this.bangds.RowHeadersVisible = false;
             this.bangds.RowHeadersWidth = 51;
@@ -292,7 +296,7 @@
             this.dateTimePicker_muon.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker_muon.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_muon.Location = new System.Drawing.Point(1528, 429);
-            this.dateTimePicker_muon.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dateTimePicker_muon.Margin = new System.Windows.Forms.Padding(6);
             this.dateTimePicker_muon.Name = "dateTimePicker_muon";
             this.dateTimePicker_muon.Size = new System.Drawing.Size(330, 50);
             this.dateTimePicker_muon.TabIndex = 22;
@@ -303,7 +307,7 @@
             this.dateTimePicker_tradk.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker_tradk.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_tradk.Location = new System.Drawing.Point(1528, 556);
-            this.dateTimePicker_tradk.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dateTimePicker_tradk.Margin = new System.Windows.Forms.Padding(6);
             this.dateTimePicker_tradk.Name = "dateTimePicker_tradk";
             this.dateTimePicker_tradk.Size = new System.Drawing.Size(330, 50);
             this.dateTimePicker_tradk.TabIndex = 23;
@@ -314,7 +318,7 @@
             this.button_muonsach.BackColor = System.Drawing.Color.Tan;
             this.button_muonsach.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button_muonsach.Location = new System.Drawing.Point(1338, 725);
-            this.button_muonsach.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.button_muonsach.Margin = new System.Windows.Forms.Padding(6);
             this.button_muonsach.Name = "button_muonsach";
             this.button_muonsach.Size = new System.Drawing.Size(340, 85);
             this.button_muonsach.TabIndex = 24;
@@ -345,7 +349,7 @@
             this.Controls.Add(this.button_HSDKy);
             this.Controls.Add(this.button_DXuat);
             this.Controls.Add(this.button_quyengop);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Muonsach";
             this.Text = "Mượn Sách";
             this.Load += new System.EventHandler(this.MuonSach_Load);

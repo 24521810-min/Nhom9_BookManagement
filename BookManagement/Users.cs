@@ -5,47 +5,57 @@ namespace BookManagement
 {
     public partial class Users : Form
     {
-        // Lưu ID user đang đăng nhập
         private int _currentUserId;
 
-        // Constructor cũ (không có userId) – vẫn giữ để không bị lỗi
         public Users()
         {
             InitializeComponent();
-            _currentUserId = 0; // 0 = chưa biết user, mượn sách test sẽ dùng default
+            _currentUserId = Program.LoggedUserID; // lấy từ đăng nhập
         }
 
-        // Constructor mới: nhận ID user từ form đăng nhập
         public Users(int userId) : this()
         {
             _currentUserId = userId;
         }
 
-        // Sự kiện click nút "Mượn sách" trên form Users
+        // ==== MƯỢN SÁCH ====
         private void btnMuonSach_Click(object sender, EventArgs e)
         {
-            // Nếu đã có ID user thật thì truyền vào, không thì dùng form default
             Muonsach f;
 
             if (_currentUserId > 0)
-            {
                 f = new Muonsach(_currentUserId);
-            }
             else
-            {
-                // chạy thử khi chưa có luồng đăng nhập
-                f = new Muonsach();
-            }
+                f = new Muonsach();   
 
             f.Show();
             this.Hide();
         }
+
+        // ==== QUYÊN GÓP SÁCH ====
         private void btnQuyenGop_Click(object sender, EventArgs e)
         {
             QuyenGopSach qg = new QuyenGopSach();
             qg.Show();
-            this.Hide();   // Ẩn form Users
+            this.Hide();
         }
 
+        // ==== TRẢ SÁCH ====
+        private void btnTraSach_Click(object sender, EventArgs e)
+        {
+            Trasach t = new Trasach();
+            t.Show();
+            this.Hide();
+        }
+
+        // ==== ĐĂNG XUẤT ====
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            Program.LoggedUserID = -1;
+
+            DangNhap dn = new DangNhap();
+            dn.Show();
+            this.Hide();
+        }
     }
 }
