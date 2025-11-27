@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Data;
-using System.Data.SqlClient;
+using System.Net.Http;
+using System.Text;
+using Newtonsoft.Json;
 using System.Windows.Forms;
 
 namespace BookManagement
 {
     public partial class DangNhap : Form
     {
-        string connectionString = @"Data Source=localhost;Initial Catalog=BookManagementDB;Integrated Security=True;";
+        private readonly string apiLoginUrl = "https://localhost:7214/api/Users/login";
 
         public DangNhap()
         {
@@ -15,10 +16,10 @@ namespace BookManagement
             btnLogin.Click += BtnLogin_Click;
         }
 
-        private void BtnLogin_Click(object sender, EventArgs e)
+        private async void BtnLogin_Click(object sender, EventArgs e)
         {
-            string userInput = txtUsername.Text.Trim();   // Username hoặc Email
-            string password = txtPassword.Text;
+            string userInput = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
 
             if (userInput == "" || password == "")
             {
@@ -26,56 +27,62 @@ namespace BookManagement
                 return;
             }
 
-            // Hash password nhập vào để so sánh với PasswordHash
-            string hash = PasswordHelper.HashPassword(password);
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            // Tạo object gửi API
+            var loginRequest = new
             {
-                conn.Open();
+                UserInput = userInput,
+                Password = password
+            };
 
-                string query = @"
-                    SELECT IDUser, FullName, Role, IsLocked
-                    FROM Users
-                    WHERE (UserName = @input OR Email = @input)
-                          AND PasswordHash = @pw";
+            string json = JsonConvert.SerializeObject(loginRequest);
 
-                SqlCommand cmd = new SqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@input", userInput);
-                cmd.Parameters.AddWithValue("@pw", hash);
+            using (HttpClient client = new HttpClient())
+            {
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                SqlDataReader reader = cmd.ExecuteReader();
-
-                if (reader.Read())
+                try
                 {
-                    bool locked = reader.GetBoolean(reader.GetOrdinal("IsLocked"));
+                    HttpResponseMessage response = await client.PostAsync(apiLoginUrl, content);
 
-                    if (locked)
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Invalid username/email or password!");
+                        return;
+                    }
+
+                    // Lấy JSON trả về từ server
+                    string resultJson = await response.Content.ReadAsStringAsync();
+
+                    // Parse JSON thành object
+                    dynamic result = JsonConvert.DeserializeObject(resultJson);
+
+                    bool isLocked = result.isLocked;
+
+                    if (isLocked)
                     {
                         MessageBox.Show("Your account is locked. Please contact admin!");
                         return;
                     }
 
-                    string name = reader["FullName"].ToString();
-                    string role = reader["Role"].ToString();
+                    // Lưu IDUser để dùng cho các chức năng khác (như Quyên góp)
+                    Program.LoggedUserID = (int)result.idUser;
 
-                   
-                    Program.LoggedUserID = Convert.ToInt32(reader["IDUser"]);
+                    string name = (string)result.fullName;
 
                     MessageBox.Show($"Welcome back, {name}!");
 
-                    // Mở form chính 
+                    // Mở form Users
                     Users f = new Users();
                     f.Show();
                     this.Hide();
                 }
-                else
+                catch (Exception ex)
                 {
-                    MessageBox.Show("Invalid username/email or password!");
+                    MessageBox.Show("Cannot connect to server:\n" + ex.Message);
                 }
             }
         }
 
-        //Don't have an account
         private void lbUnaccount_Click(object sender, EventArgs e)
         {
             DangKy dk = new DangKy();
