@@ -1,7 +1,10 @@
 ﻿using BookApi.Data;
+using BookApi.Helpers;
 using BookApi.Models;
+using Microsoft.AspNetCore.Identity.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 
 namespace BookApi.Controllers
 {
@@ -22,13 +25,61 @@ namespace BookApi.Controllers
             return Ok(await _context.Users.ToListAsync());
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Register(User model)
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] User model)
         {
+            // Kiểm tra trùng email hoặc username
+            bool exists = await _context.Users.AnyAsync(x =>
+                x.UserName == model.UserName || x.Email == model.Email);
+
+            if (exists)
+                return BadRequest(new { message = "Username hoặc Email đã tồn tại!" });
+
+            // Hash mật khẩu
+            model.PasswordHash = PasswordHelper.HashPassword(model.PasswordHash);
+
+            // Set default field
+            model.Role = "User";
+            model.IsLocked = false;
+
             _context.Users.Add(model);
+
             await _context.SaveChangesAsync();
-            return Ok(model);
+
+            return Ok(new { message = "Đăng ký thành công!", user = model });
         }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] BookApi.Models.LoginRequest request)
+        {
+            var user = await _context.Users
+                .FirstOrDefaultAsync(x =>
+                    x.UserName == request.UserInput ||
+                    x.Email == request.UserInput);
+
+            if (user == null)
+                return Unauthorized(new { message = "User not found" });
+
+            if (user.IsLocked)
+                return Unauthorized(new { message = "Account locked", isLocked = true });
+
+            bool validPassword = PasswordHelper.VerifyPassword(request.Password, user.PasswordHash);
+
+            if (!validPassword)
+                return Unauthorized(new { message = "Invalid password" });
+
+            return Ok(new
+            {
+                idUser = user.IDUser,
+                fullName = user.FullName,
+                userName = user.UserName,
+                email = user.Email,
+                role = user.Role,
+                isLocked = user.IsLocked
+            });
+        }
+
+
         [HttpGet("search")]
         public async Task<IActionResult> Search(string keyword)
         {

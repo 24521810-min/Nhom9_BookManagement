@@ -1,31 +1,29 @@
 ﻿using System;
-using System.Data.SqlClient;
+using System.Net.Http;
+using System.Text;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace BookManagement
 {
     public partial class DangKy : Form
     {
-        // Connection string 
-        string connectionString =
-            @"Data Source=localhost;Initial Catalog=BookManagementDB;Integrated Security=True;";
+        private readonly string apiUrl = "https://localhost:7214/api/Users/register";
 
         public DangKy()
         {
             InitializeComponent();
-
-            //Gắn event cho nút Sign Up
             btnSignup.Click += BtnSignup_Click;
         }
 
-        private void BtnSignup_Click(object sender, EventArgs e)
+        private async void BtnSignup_Click(object sender, EventArgs e)
         {
             string fullname = txtFullname.Text.Trim();
             string username = txtUsername.Text.Trim();
             string email = txtEmail.Text.Trim();
             string phone = txtPhone.Text.Trim();
-            string password = txtPassword.Text;
-            string confirm = txtConfirmpassword.Text;
+            string password = txtPassword.Text.Trim();
+            string confirm = txtConfirmpassword.Text.Trim();
 
             // Kiểm tra rỗng
             if (fullname == "" || username == "" || email == "" ||
@@ -42,53 +40,48 @@ namespace BookManagement
                 return;
             }
 
-            // Hash mật khẩu
-            string passwordHash = PasswordHelper.HashPassword(password);
-
-            using (SqlConnection conn = new SqlConnection(connectionString))
+            // Tạo model gửi lên server
+            var model = new
             {
-                conn.Open();
+                FullName = fullname,
+                UserName = username,
+                Email = email,
+                Phone = phone,
+                Password = password  // hash sẽ làm ở server
+            };
 
-                // Kiểm tra trùng username/email
-                string checkQuery = @"SELECT COUNT(*) FROM Users 
-                                      WHERE UserName = @u OR Email = @e";
+            string json = JsonConvert.SerializeObject(model);
 
-                SqlCommand checkCmd = new SqlCommand(checkQuery, conn);
-                checkCmd.Parameters.AddWithValue("@u", username);
-                checkCmd.Parameters.AddWithValue("@e", email);
+            using (HttpClient client = new HttpClient())
+            {
+                var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                int exists = (int)checkCmd.ExecuteScalar();
-                if (exists > 0)
+                try
                 {
-                    MessageBox.Show("Username or Email already exists!");
-                    return;
+                    var response = await client.PostAsync(apiUrl, content);
+
+                    if (response.IsSuccessStatusCode)
+                    {
+                        MessageBox.Show("Sign up successfully!");
+
+                        // Mở form login
+                        DangNhap login = new DangNhap();
+                        login.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        string msg = await response.Content.ReadAsStringAsync();
+                        MessageBox.Show("Sign up failed:\n" + msg);
+                    }
                 }
-
-                // Thêm user vào DB
-                string insertQuery = @"
-                    INSERT INTO Users (FullName, UserName, Email, Phone, PasswordHash)
-                    VALUES (@f, @u, @e, @p, @pw)";
-
-                SqlCommand insertCmd = new SqlCommand(insertQuery, conn);
-
-                insertCmd.Parameters.AddWithValue("@f", fullname);
-                insertCmd.Parameters.AddWithValue("@u", username);
-                insertCmd.Parameters.AddWithValue("@e", email);
-                insertCmd.Parameters.AddWithValue("@p", phone);
-                insertCmd.Parameters.AddWithValue("@pw", passwordHash);
-
-                insertCmd.ExecuteNonQuery();
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error connecting to server:\n" + ex.Message);
+                }
             }
-
-            MessageBox.Show("Sign up successfully!");
-
-            //Chuyển sang form đăng nhập
-            DangNhap login = new DangNhap();
-            login.Show();
-            this.Hide();
         }
 
-        // Already have an account?
         private void lbAccount_Click(object sender, EventArgs e)
         {
             DangNhap login = new DangNhap();
