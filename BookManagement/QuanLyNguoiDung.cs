@@ -33,7 +33,7 @@ namespace BookManagement
         {
             var response = await client.GetAsync(apiUrl);
             var data = await response.Content.ReadAsStringAsync();
-            var users = JsonConvert.DeserializeObject<List<User>>(data);
+            var users = JsonConvert.DeserializeObject<List<Users>>(data);
 
             dsUsers.DataSource = users;
         }

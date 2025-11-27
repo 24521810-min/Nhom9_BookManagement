@@ -1,8 +1,7 @@
 ﻿using BookApi.Models;
 using System;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;   // thêm dòng này
-
+using System.ComponentModel.DataAnnotations.Schema;   
 public class MuonSach
 {
     [Key]
