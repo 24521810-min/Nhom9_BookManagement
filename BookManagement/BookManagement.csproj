@@ -102,6 +102,12 @@
     <Compile Include="Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="HoSoDKi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="HoSoDKi.Designer.cs">
+      <DependentUpon>HoSoDKi.cs</DependentUpon>
+    </Compile>
     <Compile Include="QuyenGopModel.cs" />
     <Compile Include="PasswordHelper.cs" />
     <Compile Include="DangKy.cs">
@@ -242,6 +248,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forgotpassword.resx">
       <DependentUpon>Forgotpassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="HoSoDKi.resx">
+      <DependentUpon>HoSoDKi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="KhoSach.resx">
       <DependentUpon>KhoSach.cs</DependentUpon>
