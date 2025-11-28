@@ -43,12 +43,12 @@ namespace BookApi.Data
             modelBuilder.Entity<User>()
                 .HasKey(u => u.IDUser);
 
-            // ⭐⭐⭐ THÊM QUAN HỆ CHO QUYÊN GÓP ⭐⭐⭐
+            // ====== Quan hệ Quyên góp ======
             modelBuilder.Entity<QuyenGop>()
-    .HasOne(q => q.User)
-    .WithMany(u => u.QuyenGops)
-    .HasForeignKey(q => q.IDUser)
-    .HasConstraintName("FK_QuyenGop_User");
+                .HasOne(q => q.User)
+                .WithMany(u => u.QuyenGops)
+                .HasForeignKey(q => q.IDUser)
+                .HasConstraintName("FK_QuyenGop_User");
         }
     }
 }

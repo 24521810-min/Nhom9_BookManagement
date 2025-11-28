@@ -24,7 +24,6 @@ namespace BookManagement
             this.Hide();
             f.Show();
         }
-
         private void btnQuanLyNguoiDung_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -32,7 +31,6 @@ namespace BookManagement
             qlusersForm.ShowDialog();
             this.Show();
         }
-
         private void btnQuanLyMuonTra_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -40,8 +38,7 @@ namespace BookManagement
             qlborrowForm.ShowDialog();
             this.Show();
         }
-
-        private void button4_Click(object sender, EventArgs e)
+        private void btnQuanLyQuyenGop_Click(object sender, EventArgs e)
         {
             this.Hide();
             QuanLyQuyenGop qldonateForm = new QuanLyQuyenGop();

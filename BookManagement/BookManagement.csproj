@@ -108,31 +108,19 @@
     <Compile Include="HoSoDKi.Designer.cs">
       <DependentUpon>HoSoDKi.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="QuyenGopModel.cs" />
-    <Compile Include="PasswordHelper.cs" />
     <Compile Include="DangKy.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DangKy.Designer.cs">
       <DependentUpon>DangKy.cs</DependentUpon>
     </Compile>
-    <Compile Include="Dangnhap-admin.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Dangnhap-admin.Designer.cs">
-      <DependentUpon>Dangnhap-admin.cs</DependentUpon>
-    </Compile>
     <Compile Include="DangNhap.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DangNhap.Designer.cs">
       <DependentUpon>DangNhap.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Firstform.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Firstform.Designer.cs">
-      <DependentUpon>Firstform.cs</DependentUpon>
     </Compile>
     <Compile Include="Forgotpassword.cs">
       <SubType>Form</SubType>
@@ -237,14 +225,8 @@
     <EmbeddedResource Include="DangKy.resx">
       <DependentUpon>DangKy.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Dangnhap-admin.resx">
-      <DependentUpon>Dangnhap-admin.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="DangNhap.resx">
       <DependentUpon>DangNhap.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Firstform.resx">
-      <DependentUpon>Firstform.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forgotpassword.resx">
       <DependentUpon>Forgotpassword.cs</DependentUpon>

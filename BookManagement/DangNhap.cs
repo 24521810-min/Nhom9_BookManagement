@@ -23,7 +23,7 @@ namespace BookManagement
 
             if (userInput == "" || password == "")
             {
-                MessageBox.Show("Please enter username/email and password!");
+                MessageBox.Show("Vui lòng nhập tên đăng nhập/email và mật khẩu!");
                 return;
             }
 
@@ -46,7 +46,7 @@ namespace BookManagement
 
                     if (!response.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Invalid username/email or password!");
+                        MessageBox.Show("Tên đăng nhập/email hoặc mật khẩu không đúng!");
                         return;
                     }
 
@@ -60,21 +60,31 @@ namespace BookManagement
 
                     if (isLocked)
                     {
-                        MessageBox.Show("Your account is locked. Please contact admin!");
+                        MessageBox.Show("Tài khoản của bạn đã bị khóa. Vui lòng liên hệ Admin!");
                         return;
                     }
 
-                    // Lưu IDUser để dùng cho các chức năng khác (như Quyên góp)
+                    // Lưu ID người dùng
                     Program.LoggedUserID = (int)result.idUser;
-
                     string name = (string)result.fullName;
+                    string role = (string)result.role;
 
-                    MessageBox.Show($"Welcome back, {name}!");
+                    MessageBox.Show($"Chào mừng bạn trở lại, {name}!");
 
-                    // Mở form Users
-                    Users f = new Users();
-                    f.Show();
-                    this.Hide();
+                    if (role == "Admin")
+                    {
+                        MessageBox.Show("Bạn đang đăng nhập bằng quyền ADMIN");
+                        Admin adminForm = new Admin();
+                        adminForm.Show();
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Bạn đang đăng nhập bằng quyền USER");
+                        Users userForm = new Users();
+                        userForm.Show();
+                        this.Hide();
+                    }
                 }
                 catch (Exception ex)
                 {

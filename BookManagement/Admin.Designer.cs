@@ -30,7 +30,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.btnKhoSach = new System.Windows.Forms.Button();
             this.btnQuanLyNguoiDung = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btnQuanLyQuyenGop = new System.Windows.Forms.Button();
             this.btnQuanLyMuonTra = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -79,19 +79,19 @@
             this.btnQuanLyNguoiDung.UseVisualStyleBackColor = false;
             this.btnQuanLyNguoiDung.Click += new System.EventHandler(this.btnQuanLyNguoiDung_Click);
             // 
-            // button4
+            // btnQuanLyQuyenGop
             // 
-            this.button4.BackColor = System.Drawing.Color.FloralWhite;
-            this.button4.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.button4.Location = new System.Drawing.Point(526, 374);
-            this.button4.Margin = new System.Windows.Forms.Padding(2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(323, 54);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "QUẢN LÝ QUYÊN GÓP";
-            this.button4.UseVisualStyleBackColor = false;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnQuanLyQuyenGop.BackColor = System.Drawing.Color.FloralWhite;
+            this.btnQuanLyQuyenGop.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuanLyQuyenGop.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnQuanLyQuyenGop.Location = new System.Drawing.Point(526, 374);
+            this.btnQuanLyQuyenGop.Margin = new System.Windows.Forms.Padding(2);
+            this.btnQuanLyQuyenGop.Name = "btnQuanLyQuyenGop";
+            this.btnQuanLyQuyenGop.Size = new System.Drawing.Size(323, 54);
+            this.btnQuanLyQuyenGop.TabIndex = 4;
+            this.btnQuanLyQuyenGop.Text = "QUẢN LÝ QUYÊN GÓP";
+            this.btnQuanLyQuyenGop.UseVisualStyleBackColor = false;
+            this.btnQuanLyQuyenGop.Click += new System.EventHandler(this.btnQuanLyQuyenGop_Click);
             // 
             // btnQuanLyMuonTra
             // 
@@ -137,7 +137,7 @@
             this.ClientSize = new System.Drawing.Size(938, 662);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.btnQuanLyMuonTra);
-            this.Controls.Add(this.button4);
+            this.Controls.Add(this.btnQuanLyQuyenGop);
             this.Controls.Add(this.btnQuanLyNguoiDung);
             this.Controls.Add(this.btnKhoSach);
             this.Controls.Add(this.button1);
@@ -158,7 +158,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnKhoSach;
         private System.Windows.Forms.Button btnQuanLyNguoiDung;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnQuanLyQuyenGop;
         private System.Windows.Forms.Button btnQuanLyMuonTra;
         private System.Windows.Forms.PictureBox pictureBox2;
     }

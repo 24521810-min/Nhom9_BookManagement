@@ -51,11 +51,18 @@ namespace BookManagement
         // ==== ĐĂNG XUẤT ====
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-            Program.LoggedUserID = -1;
+            var confirm = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            DangNhap dn = new DangNhap();
-            dn.Show();
-            this.Hide();
+            if (confirm == DialogResult.Yes)
+            {
+                Program.LoggedUserID = -1;
+
+                MessageBox.Show("Bạn đã đăng xuất!", "Thông báo");
+
+                DangNhap dn = new DangNhap();
+                dn.Show();
+                this.Hide();
+            }
         }
     }
 }

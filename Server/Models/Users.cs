@@ -1,4 +1,6 @@
-﻿namespace BookApi.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace BookApi.Models
 {
     public class User
     {
@@ -7,6 +9,7 @@
         public string UserName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
         public string Phone { get; set; } = string.Empty;
+
         public string PasswordHash { get; set; } = string.Empty;
 
        
