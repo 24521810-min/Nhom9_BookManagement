@@ -45,5 +45,21 @@ namespace BookManagement
             qldonateForm.ShowDialog();
             this.Show();
         }
+
+        private void btnDangXuat_Click(object sender, EventArgs e)
+        {
+            var confirm = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.Yes)
+            {
+                Program.LoggedUserID = -1;
+
+                MessageBox.Show("Bạn đã đăng xuất!", "Thông báo");
+
+                DangNhap dn = new DangNhap();
+                dn.Show();
+                this.Hide();
+            }
+        }
     }
 }

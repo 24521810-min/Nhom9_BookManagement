@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 // alias để không bị trùng với Form Users
-using UserEntity = BookManagement.Models.Users;
+using UserEntity = User;
 
 namespace BookManagement
 {

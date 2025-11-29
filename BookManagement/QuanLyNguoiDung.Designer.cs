@@ -29,9 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnShow = new System.Windows.Forms.Button();
-            this.txtPassword = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.dateMuon = new System.Windows.Forms.DateTimePicker();
@@ -47,8 +44,6 @@
             this.btnviewUser = new System.Windows.Forms.Button();
             this.btnexitUser = new System.Windows.Forms.Button();
             this.btnclearUser = new System.Windows.Forms.Button();
-            this.btneditUser = new System.Windows.Forms.Button();
-            this.btnaddUser = new System.Windows.Forms.Button();
             this.btnlockUser = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsUsers)).BeginInit();
@@ -56,9 +51,6 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnShow);
-            this.groupBox1.Controls.Add(this.txtPassword);
-            this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.txtEmail);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.dateMuon);
@@ -76,36 +68,6 @@
             this.groupBox1.TabIndex = 7;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chi tiết Người dùng";
-            // 
-            // btnShow
-            // 
-            this.btnShow.BackgroundImage = global::BookManagement.Properties.Resources.icons8_show;
-            this.btnShow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnShow.Location = new System.Drawing.Point(847, 103);
-            this.btnShow.Name = "btnShow";
-            this.btnShow.Size = new System.Drawing.Size(27, 30);
-            this.btnShow.TabIndex = 12;
-            this.btnShow.UseVisualStyleBackColor = true;
-            this.btnShow.Click += new System.EventHandler(this.btnShow_Click);
-            // 
-            // txtPassword
-            // 
-            this.txtPassword.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(586, 100);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.Size = new System.Drawing.Size(257, 35);
-            this.txtPassword.TabIndex = 11;
-            this.txtPassword.UseSystemPasswordChar = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(463, 103);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(110, 27);
-            this.label6.TabIndex = 10;
-            this.label6.Text = "Mật khẩu:";
             // 
             // txtEmail
             // 
@@ -130,7 +92,7 @@
             this.dateMuon.CalendarFont = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateMuon.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateMuon.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateMuon.Location = new System.Drawing.Point(624, 155);
+            this.dateMuon.Location = new System.Drawing.Point(625, 108);
             this.dateMuon.Name = "dateMuon";
             this.dateMuon.Size = new System.Drawing.Size(179, 35);
             this.dateMuon.TabIndex = 2;
@@ -139,7 +101,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(463, 155);
+            this.label4.Location = new System.Drawing.Point(464, 108);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(134, 27);
             this.label4.TabIndex = 7;
@@ -215,7 +177,7 @@
             this.btnsearchUser.BackgroundImage = global::BookManagement.Properties.Resources.search;
             this.btnsearchUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnsearchUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnsearchUser.Location = new System.Drawing.Point(145, 267);
+            this.btnsearchUser.Location = new System.Drawing.Point(285, 265);
             this.btnsearchUser.Name = "btnsearchUser";
             this.btnsearchUser.Size = new System.Drawing.Size(93, 94);
             this.btnsearchUser.TabIndex = 18;
@@ -227,7 +189,7 @@
             this.btnviewUser.BackgroundImage = global::BookManagement.Properties.Resources.view;
             this.btnviewUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnviewUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnviewUser.Location = new System.Drawing.Point(18, 267);
+            this.btnviewUser.Location = new System.Drawing.Point(151, 265);
             this.btnviewUser.Name = "btnviewUser";
             this.btnviewUser.Size = new System.Drawing.Size(93, 94);
             this.btnviewUser.TabIndex = 17;
@@ -239,7 +201,7 @@
             this.btnexitUser.BackgroundImage = global::BookManagement.Properties.Resources.icons8_exit_100__1_;
             this.btnexitUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnexitUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnexitUser.Location = new System.Drawing.Point(806, 267);
+            this.btnexitUser.Location = new System.Drawing.Point(688, 265);
             this.btnexitUser.Name = "btnexitUser";
             this.btnexitUser.Size = new System.Drawing.Size(96, 94);
             this.btnexitUser.TabIndex = 16;
@@ -251,48 +213,24 @@
             this.btnclearUser.BackgroundImage = global::BookManagement.Properties.Resources.clear;
             this.btnclearUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnclearUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnclearUser.Location = new System.Drawing.Point(536, 267);
+            this.btnclearUser.Location = new System.Drawing.Point(418, 265);
             this.btnclearUser.Name = "btnclearUser";
             this.btnclearUser.Size = new System.Drawing.Size(96, 94);
             this.btnclearUser.TabIndex = 15;
             this.btnclearUser.UseVisualStyleBackColor = true;
             this.btnclearUser.Click += new System.EventHandler(this.btnclearUser_Click);
             // 
-            // btneditUser
-            // 
-            this.btneditUser.BackgroundImage = global::BookManagement.Properties.Resources.edit;
-            this.btneditUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btneditUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btneditUser.Location = new System.Drawing.Point(403, 267);
-            this.btneditUser.Name = "btneditUser";
-            this.btneditUser.Size = new System.Drawing.Size(96, 94);
-            this.btneditUser.TabIndex = 14;
-            this.btneditUser.UseVisualStyleBackColor = true;
-            this.btneditUser.Click += new System.EventHandler(this.btneditUser_Click);
-            // 
-            // btnaddUser
-            // 
-            this.btnaddUser.BackgroundImage = global::BookManagement.Properties.Resources.add;
-            this.btnaddUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnaddUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnaddUser.Location = new System.Drawing.Point(271, 267);
-            this.btnaddUser.Name = "btnaddUser";
-            this.btnaddUser.Size = new System.Drawing.Size(93, 94);
-            this.btnaddUser.TabIndex = 13;
-            this.btnaddUser.UseVisualStyleBackColor = true;
-            this.btnaddUser.Click += new System.EventHandler(this.btnaddUser_Click);
-            // 
             // btnlockUser
             // 
             this.btnlockUser.BackgroundImage = global::BookManagement.Properties.Resources._lock;
             this.btnlockUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnlockUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnlockUser.Location = new System.Drawing.Point(670, 267);
+            this.btnlockUser.Location = new System.Drawing.Point(552, 265);
             this.btnlockUser.Name = "btnlockUser";
             this.btnlockUser.Size = new System.Drawing.Size(96, 94);
             this.btnlockUser.TabIndex = 19;
             this.btnlockUser.UseVisualStyleBackColor = true;
-            //this.btnlockUser.Click += new System.EventHandler(this.btnlockUser_Click);
+            this.btnlockUser.Click += new System.EventHandler(this.btnlockUser_Click);
             // 
             // QuanLyNguoiDung
             // 
@@ -306,9 +244,7 @@
             this.Controls.Add(this.btnviewUser);
             this.Controls.Add(this.dsUsers);
             this.Controls.Add(this.btnexitUser);
-            this.Controls.Add(this.btnaddUser);
             this.Controls.Add(this.btnclearUser);
-            this.Controls.Add(this.btneditUser);
             this.Name = "QuanLyNguoiDung";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QuanLyNguoiDung";
@@ -330,17 +266,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dateMuon;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtPassword;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnShow;
         private System.Windows.Forms.Button btnsearchUser;
         private System.Windows.Forms.Button btnviewUser;
         private System.Windows.Forms.Button btnexitUser;
         private System.Windows.Forms.Button btnclearUser;
-        private System.Windows.Forms.Button btneditUser;
-        private System.Windows.Forms.Button btnaddUser;
         private System.Windows.Forms.Button btnlockUser;
     }
 }

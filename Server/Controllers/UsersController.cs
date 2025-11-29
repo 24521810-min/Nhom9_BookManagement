@@ -93,25 +93,48 @@ namespace BookApi.Controllers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, User model)
+        [HttpGet]
+        public async Task<IActionResult> GetAllUsers()
         {
-            var user = await _context.Users.FindAsync(id);
-            if (user == null) return NotFound();
+            var users = await _context.Users
+                .Select(u => new
+                {
+                    u.IDUser,
+                    u.FullName,
+                    u.UserName,
+                    u.Email,
+                    u.Phone,
+                    u.Role,
+                    u.IsLocked
+                })
+                .ToListAsync();
 
-            user.FullName = model.FullName;
-            user.UserName = model.UserName;
-            user.Email = model.Email;
-            user.Phone = model.Phone;
-            user.Role = model.Role;
-
-            if (!string.IsNullOrWhiteSpace(model.PasswordHash))
-                user.PasswordHash = PasswordHelper.HashPassword(model.PasswordHash);
-
-            await _context.SaveChangesAsync();
-            return Ok(new { message = "Cập nhật thành công!" });
+            return Ok(users);
         }
+        [HttpGet("search")]
+        public async Task<IActionResult> SearchUsers([FromQuery] string keyword)
+        {
+            if (string.IsNullOrWhiteSpace(keyword))
+                return BadRequest(new { message = "Keyword không được rỗng" });
 
+            var users = await _context.Users
+                .Where(u => u.UserName.Contains(keyword)
+                         || u.FullName.Contains(keyword)
+                         || u.Email.Contains(keyword))
+                .Select(u => new
+                {
+                    u.IDUser,
+                    u.FullName,
+                    u.UserName,
+                    u.Email,
+                    u.Phone,
+                    u.Role,
+                    u.IsLocked
+                })
+                .ToListAsync();
+
+            return Ok(users);
+        }
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteUser(int id)
         {
@@ -123,9 +146,7 @@ namespace BookApi.Controllers
 
             return Ok(new { message = "Xóa thành công!" });
         }
-    }
-}
-        /*[HttpPut("lock/{id}")]
+        [HttpPut("lock/{id}")]
         public async Task<IActionResult> LockUser(int id)
         {
             var user = await _context.Users.FindAsync(id);
@@ -147,4 +168,7 @@ namespace BookApi.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "Mở khóa người dùng thành công!" });
-        }*/
+        }
+    }
+}
+        

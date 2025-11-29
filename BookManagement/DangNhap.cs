@@ -43,22 +43,29 @@ namespace BookManagement
                 try
                 {
                     HttpResponseMessage response = await client.PostAsync(apiLoginUrl, content);
-
-                    if (!response.IsSuccessStatusCode)
-                    {
-                        MessageBox.Show("Tên đăng nhập/email hoặc mật khẩu không đúng!");
-                        return;
-                    }
-
-                    // Lấy JSON trả về từ server
                     string resultJson = await response.Content.ReadAsStringAsync();
-
-                    // Parse JSON thành object
                     dynamic result = JsonConvert.DeserializeObject(resultJson);
 
-                    bool isLocked = result.isLocked;
+                    // Xử lý khi không thành công (401, 400...)
+                    if (!response.IsSuccessStatusCode)
+                    {
+                        bool isLocked = false;
+                        bool.TryParse(result?.isLocked?.ToString(), out isLocked);
 
-                    if (isLocked)
+                        if (isLocked)
+                        {
+                            MessageBox.Show("Tài khoản của bạn đã bị khóa. Vui lòng liên hệ Admin!");
+                        }
+                        else
+                        {
+                            string message = result?.message?.ToString() ?? "Tên đăng nhập/email hoặc mật khẩu không đúng!";
+                            MessageBox.Show(message);
+                        }
+                        return;
+                    }
+                    bool accountLocked = false;
+                    bool.TryParse(result?.isLocked?.ToString(), out accountLocked);
+                    if (accountLocked)
                     {
                         MessageBox.Show("Tài khoản của bạn đã bị khóa. Vui lòng liên hệ Admin!");
                         return;

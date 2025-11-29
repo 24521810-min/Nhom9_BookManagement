@@ -32,9 +32,9 @@
             this.btnQuanLyNguoiDung = new System.Windows.Forms.Button();
             this.btnQuanLyQuyenGop = new System.Windows.Forms.Button();
             this.btnQuanLyMuonTra = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.btnDangXuat = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDangXuat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -107,16 +107,17 @@
             this.btnQuanLyMuonTra.UseVisualStyleBackColor = false;
             this.btnQuanLyMuonTra.Click += new System.EventHandler(this.btnQuanLyMuonTra_Click);
             // 
-            // pictureBox2
+            // btnDangXuat
             // 
-            this.pictureBox2.Image = global::BookManagement.Properties.Resources.dangxuat_removebg_preview;
-            this.pictureBox2.Location = new System.Drawing.Point(834, 582);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(105, 78);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 6;
-            this.pictureBox2.TabStop = false;
+            this.btnDangXuat.Image = global::BookManagement.Properties.Resources.dangxuat_removebg_preview;
+            this.btnDangXuat.Location = new System.Drawing.Point(834, 582);
+            this.btnDangXuat.Margin = new System.Windows.Forms.Padding(2);
+            this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.Size = new System.Drawing.Size(105, 78);
+            this.btnDangXuat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.btnDangXuat.TabIndex = 6;
+            this.btnDangXuat.TabStop = false;
+            this.btnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
             // 
             // pictureBox1
             // 
@@ -135,7 +136,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Tan;
             this.ClientSize = new System.Drawing.Size(938, 662);
-            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.btnDangXuat);
             this.Controls.Add(this.btnQuanLyMuonTra);
             this.Controls.Add(this.btnQuanLyQuyenGop);
             this.Controls.Add(this.btnQuanLyNguoiDung);
@@ -146,7 +147,7 @@
             this.Name = "Admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnDangXuat)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -160,6 +161,6 @@
         private System.Windows.Forms.Button btnQuanLyNguoiDung;
         private System.Windows.Forms.Button btnQuanLyQuyenGop;
         private System.Windows.Forms.Button btnQuanLyMuonTra;
-        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox btnDangXuat;
     }
 }
