@@ -28,6 +28,7 @@ namespace BookManagement
         private async void button_guiyc_Click(object sender, EventArgs e)
         {
             string tenSach = textBox_tensach.Text.Trim();
+            string loaiSach = txtLoaiSach.Text.Trim();
             string tacGia = textBox_tacgia.Text.Trim();
             string soLuongStr = textBox_sluong.Text.Trim();
             string tinhTrang = textBox_tt.Text.Trim();
@@ -53,6 +54,7 @@ namespace BookManagement
             {
                 IDUser = idUser,
                 TenSach = tenSach,
+                LoaiSach = loaiSach,
                 TacGia = tacGia,
                 SoLuong = soLuong,
                 TinhTrang = tinhTrang,
@@ -85,6 +87,7 @@ namespace BookManagement
         private void ClearForm()
         {
             textBox_tensach.Clear();
+            txtLoaiSach.Clear();
             textBox_tacgia.Clear();
             textBox_sluong.Clear();
             textBox_tt.Clear();
@@ -124,6 +127,7 @@ namespace BookManagement
                     bangds.Rows.Add(
                         stt++,
                         item.TenSach,
+                        item.LoaiSach,
                         item.TacGia,
                         item.SoLuong,
                         item.NgayQuyenGop.ToString("dd/MM/yyyy"),

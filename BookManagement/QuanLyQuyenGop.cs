@@ -21,7 +21,6 @@ namespace BookManagement
 
             Load += QuanLyQuyenGop_Load;
 
-            button6.Click += BtnQuyenGop_Click;   // Quyên góp
             button7.Click += BtnXem_Click;        // Xem danh sách Quyên Góp
             button8.Click += (s, e) => Close();   // Thoát
         }
@@ -39,73 +38,74 @@ namespace BookManagement
             try
             {
                 var list = await _client.GetFromJsonAsync<List<QuyenGop>>("api/QuyenGop");
-                dataGridView1.DataSource = list;
+                dsQuyengop.DataSource = list;
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi load danh sách Quyên Góp: " + ex.Message);
             }
         }
-
         private async void BtnXem_Click(object sender, EventArgs e)
         {
             await LoadDanhSachQuyenGop();
         }
 
-        // =======================================================
-        // 2. NÚT QUYÊN GÓP
-        // =======================================================
-        private async void BtnQuyenGop_Click(object sender, EventArgs e)
+        private async void btnDuyet_Click(object sender, EventArgs e)
         {
+            await HandleDonationAction("duyet");
+        }
+
+        private async void btnTuchoi_Click(object sender, EventArgs e)
+        {
+            await HandleDonationAction("tuchoi");
+        }
+        private async Task HandleDonationAction(string action)
+        {
+            if (dsQuyengop.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn một mục quyên góp để xử lý.", "Cảnh báo");
+                return;
+            }
+            var selectedItem = dsQuyengop.SelectedRows[0].DataBoundItem as QuyenGop;
+
+            if (selectedItem == null)
+            {
+                MessageBox.Show("Không đọc được dữ liệu của dòng đã chọn.");
+                return;
+            }
+            int idQuyenGop = selectedItem.IDQuyenGop;
+
+            string actionDisplay = action == "duyet" ? "DUYỆT" : "TỪ CHỐI";
+
+            if (MessageBox.Show($"Bạn có chắc chắn muốn {actionDisplay} tài khoản này không?",
+                                "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
+            {
+                return;
+            }
+            btnDuyet.Enabled = btnTuchoi.Enabled = false;
             try
             {
-                if (string.IsNullOrWhiteSpace(textBox4.Text))
-                {
-                    MessageBox.Show("Vui lòng nhập Họ Tên người quyên góp!");
-                    return;
-                }
-
-                if (!int.TryParse(txtMaSach.Text, out int idSach))
-                {
-                    MessageBox.Show("Mã sách không hợp lệ!");
-                    return;
-                }
-
-                var sach = await _client.GetFromJsonAsync<Sach>($"api/Sach/{idSach}");
-                if (sach == null)
-                {
-                    MessageBox.Show("Không tìm thấy sách!");
-                    return;
-                }
-
-                // Lấy tên tác giả
-                string tacGia = sach.TacGia?.HoTen ?? "Không rõ";
-
-                var model = new QuyenGop
-                {
-                    IDUser = 1,                 // tạm user 1
-                    TenSach = sach.TenSach,
-                    TacGia = tacGia,
-                    SoLuong = 1,
-                    NgayQuyenGop = DateTime.Now,
-                    TrangThai = "Đã tiếp nhận"
-                };
-
-                var res = await _client.PostAsJsonAsync("api/QuyenGop", model);
+                HttpResponseMessage res = await _client.PutAsync($"api/QuyenGop/{action}/{idQuyenGop}", null);
 
                 if (res.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("✔ Quyên góp thành công!");
-                    await LoadDanhSachQuyenGop();   // 🔥 load lại bảng ngay lập tức
+                    MessageBox.Show($"{actionDisplay} quyên góp ID {idQuyenGop} thành công! Email thông báo đã được gửi.", "Thành công");
+
+                    await LoadDanhSachQuyenGop();
                 }
                 else
                 {
-                    MessageBox.Show("API lỗi: " + res.StatusCode);
+                    string errorContent = await res.Content.ReadAsStringAsync();
+                    MessageBox.Show($"Lỗi API ({res.StatusCode}): {errorContent}", "Lỗi Xử lý");
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi quyên góp: " + ex.Message);
+                MessageBox.Show($"Lỗi kết nối: {ex.Message}", "Lỗi Hệ thống");
+            }
+            finally
+            {
+                btnDuyet.Enabled = btnTuchoi.Enabled = true;
             }
         }
     }

@@ -88,7 +88,7 @@ namespace BookManagement
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Cannot connect to server:\n" + ex.Message);
+                    MessageBox.Show("Không thể kết nối tới server:\n" + ex.Message);
                 }
             }
         }

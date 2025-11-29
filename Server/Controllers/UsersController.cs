@@ -30,7 +30,7 @@ namespace BookApi.Controllers
             bool exists = await _context.Users.AnyAsync(x => x.UserName == model.UserName || x.Email == model.Email);
             if (exists) return BadRequest(new { message = "Username hoặc Email đã tồn tại!" });
 
-            model.PasswordHash = PasswordHelper.HashPassword(model.PasswordHash); // hash mật khẩu
+            model.PasswordHash = PasswordHelper.HashPassword(model.Password); // hash mật khẩu
 
             model.Role = "User";
             model.IsLocked = false;
@@ -67,18 +67,21 @@ namespace BookApi.Controllers
                 token
             });
         }
-
         private string GenerateJwtToken(User user)
         {
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+            var jwtKey = _config["Jwt:Key"];
+            if (string.IsNullOrEmpty(jwtKey))
+                throw new InvalidOperationException("JWT key is not configured.");
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtKey));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
             var claims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
-                new Claim("role", user.Role),
-                new Claim("id", user.IDUser.ToString())
-            };
+        new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
+        new Claim("role", user.Role),
+        new Claim("id", user.IDUser.ToString())
+    };
 
             var token = new JwtSecurityToken(
                 issuer: _config["Jwt:Issuer"],
@@ -90,7 +93,6 @@ namespace BookApi.Controllers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateUser(int id, User model)
         {

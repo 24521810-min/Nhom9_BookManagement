@@ -62,7 +62,7 @@ namespace BookManagement
 
                     if (response.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Sign up successfully!");
+                        MessageBox.Show("Đăng ký thành công!");
 
                         // Mở form login
                         DangNhap login = new DangNhap();
