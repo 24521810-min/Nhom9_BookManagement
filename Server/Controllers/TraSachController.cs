@@ -20,70 +20,135 @@ namespace BookApi.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
-            var data = await _context.TraSach
-                .Include(t => t.User)
-                .Include(t => t.MuonSach)
-                .ToListAsync();
+            try
+            {
+                var data = await _context.TraSach
+                    .Include(t => t.MuonSach)
+                    .ToListAsync();
 
-            return Ok(data);
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.ToString());
+            }
         }
 
         // GET: api/TraSach/5
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var item = await _context.TraSach
-                .Include(t => t.User)
-                .Include(t => t.MuonSach)
-                .FirstOrDefaultAsync(t => t.IDTra == id);
+            try
+            {
+                var item = await _context.TraSach
+                    .Include(t => t.MuonSach)
+                    .FirstOrDefaultAsync(t => t.IDTra == id);
 
-            if (item == null)
-                return NotFound();
+                if (item == null)
+                    return NotFound();
 
-            return Ok(item);
+                return Ok(item);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.ToString());
+            }
         }
 
+        // POST: api/TraSach
         // POST: api/TraSach
         [HttpPost]
         public async Task<IActionResult> Create(TraSach model)
         {
-            _context.TraSach.Add(model);
-            await _context.SaveChangesAsync();
-            return Ok(model);
+            try
+            {
+                _context.TraSach.Add(model);
+                await _context.SaveChangesAsync();
+
+                return Ok(new { message = "Đã gửi yêu cầu trả sách thành công!" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.ToString());
+            }
         }
+
+
 
         // PUT: api/TraSach/5
-        [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, TraSach model)
+        // PUT: api/TraSach/duyet/{id}
+        // PUT: api/TraSach/duyet/5
+        [HttpPut("duyet/{id}")]
+        public async Task<IActionResult> DuyetTra(int id)
         {
-            var item = await _context.TraSach.FindAsync(id);
+            try
+            {
+                // 1. Lấy yêu cầu trả sách
+                var tra = await _context.TraSach.FindAsync(id);
+                if (tra == null)
+                    return NotFound(new { message = "Không tìm thấy yêu cầu trả sách." });
 
-            if (item == null)
-                return NotFound();
+                // 2. Lấy phiếu mượn
+                var muon = await _context.MuonSach.FindAsync(tra.IDMuon);
+                if (muon == null)
+                    return BadRequest(new { message = "Không tìm thấy phiếu mượn." });
 
-            item.IDMuon = model.IDMuon;
-            item.IDUser = model.IDUser;
-            item.NgayTra = model.NgayTra;
-            item.TinhTrang = model.TinhTrang;
-            item.GhiChu = model.GhiChu;
+                // 3. Lấy sách
+                var sach = await _context.Sach.FindAsync(muon.IDSach);
+                if (sach == null)
+                    return BadRequest(new { message = "Không tìm thấy sách." });
 
-            await _context.SaveChangesAsync();
-            return Ok(item);
+                // 4. Cập nhật trạng thái mượn + số lượng sách
+                muon.TrangThai = "DaTra";
+                sach.SoLuong += 1;
+
+                await _context.SaveChangesAsync();
+
+                // 5. Gửi email cho user
+                var user = await _context.Users.FindAsync(muon.IDUser);
+                if (user != null)
+                {
+                    string subject = "Xác nhận trả sách thành công";
+                    string body = $@"
+                <h3>Chào {user.FullName},</h3>
+                <p>Yêu cầu trả sách của bạn đã được <b>DUYỆT</b>.</p>
+                <p><b>Mã sách:</b> {muon.IDSach}<br>
+                   <b>Ngày trả:</b> {tra.NgayTra:dd/MM/yyyy}</p>
+                <p>Cảm ơn bạn đã sử dụng thư viện!</p>";
+
+                    await EmailHelper.SendMailAsync(user.Email, subject, body);
+                }
+
+                return Ok(new { message = "Đã duyệt trả sách + cập nhật số lượng + gửi email thành công!" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.ToString());
+            }
         }
+
+
 
         // DELETE: api/TraSach/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
-            var item = await _context.TraSach.FindAsync(id);
+            try
+            {
+                var item = await _context.TraSach.FindAsync(id);
 
-            if (item == null)
-                return NotFound();
+                if (item == null)
+                    return NotFound();
 
-            _context.TraSach.Remove(item);
-            await _context.SaveChangesAsync();
+                _context.TraSach.Remove(item);
+                await _context.SaveChangesAsync();
 
-            return Ok();
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.ToString());
+            }
         }
     }
 }

@@ -1,15 +1,12 @@
-﻿using BookApi.Models;
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;   
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 public class MuonSach
 {
     [Key]
     public int IDMuon { get; set; }
 
-    // NÓI RÕ: IDUser là FK của navigation User
-    [ForeignKey(nameof(User))]
-    public int IDUser { get; set; }
+    public int IDUser { get; set; }  // chỉ giữ IDUser
 
     [ForeignKey(nameof(Sach))]
     public int IDSach { get; set; }
@@ -19,7 +16,5 @@ public class MuonSach
 
     public string TrangThai { get; set; } = string.Empty;
 
-    // Navigation
-    public User? User { get; set; }
-    public Sach? Sach { get; set; }
+    public Sach? Sach { get; set; }   // giữ navigation Sách là đúng
 }

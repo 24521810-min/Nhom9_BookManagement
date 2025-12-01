@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -29,8 +30,8 @@ namespace BookManagement
             button_quyengop.Click += button_quyengop_Click;
 
             // Nút xử lý trả sách
-            button_guiyc.Click += button_guiyc_Click;     // Gửi yêu cầu
-            button_trasach.Click += button_guiyc_Click;   
+            button_guiyc.Click += button_guiyc_Click;  // gửi yêu cầu
+            button_trasach.Click += button_trasach_Click; // chỉ load thông tin
             button_huy.Click += button_huy_Click;
 
             // Chọn dòng trong bảng
@@ -68,11 +69,13 @@ namespace BookManagement
                     foreach (var x in all)
                     {
                         if (x.IDUser == currentUserId &&
-                            !string.Equals(x.TrangThai, "DaTra", StringComparison.OrdinalIgnoreCase))
+                            !string.Equals(x.TrangThai, "DaTra", StringComparison.OrdinalIgnoreCase) &&
+                            !string.Equals(x.TrangThai, "TuChoi", StringComparison.OrdinalIgnoreCase))
                         {
                             list.Add(x);
                         }
                     }
+
 
                     bangds.Rows.Clear();
                     int stt = 1;
@@ -121,32 +124,28 @@ namespace BookManagement
         {
             if (bangds.SelectedRows.Count == 0)
             {
-                MessageBox.Show("Vui lòng chọn một sách muốn trả trong bảng.");
+                MessageBox.Show("Vui lòng chọn một sách muốn trả.");
                 return;
             }
 
             var row = bangds.SelectedRows[0];
             var m = row.Tag as MuonSachItem;
+
             if (m == null)
             {
                 MessageBox.Show("Không lấy được thông tin mượn sách.");
                 return;
             }
 
-            // Ngày trả thực tế người dùng chọn
-            DateTime ngayTraThucTe = dateTimePicker_trathucte.Value;
+            // KHÔNG được gán "DaTra" ở đây
+            // Vì user CHỈ gửi yêu cầu, admin mới duyệt
 
-            m.NgayTraDuKien = ngayTraThucTe;
-            m.TrangThai = "DaTra";   // đánh dấu đã trả
-
-            var update = new MuonSachUpdateDto
+            var traModel = new
             {
                 IDMuon = m.IDMuon,
-                IDUser = m.IDUser,
-                IDSach = m.IDSach,
-                NgayMuon = m.NgayMuon,
-                NgayTraDuKien = m.NgayTraDuKien,
-                TrangThai = m.TrangThai
+                NgayTra = dateTimePicker_trathucte.Value,
+                TinhTrang = "TraBinhThuong",
+                GhiChu = ""
             };
 
             try
@@ -155,21 +154,17 @@ namespace BookManagement
                 {
                     client.BaseAddress = new Uri(baseAddress);
 
-                    string json = JsonConvert.SerializeObject(update);
-                    var content = new StringContent(json, Encoding.UTF8, "application/json");
-
-                    var response = await client.PutAsync($"/api/MuonSach/{m.IDMuon}", content);
+                    var response = await client.PostAsJsonAsync("/api/TraSach", traModel);
 
                     if (response.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Trả sách thành công!");
-                        await LoadSachDangMuonAsync();
+                        MessageBox.Show("Gửi yêu cầu trả sách THÀNH CÔNG!\nVui lòng chờ admin duyệt.");
                         ClearForm();
                     }
                     else
                     {
                         string err = await response.Content.ReadAsStringAsync();
-                        MessageBox.Show("Trả sách thất bại:\n" + response.StatusCode + "\n" + err);
+                        MessageBox.Show("Gửi yêu cầu thất bại:\n" + response.StatusCode + "\n" + err);
                     }
                 }
             }
@@ -178,6 +173,7 @@ namespace BookManagement
                 MessageBox.Show("Lỗi khi gửi yêu cầu trả sách:\n" + ex.Message);
             }
         }
+
 
         private void button_huy_Click(object sender, EventArgs e)
         {
@@ -286,6 +282,30 @@ namespace BookManagement
             DangNhap dn = new DangNhap();
             dn.Show();
             this.Hide();
+        }
+        private void button_trasach_Click(object sender, EventArgs e)
+        {
+            if (bangds.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Hãy chọn sách muốn trả trong danh sách bên trái.");
+                return;
+            }
+
+            var row = bangds.SelectedRows[0];
+            var m = row.Tag as MuonSachItem;
+            if (m == null)
+            {
+                MessageBox.Show("Không lấy được thông tin sách.");
+                return;
+            }
+
+            // Fill thông tin vào bảng nâu
+            textBox_tensach.Text = m.Sach?.TenSach ?? "";
+            textBox_masach.Text = m.IDSach.ToString();
+            textBox_soluong.Text = "1";
+            dateTimePicker_ngaymuon.Value = m.NgayMuon;
+            dateTimePicker_tradukien.Value = m.NgayTraDuKien;
+            dateTimePicker_trathucte.Value = DateTime.Now;
         }
 
     }

@@ -171,7 +171,7 @@
             this.textBox_timkiem.Name = "textBox_timkiem";
             this.textBox_timkiem.Size = new System.Drawing.Size(460, 37);
             this.textBox_timkiem.TabIndex = 17;
-            this.textBox_timkiem.Click += new System.EventHandler(this.textBox_timkiem_TextChanged);
+           
             // 
             // label_ds
             // 
@@ -282,7 +282,7 @@
             this.button_muonsach.TabIndex = 24;
             this.button_muonsach.Text = "Mượn sách";
             this.button_muonsach.UseVisualStyleBackColor = false;
-            this.button_muonsach.Click += new System.EventHandler(this.button_muonsach_Click);
+            
             // 
             // STT
             // 
@@ -364,7 +364,7 @@
             this.Name = "Muonsach";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mượn Sách";
-            this.Load += new System.EventHandler(this.MuonSach_Load);
+            
             ((System.ComponentModel.ISupportInitialize)(this.bangds)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

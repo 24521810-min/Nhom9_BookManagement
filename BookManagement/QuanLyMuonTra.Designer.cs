@@ -76,6 +76,7 @@
             this.cmbMaSach = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabControlKhoSach = new System.Windows.Forms.TabControl();
+            this.btTuChoi = new System.Windows.Forms.Button();
             this.tabPageTraSach.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
@@ -316,6 +317,7 @@
             // tabPageMuonSach
             // 
             this.tabPageMuonSach.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.tabPageMuonSach.Controls.Add(this.btTuChoi);
             this.tabPageMuonSach.Controls.Add(this.button8);
             this.tabPageMuonSach.Controls.Add(this.button7);
             this.tabPageMuonSach.Controls.Add(this.button6);
@@ -334,7 +336,7 @@
             // button8
             // 
             this.button8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(818, 183);
+            this.button8.Location = new System.Drawing.Point(818, 220);
             this.button8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(145, 50);
@@ -345,7 +347,7 @@
             // button7
             // 
             this.button7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.Location = new System.Drawing.Point(818, 110);
+            this.button7.Location = new System.Drawing.Point(818, 100);
             this.button7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(145, 50);
@@ -356,7 +358,7 @@
             // button6
             // 
             this.button6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.Location = new System.Drawing.Point(818, 40);
+            this.button6.Location = new System.Drawing.Point(818, 43);
             this.button6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(145, 50);
@@ -597,7 +599,6 @@
             this.label3.Size = new System.Drawing.Size(95, 22);
             this.label3.TabIndex = 14;
             this.label3.Text = "Loại Sách:";
-           
             // 
             // txtMaSach
             // 
@@ -653,6 +654,17 @@
             this.tabControlKhoSach.SelectedIndex = 0;
             this.tabControlKhoSach.Size = new System.Drawing.Size(993, 507);
             this.tabControlKhoSach.TabIndex = 1;
+            // 
+            // btTuChoi
+            // 
+            this.btTuChoi.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btTuChoi.Location = new System.Drawing.Point(818, 161);
+            this.btTuChoi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btTuChoi.Name = "btTuChoi";
+            this.btTuChoi.Size = new System.Drawing.Size(145, 50);
+            this.btTuChoi.TabIndex = 15;
+            this.btTuChoi.Text = "Từ Chối";
+            this.btTuChoi.UseVisualStyleBackColor = true;
             // 
             // QuanLyMuonTra
             // 
@@ -731,5 +743,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox cmbMaSach;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btTuChoi;
     }
 }

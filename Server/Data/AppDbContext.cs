@@ -20,7 +20,7 @@ namespace BookApi.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // ====== Bảng Sách ======
+            // ====== Sách ======
             modelBuilder.Entity<Sach>()
                 .ToTable("Sach");
 
@@ -30,25 +30,43 @@ namespace BookApi.Data
             modelBuilder.Entity<Sach>()
                 .HasOne(s => s.TacGia)
                 .WithMany(t => t.Sachs)
-                .HasForeignKey(s => s.IDTacGia)
-                .HasConstraintName("FK_Sach_TacGia");
+                .HasForeignKey(s => s.IDTacGia);
 
             modelBuilder.Entity<Sach>()
                 .HasOne(s => s.LoaiSach)
                 .WithMany(l => l.Sachs)
-                .HasForeignKey(s => s.IDLoaiSach)
-                .HasConstraintName("FK_Sach_LoaiSach");
+                .HasForeignKey(s => s.IDLoaiSach);
 
-            // ====== Bảng User ======
+            // ====== User ======
             modelBuilder.Entity<User>()
                 .HasKey(u => u.IDUser);
 
-            // ====== Quan hệ Quyên góp ======
+            // FIX toàn bộ quan hệ lỗi từ User → MuonSach, TraSach
+            modelBuilder.Entity<User>()
+                .Ignore(u => u.TraSachs);
+
+            modelBuilder.Entity<User>()
+                .Ignore(u => u.MuonSachs);
+
+            // ====== QuyenGop ======
             modelBuilder.Entity<QuyenGop>()
                 .HasOne(q => q.User)
                 .WithMany(u => u.QuyenGops)
-                .HasForeignKey(q => q.IDUser)
-                .HasConstraintName("FK_QuyenGop_User");
+                .HasForeignKey(q => q.IDUser);
+
+            // ====== TraSach -> MuonSach ======
+            modelBuilder.Entity<TraSach>()
+                .HasOne(t => t.MuonSach)
+                .WithMany()
+                .HasForeignKey(t => t.IDMuon);
+
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<TraSach>()
+    .HasOne(t => t.MuonSach)
+    .WithMany()                  // KHÔNG có navigation ngược bên MuonSach
+    .HasForeignKey(t => t.IDMuon)
+    .OnDelete(DeleteBehavior.Restrict); // tránh lỗi vòng xoá
+
         }
     }
 }

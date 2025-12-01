@@ -10,5 +10,7 @@ namespace BookManagement.Models
         public DateTime NgayMuon { get; set; }
         public DateTime NgayTraDuKien { get; set; }
         public string TrangThai { get; set; }
+  
+
     }
 }
