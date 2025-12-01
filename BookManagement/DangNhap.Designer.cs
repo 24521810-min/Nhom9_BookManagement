@@ -57,6 +57,7 @@ namespace BookManagement
             this.btnLogin.TabIndex = 46;
             this.btnLogin.Text = "LOG IN";
             this.btnLogin.UseVisualStyleBackColor = false;
+            this.btnLogin.Click += new System.EventHandler(this.BtnLogin_Click);
             // 
             // label5
             // 

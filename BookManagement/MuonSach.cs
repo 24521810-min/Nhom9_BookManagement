@@ -18,7 +18,7 @@ namespace BookManagement
         public Muonsach()
         {
             InitializeComponent();
-            currentUserId = Program.LoggedUserID;
+            currentUserId = AuthSession.UserId;
             this.Load += MuonSach_Load;
         }
 
@@ -217,11 +217,6 @@ namespace BookManagement
         }
         // ====== BỔ SUNG HÀM CHO DESIGNER GỌI (SỬA LỖI CS1061) ======
 
-        private void button_TrangChu_Click_1(object sender, EventArgs e)
-        {
-            button_TrangChu_Click(sender, e);
-        }
-
         private void button_DXuat_Click(object sender, EventArgs e)
         {
             button_DangXuat_Click(sender, e);
@@ -249,6 +244,13 @@ namespace BookManagement
             public DateTime NgayMuon { get; set; }
             public DateTime NgayTraDuKien { get; set; }
             public string TrangThai { get; set; }
+        }
+
+        private void button_HSDKy_Click(object sender, EventArgs e)
+        {
+            HoSoDKi hs = new HoSoDKi();
+            hs.Show();
+            this.Hide();
         }
     }
 }

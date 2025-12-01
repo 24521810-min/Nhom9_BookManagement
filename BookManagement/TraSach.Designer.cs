@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_kedoc = new System.Windows.Forms.Panel();
             this.panel_thanhngang = new System.Windows.Forms.Panel();
             this.button_Tra = new System.Windows.Forms.Button();
@@ -111,7 +111,6 @@
             this.button_TrangChu.Text = "TRANG CHỦ";
             this.button_TrangChu.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
             this.button_TrangChu.UseVisualStyleBackColor = true;
-            this.button_TrangChu.Click += new System.EventHandler(this.button_TrangChu_Click_1);
             // 
             // button_HSDKy
             // 
@@ -125,6 +124,7 @@
             this.button_HSDKy.TabIndex = 21;
             this.button_HSDKy.Text = "Hồ sơ đăng ký";
             this.button_HSDKy.UseVisualStyleBackColor = true;
+            this.button_HSDKy.Click += new System.EventHandler(this.button_HSDKy_Click);
             // 
             // button_DXuat
             // 
@@ -138,7 +138,6 @@
             this.button_DXuat.TabIndex = 20;
             this.button_DXuat.Text = "Đăng xuất";
             this.button_DXuat.UseVisualStyleBackColor = true;
-            this.button_DXuat.Click += new System.EventHandler(this.button_DXuat_Click_1);
             // 
             // button_quyengop
             // 
@@ -152,7 +151,6 @@
             this.button_quyengop.TabIndex = 23;
             this.button_quyengop.Text = "QUYÊN GÓP SÁCH";
             this.button_quyengop.UseVisualStyleBackColor = true;
-            this.button_quyengop.Click += new System.EventHandler(this.button_quyengop_Click_1);
             // 
             // button_Muon
             // 
@@ -166,7 +164,6 @@
             this.button_Muon.TabIndex = 24;
             this.button_Muon.Text = "MƯỢN SÁCH";
             this.button_Muon.UseVisualStyleBackColor = true;
-            this.button_Muon.Click += new System.EventHandler(this.button_Muon_Click_1);
             // 
             // label_danhsach
             // 
@@ -180,14 +177,14 @@
             // 
             // bangds
             // 
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.bangds.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.bangds.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.bangds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.bangds.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.STT,
@@ -281,7 +278,7 @@
             this.dateTimePicker_trathucte.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker_trathucte.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_trathucte.Location = new System.Drawing.Point(199, 245);
-            this.dateTimePicker_trathucte.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker_trathucte.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker_trathucte.Name = "dateTimePicker_trathucte";
             this.dateTimePicker_trathucte.Size = new System.Drawing.Size(255, 34);
             this.dateTimePicker_trathucte.TabIndex = 32;
@@ -292,7 +289,7 @@
             this.dateTimePicker_tradukien.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker_tradukien.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_tradukien.Location = new System.Drawing.Point(199, 198);
-            this.dateTimePicker_tradukien.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker_tradukien.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker_tradukien.Name = "dateTimePicker_tradukien";
             this.dateTimePicker_tradukien.Size = new System.Drawing.Size(255, 34);
             this.dateTimePicker_tradukien.TabIndex = 31;
@@ -303,7 +300,7 @@
             this.dateTimePicker_ngaymuon.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dateTimePicker_ngaymuon.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_ngaymuon.Location = new System.Drawing.Point(199, 153);
-            this.dateTimePicker_ngaymuon.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker_ngaymuon.Margin = new System.Windows.Forms.Padding(4);
             this.dateTimePicker_ngaymuon.Name = "dateTimePicker_ngaymuon";
             this.dateTimePicker_ngaymuon.Size = new System.Drawing.Size(255, 34);
             this.dateTimePicker_ngaymuon.TabIndex = 30;
@@ -457,7 +454,7 @@
             this.Controls.Add(this.button_HSDKy);
             this.Controls.Add(this.button_DXuat);
             this.Controls.Add(this.button_quyengop);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Trasach";
             this.Text = "Trả Sách";
             ((System.ComponentModel.ISupportInitialize)(this.bangds)).EndInit();

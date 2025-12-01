@@ -48,7 +48,8 @@ namespace BookManagement
             }
 
             // Lấy ID user đang đăng nhập (bạn phải gán khi đăng nhập)
-            int idUser = Program.LoggedUserID;
+            int idUser = AuthSession.UserId;
+
 
             var model = new
             {
@@ -101,7 +102,7 @@ namespace BookManagement
 
         private async void LoadDanhSachQuyenGop()
         {
-            int idUser = Program.LoggedUserID;
+            int idUser = AuthSession.UserId;
 
             using (HttpClient client = new HttpClient())
             {
@@ -141,21 +142,23 @@ namespace BookManagement
         {
             Users f = new Users();
             f.Show();
-            this.Hide();   // Ẩn form Quyên Góp Sách
+            this.Close();  
         }
 
         private void button_DangXuat_Click(object sender, EventArgs e)
         {
-            // Khi đăng xuất thì xóa user hiện tại (nếu có dùng)
-            Program.LoggedUserID = -1;
-
-            // Mở form đăng nhập
+            AuthSession.UserId = 0;
+            AuthSession.Token = "";
             DangNhap dn = new DangNhap();
             dn.Show();
-
-            // Ẩn form hiện tại
             this.Hide();
         }
 
+        private void button_HSDKy_Click(object sender, EventArgs e)
+        {
+            HoSoDKi hs = new HoSoDKi();
+            hs.Show();
+            this.Hide();
+        }
     }
 }

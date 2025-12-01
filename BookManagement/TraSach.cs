@@ -18,7 +18,8 @@ namespace BookManagement
         {
             InitializeComponent();
 
-            currentUserId = Program.LoggedUserID;   // user đang đăng nhập
+            currentUserId = AuthSession.UserId;
+
 
             // Sự kiện form
             this.Load += Trasach_Load;
@@ -254,35 +255,8 @@ namespace BookManagement
         {
         }
 
-        private void button_Muon_Click_1(object sender, EventArgs e)
-        {
-            Muonsach f = new Muonsach();
-            f.Show();
-            this.Hide();
-        }
-
-        private void button_TrangChu_Click_1(object sender, EventArgs e)
-        {
-            Users f = new Users();
-            f.Show();
-            this.Hide();
-        }
-
-        private void button_quyengop_Click_1(object sender, EventArgs e)
-        {
-            QuyenGopSach f = new QuyenGopSach();
-            f.Show();
-            this.Hide();
-        }
-
-        private void button_DXuat_Click_1(object sender, EventArgs e)
-        {
-            Program.LoggedUserID = -1;
-
-            DangNhap dn = new DangNhap();
-            dn.Show();
-            this.Hide();
-        }
+      
+       
         private void button_trasach_Click(object sender, EventArgs e)
         {
             if (bangds.SelectedRows.Count == 0)
@@ -308,5 +282,11 @@ namespace BookManagement
             dateTimePicker_trathucte.Value = DateTime.Now;
         }
 
+        private void button_HSDKy_Click(object sender, EventArgs e)
+        {
+            HoSoDKi hs = new HoSoDKi();
+            hs.Show();
+            this.Hide();
+        }
     }
 }

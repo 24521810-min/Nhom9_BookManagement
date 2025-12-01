@@ -10,15 +10,16 @@ namespace BookManagement
         public Users()
         {
             InitializeComponent();
-            _currentUserId = Program.LoggedUserID; // lấy từ đăng nhập
+            _currentUserId = Program.LoggedUserID;
         }
 
-        public Users(int userId) : this()
+        public Users(int userId)
         {
+            InitializeComponent();
             _currentUserId = userId;
         }
 
-        // ==== MƯỢN SÁCH ====
+
         private void btnMuonSach_Click(object sender, EventArgs e)
         {
             Muonsach f;
@@ -26,13 +27,12 @@ namespace BookManagement
             if (_currentUserId > 0)
                 f = new Muonsach(_currentUserId);
             else
-                f = new Muonsach();   
+                f = new Muonsach();
 
             f.Show();
             this.Hide();
         }
 
-        // ==== QUYÊN GÓP SÁCH ====
         private void btnQuyenGop_Click(object sender, EventArgs e)
         {
             QuyenGopSach qg = new QuyenGopSach();
@@ -40,7 +40,6 @@ namespace BookManagement
             this.Hide();
         }
 
-        // ==== TRẢ SÁCH ====
         private void btnTraSach_Click(object sender, EventArgs e)
         {
             Trasach t = new Trasach();
@@ -48,16 +47,14 @@ namespace BookManagement
             this.Hide();
         }
 
-        // ==== ĐĂNG XUẤT ====
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-            var confirm = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var confirm = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất không?",
+                "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
             if (confirm == DialogResult.Yes)
             {
                 Program.LoggedUserID = -1;
-
-                MessageBox.Show("Bạn đã đăng xuất!", "Thông báo");
 
                 DangNhap dn = new DangNhap();
                 dn.Show();

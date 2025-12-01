@@ -1,4 +1,5 @@
 ﻿using BookApi.Data;
+using BookApi.Dtos;
 using BookApi.Helpers;
 using BookApi.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -168,6 +169,45 @@ namespace BookApi.Controllers
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "Mở khóa người dùng thành công!" });
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetUserById(int id)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.IDUser == id);
+
+            if (user == null)
+                return NotFound();
+
+            return Ok(user);
+        }
+
+        [HttpPut("{id}/profile")]
+        public async Task<IActionResult> UpdateProfile(int id, [FromBody] UpdateProfileDto dto)
+        {
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.IDUser == id);
+            if (user == null)
+                return NotFound();
+
+            // Có thể check quyền ở đây (user chỉ được sửa profile của chính mình)
+
+            user.FullName = dto.FullName;
+            user.Email = dto.Email;
+            user.Phone = dto.Phone;
+            user.BirthDate = dto.BirthDate;
+            user.Gender = dto.Gender;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateException ex)
+            {
+                // Ví dụ email bị trùng unique constraint
+                return BadRequest(new { message = ex.Message });
+            }
+
+            return NoContent();
         }
     }
 }

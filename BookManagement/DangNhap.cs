@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Net.Http;
 using System.Text;
 using Newtonsoft.Json;
@@ -13,7 +14,6 @@ namespace BookManagement
         public DangNhap()
         {
             InitializeComponent();
-            btnLogin.Click += BtnLogin_Click;
         }
 
         private async void BtnLogin_Click(object sender, EventArgs e)
@@ -72,11 +72,12 @@ namespace BookManagement
                     }
 
                     // Lưu ID người dùng
-                    Program.LoggedUserID = (int)result.idUser;
+                    AuthSession.UserId = (int)result.idUser;
+                    AuthSession.Token = (string)result.token;   
                     string name = (string)result.fullName;
                     string role = (string)result.role;
 
-                    MessageBox.Show($"Chào mừng bạn trở lại, {name}!");
+                    MessageBox.Show($"Chào mừng bạn, {name}!");
 
                     if (role == "Admin")
                     {

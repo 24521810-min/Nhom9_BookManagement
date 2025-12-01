@@ -102,6 +102,7 @@
     <Compile Include="Admin.Designer.cs">
       <DependentUpon>Admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="AuthSession.cs" />
     <Compile Include="HoSoDKi.cs">
       <SubType>Form</SubType>
     </Compile>

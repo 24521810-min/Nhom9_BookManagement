@@ -29,14 +29,14 @@ namespace BookManagement
             if (fullname == "" || username == "" || email == "" ||
                 password == "" || confirm == "")
             {
-                MessageBox.Show("Please fill in all required fields!");
+                MessageBox.Show("Vui lòng điền đầy đủ thông tin!");
                 return;
             }
 
             // Kiểm tra khớp mật khẩu
             if (password != confirm)
             {
-                MessageBox.Show("Passwords do not match!");
+                MessageBox.Show("Mật khẩu không trùng khớp!");
                 return;
             }
 
@@ -72,12 +72,12 @@ namespace BookManagement
                     else
                     {
                         string msg = await response.Content.ReadAsStringAsync();
-                        MessageBox.Show("Sign up failed:\n" + msg);
+                        MessageBox.Show("Đăng ký thất bại:\n" + msg);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error connecting to server:\n" + ex.Message);
+                    MessageBox.Show("Không thể kết nối với server:\n" + ex.Message);
                 }
             }
         }

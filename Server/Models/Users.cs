@@ -21,5 +21,8 @@ namespace BookApi.Models
         public ICollection<MuonSach>? MuonSachs { get; set; }
         public ICollection<TraSach>? TraSachs { get; set; }
         public ICollection<QuyenGop>? QuyenGops { get; set; }
+
+        public DateTime? BirthDate { get; set; }
+        public string? Gender { get; set; }
     }
 }
