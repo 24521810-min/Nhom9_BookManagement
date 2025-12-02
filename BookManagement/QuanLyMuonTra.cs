@@ -32,10 +32,6 @@ namespace BookManagement
             // Sự kiện TRẢ
             btnTraSach.Click += BtnTraSach_Click;
 
-            // Sự kiện THOÁT
-            button8.Click += BtnThoat_Click;
-            btnExit.Click += BtnThoat_Click;
-
             //sự kiện từ chối
             btTuChoi.Click += BtTuChoi_Click;
 
@@ -293,5 +289,18 @@ namespace BookManagement
             }
         }
 
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            var confirm = MessageBox.Show("Bạn có chắc muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm == DialogResult.Yes)
+                this.Close();
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            var confirm = MessageBox.Show("Bạn có chắc muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm == DialogResult.Yes)
+                this.Close();
+        }
     }
 }

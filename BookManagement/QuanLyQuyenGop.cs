@@ -22,7 +22,6 @@ namespace BookManagement
             Load += QuanLyQuyenGop_Load;
 
             button7.Click += BtnXem_Click;        // Xem danh sách Quyên Góp
-            button8.Click += (s, e) => Close();   // Thoát
         }
 
         // =======================================================
@@ -107,6 +106,12 @@ namespace BookManagement
             {
                 btnDuyet.Enabled = btnTuchoi.Enabled = true;
             }
+        }
+        private void btnexit_Click(object sender, EventArgs e)
+        {
+            var confirm = MessageBox.Show("Bạn có chắc muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (confirm == DialogResult.Yes)
+                this.Close();
         }
     }
 }

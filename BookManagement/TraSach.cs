@@ -26,7 +26,6 @@ namespace BookManagement
 
             // Điều hướng
             button_TrangChu.Click += button_TrangChu_Click;
-            button_DXuat.Click += button_DXuat_Click;
             button_Muon.Click += button_Muon_Click;
             button_quyengop.Click += button_quyengop_Click;
 
@@ -212,15 +211,20 @@ namespace BookManagement
             f.Show();
             this.Hide();
         }
-
         private void button_DXuat_Click(object sender, EventArgs e)
         {
-            Program.LoggedUserID = -1;
-            DangNhap dn = new DangNhap();
-            dn.Show();
-            this.Hide();
-        }
+            var confirm = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất không?",
+                "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
+            if (confirm == DialogResult.Yes)
+            {
+                Program.LoggedUserID = -1;
+
+                DangNhap dn = new DangNhap();
+                dn.Show();
+                this.Hide();
+            }
+        }
         // =============== DTO PHÙ HỢP VỚI API ===============
         private class MuonSachItem
         {
@@ -248,14 +252,7 @@ namespace BookManagement
             public DateTime NgayMuon { get; set; }
             public DateTime NgayTraDuKien { get; set; }
             public string TrangThai { get; set; } = string.Empty;
-        }
-
-       
-        private void panel_thongtin_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-      
+        }            
        
         private void button_trasach_Click(object sender, EventArgs e)
         {
@@ -287,6 +284,6 @@ namespace BookManagement
             HoSoDKi hs = new HoSoDKi();
             hs.Show();
             this.Hide();
-        }
+        }   
     }
 }

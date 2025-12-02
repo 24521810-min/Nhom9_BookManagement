@@ -144,14 +144,33 @@ namespace BookManagement
             f.Show();
             this.Close();  
         }
+        private void button_Muon_Click(object sender, EventArgs e)
+        {
+            Muonsach f = new Muonsach();
+            f.Show();
+            this.Hide();
+        }
+
+        private void button_Tra_Click(object sender, EventArgs e)
+        {
+            Trasach f = new Trasach();
+            f.Show();
+            this.Hide();
+        }
 
         private void button_DangXuat_Click(object sender, EventArgs e)
         {
-            AuthSession.UserId = 0;
-            AuthSession.Token = "";
-            DangNhap dn = new DangNhap();
-            dn.Show();
-            this.Hide();
+            var confirm = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất không?",
+                "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.Yes)
+            {
+                Program.LoggedUserID = -1;
+
+                DangNhap dn = new DangNhap();
+                dn.Show();
+                this.Hide();
+            }
         }
 
         private void button_HSDKy_Click(object sender, EventArgs e)
@@ -159,6 +178,6 @@ namespace BookManagement
             HoSoDKi hs = new HoSoDKi();
             hs.Show();
             this.Hide();
-        }
+        }        
     }
 }

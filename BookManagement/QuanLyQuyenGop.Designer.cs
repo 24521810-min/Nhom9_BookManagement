@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.button8 = new System.Windows.Forms.Button();
+            this.btnexit = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.btnDuyet = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -39,16 +39,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.dsQuyengop)).BeginInit();
             this.SuspendLayout();
             // 
-            // button8
+            // btnexit
             // 
-            this.button8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.Location = new System.Drawing.Point(769, 433);
-            this.button8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(163, 62);
-            this.button8.TabIndex = 20;
-            this.button8.Text = "Thoát";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnexit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnexit.Location = new System.Drawing.Point(769, 433);
+            this.btnexit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnexit.Name = "btnexit";
+            this.btnexit.Size = new System.Drawing.Size(163, 62);
+            this.btnexit.TabIndex = 20;
+            this.btnexit.Text = "Thoát";
+            this.btnexit.UseVisualStyleBackColor = true;
+            this.btnexit.Click += new System.EventHandler(this.btnexit_Click);
             // 
             // button7
             // 
@@ -119,7 +120,7 @@
             this.BackColor = System.Drawing.Color.AntiqueWhite;
             this.ClientSize = new System.Drawing.Size(1131, 557);
             this.Controls.Add(this.btnTuchoi);
-            this.Controls.Add(this.button8);
+            this.Controls.Add(this.btnexit);
             this.Controls.Add(this.button7);
             this.Controls.Add(this.btnDuyet);
             this.Controls.Add(this.groupBox4);
@@ -134,7 +135,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button btnexit;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btnDuyet;
         private System.Windows.Forms.GroupBox groupBox4;

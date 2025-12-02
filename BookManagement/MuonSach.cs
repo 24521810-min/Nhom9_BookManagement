@@ -196,10 +196,17 @@ namespace BookManagement
 
         private void button_DangXuat_Click(object sender, EventArgs e)
         {
-            Program.LoggedUserID = -1;
-            DangNhap dn = new DangNhap();
-            dn.Show();
-            this.Hide();
+            var confirm = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất không?",
+                "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.Yes)
+            {
+                Program.LoggedUserID = -1;
+
+                DangNhap dn = new DangNhap();
+                dn.Show();
+                this.Hide();
+            }
         }
 
         private void button_Tra_Click(object sender, EventArgs e)
