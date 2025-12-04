@@ -201,7 +201,7 @@
     <None Include="Resources\2f8e2d5655ab14960527c724f3a87793 %281%29.jpg" />
     <None Include="Resources\add.png" />
     <None Include="Resources\clear.png" />
-    <Content Include="BookManagementDB.sql" />
+    <Content Include="BookManagemenyDB.sql" />
     <Content Include="Resources\dangxuat-removebg-preview.png" />
     <None Include="Resources\edit.png" />
     <None Include="Resources\icons8-exit-100 %281%29.png" />
