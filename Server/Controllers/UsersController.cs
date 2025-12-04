@@ -48,11 +48,11 @@ namespace BookApi.Controllers
             var user = await _context.Users
                 .FirstOrDefaultAsync(x => x.UserName == request.UserInput || x.Email == request.UserInput);
 
-            if (user == null) return Unauthorized(new { message = "User not found" });
-            if (user.IsLocked) return Unauthorized(new { message = "Account locked", isLocked = true });
+            if (user == null) return Unauthorized(new { message = "Vui lòng nhập tên đăng nhập/email và mật khẩu!" });
+            if (user.IsLocked) return Unauthorized(new { message = "Tài khoản của bạn đã bị khóa. Vui lòng liên hệ Admin!", isLocked = true });
 
             if (!PasswordHelper.VerifyPassword(request.Password, user.PasswordHash))
-                return Unauthorized(new { message = "Invalid password" });
+                return Unauthorized(new { message = "Tên đăng nhập/email hoặc mật khẩu không đúng!" });
 
             // Tạo JWT token
             string token = GenerateJwtToken(user);
