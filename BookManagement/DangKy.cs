@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
+using System.Linq;
 using System.Net.Http;
 using System.Text;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 
 namespace BookManagement
 {
@@ -25,32 +26,54 @@ namespace BookManagement
             string password = txtPassword.Text.Trim();
             string confirm = txtConfirmpassword.Text.Trim();
 
-            // Kiểm tra rỗng
-            if (fullname == "" || username == "" || email == "" ||
-                password == "" || confirm == "")
+            // KIỂM TRA RỖNG
+            if (string.IsNullOrWhiteSpace(fullname) ||
+                string.IsNullOrWhiteSpace(username) ||
+                string.IsNullOrWhiteSpace(email) ||
+                string.IsNullOrWhiteSpace(phone) ||
+                string.IsNullOrWhiteSpace(password) ||
+                string.IsNullOrWhiteSpace(confirm))
             {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin!");
+                MessageBox.Show("Vui lòng điền đầy đủ TẤT CẢ thông tin!",
+                    "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            // Kiểm tra khớp mật khẩu
+            // KIỂM TRA SỐ ĐIỆN THOẠI – phải đúng 10 số
+            if (phone.Length != 10 || !phone.All(char.IsDigit))
+            {
+                MessageBox.Show("Số điện thoại phải gồm đúng 10 chữ số!",
+                    "Sai định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // KIỂM TRA EMAIL
+            if (!email.Contains("@") || !email.Contains("."))
+            {
+                MessageBox.Show("Email không hợp lệ!",
+                    "Sai định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // KIỂM TRA KHỚP MẬT KHẨU
             if (password != confirm)
             {
-                MessageBox.Show("Mật khẩu không trùng khớp!");
+                MessageBox.Show("Mật khẩu xác nhận không trùng khớp!",
+                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            // Tạo model gửi lên server
+            // TẠO MODEL
             var model = new
             {
                 FullName = fullname,
                 UserName = username,
                 Email = email,
                 Phone = phone,
-                Password = password  // hash sẽ làm ở server
+                Password = password
             };
 
-            string json = JsonConvert.SerializeObject(model);
+            string json = Newtonsoft.Json.JsonConvert.SerializeObject(model);
 
             using (HttpClient client = new HttpClient())
             {
@@ -63,10 +86,7 @@ namespace BookManagement
                     if (response.IsSuccessStatusCode)
                     {
                         MessageBox.Show("Đăng ký thành công!");
-
-                        // Mở form login
-                        DangNhap login = new DangNhap();
-                        login.Show();
+                        new DangNhap().Show();
                         this.Hide();
                     }
                     else
@@ -77,7 +97,7 @@ namespace BookManagement
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Không thể kết nối với server:\n" + ex.Message);
+                    MessageBox.Show("Không thể kết nối server:\n" + ex.Message);
                 }
             }
         }
