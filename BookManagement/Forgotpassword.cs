@@ -1,56 +1,74 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BookManagement.Services;
+using System;
+using System.Net.Http.Json;
 using System.Windows.Forms;
 
 namespace BookManagement
 {
     public partial class Forgotpassword : Form
     {
+        private Form parentForm;
+
         public Forgotpassword()
         {
             InitializeComponent();
         }
-        private Form parentForm;
+
         public Forgotpassword(Form parent)
         {
             InitializeComponent();
             parentForm = parent;
         }
-        private void btnLogin_Click(object sender, EventArgs e)
+
+        // Nút Reset password
+        private async void btnResetPassword_Click_1(object sender, EventArgs e)
         {
-            string input = txtusername.Text.Trim();
+            string email = txtusername.Text.Trim(); 
 
-            string adminUser = "admin";
-            string adminEmail = "admin@gmail.com";
-            string adminPass = "123456";
-
-            if (string.IsNullOrWhiteSpace(input))
+            if (string.IsNullOrWhiteSpace(email))
             {
-                MessageBox.Show("Vui lòng nhập đầy đủ Username/Password!");
+                MessageBox.Show("Vui lòng nhập email đã đăng ký!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (input == adminUser || input == adminEmail)
+            try
             {
-                lbpass.Text = $"{adminPass}";
-                lbpass.Visible = true;
+                var body = new { Email = email };
+
+                var response = await ApiService.Client.PostAsJsonAsync("api/Users/forget_password", body);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Mật khẩu mới đã được gửi tới email. Vui lòng kiểm tra!",
+                        "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // Mở form đổi mật khẩu mới
+                    var resetForm = new ResetPasswordForm(email);
+                    resetForm.Show();
+                    this.Close();
+                }
+                else
+                {
+                    var error = await response.Content.ReadAsStringAsync();
+                    MessageBox.Show("Gửi yêu cầu thất bại: " + error,
+                        "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Không tìm thấy tài khoản nào phù hợp!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Lỗi kết nối server: " + ex.Message,
+                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
+        // Quay về form Login
         private void lbReturnLogin_Click(object sender, EventArgs e)
         {
             this.Close();
-            parentForm.Show();
+            parentForm?.Show();
         }
+
+        
     }
 }
