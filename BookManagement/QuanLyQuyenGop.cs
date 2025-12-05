@@ -88,7 +88,7 @@ namespace BookManagement
 
                 if (res.IsSuccessStatusCode)
                 {
-                    MessageBox.Show($"{actionDisplay} quyên góp ID {idQuyenGop} thành công! Email thông báo đã được gửi.", "Thành công");
+                    MessageBox.Show($"{actionDisplay} QUYÊN GÓP SÁCH thành công! Email đã được gửi cho người dùng.", "Thành công");
 
                     await LoadDanhSachQuyenGop();
                 }

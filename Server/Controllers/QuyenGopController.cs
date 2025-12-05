@@ -160,7 +160,7 @@ namespace BookApi.Controllers
 Số lượng: <b>{item.SoLuong}</b></p>
 <p>Cảm ơn bạn đã đóng góp cho cộng đồng và hỗ trợ chương trình sách đa năng của chúng tôi.</p>
 <hr>
-<p style='font-size:14px;color:gray;'>Thân ái,<br>Hệ thống quản lý sách</p>
+<p style='font-size:14px;color:gray;'>Thân ái,<br>Hệ thống BookManagement</p>
 ";
                     await EmailHelper.SendMailAsync(item.User.Email, subject, body);
                 }
@@ -201,7 +201,7 @@ Số lượng: <b>{item.SoLuong}</b></p>
 Số lượng: <b>{item.SoLuong}</b></p>
 <p>Nếu bạn cần biết lý do hoặc muốn gửi lại yêu cầu, vui lòng liên hệ hỗ trợ.</p>
 <hr>
-<p style='font-size:14px;color:gray;'>Trân trọng,<br>Hệ thống quản lý sách</p>
+<p style='font-size:14px;color:gray;'>Trân trọng,<br>Hệ thống BookManagement</p>
 ";
 
                     await EmailHelper.SendMailAsync(item.User.Email, subject, body);

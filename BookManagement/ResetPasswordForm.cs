@@ -81,7 +81,7 @@ namespace BookManagement
             }
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void btnbackLogin_Click(object sender, EventArgs e)
         {
             var dk = new DangNhap();
             dk.Show();

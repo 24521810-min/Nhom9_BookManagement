@@ -56,7 +56,6 @@ namespace BookApi.Controllers
         }
 
         // POST: api/TraSach
-        // POST: api/TraSach
         [HttpPost]
         public async Task<IActionResult> Create(TraSach model)
         {
@@ -73,11 +72,6 @@ namespace BookApi.Controllers
             }
         }
 
-
-
-        // PUT: api/TraSach/5
-        // PUT: api/TraSach/duyet/{id}
-        // PUT: api/TraSach/duyet/5
         [HttpPut("duyet/{id}")]
         public async Task<IActionResult> DuyetTra(int id)
         {
@@ -107,15 +101,17 @@ namespace BookApi.Controllers
                 // 5. Gửi email cho user
                 var user = await _context.Users.FindAsync(muon.IDUser);
                 if (user != null)
-                {
-                    string subject = "Xác nhận trả sách thành công";
+                {                    
+                    string subject = "📚 Thông báo: Xác nhận trả sách thành công!";
                     string body = $@"
-                <h3>Chào {user.FullName},</h3>
-                <p>Yêu cầu trả sách của bạn đã được <b>DUYỆT</b>.</p>
-                <p><b>Mã sách:</b> {muon.IDSach}<br>
-                   <b>Ngày trả:</b> {tra.NgayTra:dd/MM/yyyy}</p>
-                <p>Cảm ơn bạn đã sử dụng thư viện!</p>";
-
+                        <h2>📚 Thông báo trả sách</h2>
+                        <p>Xin chào {user.FullName},</p>
+                        <p>Chúng tôi vui mừng thông báo rằng yêu cầu trả sách của bạn <b>đã được duyệt thành công</b>.</p>
+                        <p><b>Mã sách:</b> {muon.IDSach}<br>
+                        <b>Ngày trả:</b> {tra.NgayTra:dd/MM/yyyy}</p>
+                    <p>Cảm ơn bạn đã sử dụng thư viện!</p>
+                        <p style='font-size:14px;color:gray;'>Thân ái,<br>Hệ thống BookManagement</p>
+                        ";
                     await EmailHelper.SendMailAsync(user.Email, subject, body);
                 }
 
@@ -126,8 +122,6 @@ namespace BookApi.Controllers
                 return StatusCode(500, ex.ToString());
             }
         }
-
-
 
         // DELETE: api/TraSach/5
         [HttpDelete("{id}")]

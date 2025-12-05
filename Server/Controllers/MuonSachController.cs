@@ -1,7 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using BookApi.Data;
+﻿using BookApi.Data;
 using BookApi.Models;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 
 namespace BookApi.Controllers
 {
@@ -76,7 +77,7 @@ namespace BookApi.Controllers
             _context.Sach.Update(sach);
 
             // Cập nhật trạng thái
-            muon.TrangThai = "DaDuyet";
+            muon.TrangThai = "Đã duyệt";
 
             await _context.SaveChangesAsync();
 
@@ -84,17 +85,18 @@ namespace BookApi.Controllers
             string email = user.Email;
             string name = !string.IsNullOrEmpty(user.FullName) ? user.FullName : user.UserName;
 
-            string subject = "Yêu cầu mượn sách đã được duyệt";
+            string subject = "📚 Thông báo: Yêu cầu mượn sách của bạn đã được duyệt!";
             string body = $@"
-                <h3>Chào {name},</h3>
-                <p>Yêu cầu mượn sách của bạn đã được <b>DUYỆT THÀNH CÔNG</b>.</p>
-                <p><b>Mã sách:</b> {muon.IDSach}<br>
-                   <b>Ngày mượn:</b> {muon.NgayMuon:dd/MM/yyyy}<br>
-                   <b>Ngày trả dự kiến:</b> {muon.NgayTraDuKien:dd/MM/yyyy}
-                </p>
-                <p>Vui lòng đến thư viện nhận sách trong 3 ngày.</p>
-                <p>Trân trọng,<br>Hệ thống BookManagement</p>
-            ";
+                        <h2>📚 Thông báo mượn sách</h2>
+                        <p>Xin chào {name},</p>
+                        <p>Chúng tôi vui mừng thông báo rằng yêu cầu mượn sách của bạn <b>đã được duyệt thành công</b>.</p>
+                        <p><b>Mã sách:</b> {muon.IDSach}<br>
+                        <b>Ngày mượn:</b> {muon.NgayMuon:dd/MM/yyyy}<br>
+                        <b>Ngày trả dự kiến:</b> {muon.NgayTraDuKien:dd/MM/yyyy}
+                        </p>
+                        <p>Vui lòng đến thư viện nhận sách trong 3 ngày.</p>
+                        <p style='font-size:14px;color:gray;'>Thân ái,<br>Hệ thống BookManagement</p>
+                        ";
 
             if (!string.IsNullOrEmpty(email))
             {
@@ -114,14 +116,29 @@ namespace BookApi.Controllers
             var user = await _context.Users.FindAsync(muon.IDUser);
             if (user == null) return BadRequest();
 
-            muon.TrangThai = "TuChoi";
+            muon.TrangThai = "Từ Chối";
             await _context.SaveChangesAsync();
 
-            await EmailHelper.SendMailAsync(
-                user.Email,
-                "Yêu cầu mượn sách bị từ chối",
-                $"<p>Xin lỗi {user.FullName}, yêu cầu mượn sách của bạn đã bị từ chối.</p>"
-            );
+            string email = user.Email;
+            string name = !string.IsNullOrEmpty(user.FullName) ? user.FullName : user.UserName;
+            
+            string subject = "❗ Thông báo: Yêu cầu mượn sách không được duyệt";
+            string body = $@"
+                    <h2>❗ Thông báo từ chối mượn sách</h2>
+                    <p>Xin chào {name},</p>
+                    <p>Rất tiếc, yêu cầu mượn sách của bạn <b>không được duyệt</b>.</p>
+                    <p><b>Mã sách:</b> {muon.IDSach}<br>
+                    <b>Ngày mượn:</b> {muon.NgayMuon:dd/MM/yyyy}<br>
+                    <b>Ngày trả dự kiến:</b> {muon.NgayTraDuKien:dd/MM/yyyy}
+                    </p>
+                    <p>Nếu bạn cần biết lý do hoặc muốn gửi lại yêu cầu, vui lòng liên hệ hỗ trợ.</p>
+                    <hr>
+                    <p style='font-size:14px;color:gray;'>Trân trọng,<br>Hệ thống BookManagement</p>
+                     ";
+            if (!string.IsNullOrEmpty(email))
+            {
+                await EmailHelper.SendMailAsync(email, subject, body);
+            }
 
             return Ok(new { message = "Từ chối thành công + Email đã gửi" });
         }
