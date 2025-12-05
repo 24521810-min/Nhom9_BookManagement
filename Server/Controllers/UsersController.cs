@@ -8,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using BookApi.Models.Dtos;
 
 
 namespace BookApi.Controllers
@@ -209,6 +210,56 @@ namespace BookApi.Controllers
 
             return NoContent();
         }
+        [HttpPost("forget_password")]
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequest req)
+        {
+            if (string.IsNullOrWhiteSpace(req.Email))
+                return BadRequest(new { message = "Email không được để trống" });
+
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == req.Email);
+            if (user == null)
+                return NotFound(new { message = "Email chưa đăng ký trong hệ thống!" });
+
+            // Tạo mật khẩu tạm 8 ký tự
+            string tempPass = Guid.NewGuid().ToString("N").Substring(0, 8);
+
+            // Hash và lưu vào PasswordHash
+            user.PasswordHash = PasswordHelper.HashPassword(tempPass);
+            await _context.SaveChangesAsync();
+
+            // Gửi email
+            bool sent = await EmailHelper.SendTemporaryPasswordMail(req.Email, tempPass);
+            if (!sent)
+                return StatusCode(500, new { message = "Không gửi được email. Kiểm tra lại cấu hình Gmail/Internet." });
+
+            return Ok(new { message = "Mật khẩu mới đã được gửi tới email của bạn. Vui lòng kiểm tra hộp thư." });
+        }
+        [HttpPost("reset_password")]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordRequest req)
+        {
+            if (string.IsNullOrWhiteSpace(req.Email) ||
+                string.IsNullOrWhiteSpace(req.TemporaryPassword) ||
+                string.IsNullOrWhiteSpace(req.NewPassword))
+            {
+                return BadRequest(new { message = "Vui lòng nhập đầy đủ Email, mật khẩu tạm và mật khẩu mới." });
+            }
+
+            var user = await _context.Users.FirstOrDefaultAsync(x => x.Email == req.Email);
+            if (user == null)
+                return NotFound(new { message = "Email không tồn tại trong hệ thống!" });
+
+            // Kiểm tra mật khẩu tạm (so sánh hash)
+            bool ok = PasswordHelper.VerifyPassword(req.TemporaryPassword, user.PasswordHash);
+            if (!ok)
+                return BadRequest(new { message = "Mật khẩu tạm không chính xác!" });
+
+            // Hash mật khẩu mới rồi lưu lại
+            user.PasswordHash = PasswordHelper.HashPassword(req.NewPassword);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Đổi mật khẩu thành công. Hãy đăng nhập lại bằng mật khẩu mới." });
+        }
+
     }
 }
         

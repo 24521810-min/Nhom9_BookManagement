@@ -134,6 +134,12 @@
     <Compile Include="Models\QuyenGop.cs" />
     <Compile Include="Models\TraSach.cs" />
     <Compile Include="Models\Users.cs" />
+    <Compile Include="ResetPasswordForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ResetPasswordForm.Designer.cs">
+      <DependentUpon>ResetPasswordForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Trasach.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -201,7 +207,7 @@
     <None Include="Resources\2f8e2d5655ab14960527c724f3a87793 %281%29.jpg" />
     <None Include="Resources\add.png" />
     <None Include="Resources\clear.png" />
-    <Content Include="BookManagementDB.sql" />
+    <Content Include="BookManagemenyDB.sql" />
     <Content Include="Resources\dangxuat-removebg-preview.png" />
     <None Include="Resources\edit.png" />
     <None Include="Resources\icons8-exit-100 %281%29.png" />
@@ -256,6 +262,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QuyenGopSach.resx">
       <DependentUpon>QuyenGopSach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ResetPasswordForm.resx">
+      <DependentUpon>ResetPasswordForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Trasach.resx">
       <DependentUpon>Trasach.cs</DependentUpon>

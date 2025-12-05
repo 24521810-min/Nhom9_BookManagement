@@ -107,5 +107,12 @@ namespace BookManagement
             dk.Show();
             this.Hide();
         }
+
+        private void lbForgot_Click(object sender, EventArgs e)
+        {
+            Forgotpassword dk = new Forgotpassword();
+            dk.Show();
+            this.Hide();
+        }
     }
 }
