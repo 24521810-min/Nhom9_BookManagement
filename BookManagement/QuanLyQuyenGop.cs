@@ -1,6 +1,7 @@
 ﻿using BookManagement.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
@@ -18,9 +19,10 @@ namespace BookManagement
         public QuanLyQuyenGop()
         {
             InitializeComponent();
+            dsQuyengop.AutoGenerateColumns = true;
+            dsQuyengop.Font = new Font("Segoe UI", 10);
 
             Load += QuanLyQuyenGop_Load;
-
             button7.Click += BtnXem_Click;        // Xem danh sách Quyên Góp
         }
 

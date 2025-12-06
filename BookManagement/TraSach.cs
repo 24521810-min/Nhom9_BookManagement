@@ -31,7 +31,6 @@ namespace BookManagement
 
             // Nút xử lý trả sách
             button_guiyc.Click += button_guiyc_Click;  // gửi yêu cầu
-            button_trasach.Click += button_trasach_Click; // chỉ load thông tin
             button_huy.Click += button_huy_Click;
 
             // Chọn dòng trong bảng

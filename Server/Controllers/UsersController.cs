@@ -106,6 +106,8 @@ namespace BookApi.Controllers
                     u.UserName,
                     u.Email,
                     u.Phone,
+                    u.BirthDate,
+                    u.Gender,
                     u.Role,
                     u.IsLocked
                 })
@@ -130,6 +132,8 @@ namespace BookApi.Controllers
                     u.UserName,
                     u.Email,
                     u.Phone,
+                    u.BirthDate,
+                    u.Gender,
                     u.Role,
                     u.IsLocked
                 })
