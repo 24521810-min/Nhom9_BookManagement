@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BookManagement
@@ -15,6 +8,9 @@ namespace BookManagement
         public Admin()
         {
             InitializeComponent();
+
+            // Gắn sự kiện cho nút Lịch Sử
+            btnlichsu.Click += btnlichsu_Click;
         }
 
         private void btnKhoSach_Click(object sender, EventArgs e)
@@ -24,6 +20,7 @@ namespace BookManagement
             this.Hide();
             f.Show();
         }
+
         private void btnQuanLyNguoiDung_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -31,6 +28,7 @@ namespace BookManagement
             qlusersForm.ShowDialog();
             this.Show();
         }
+
         private void btnQuanLyMuonTra_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -38,6 +36,7 @@ namespace BookManagement
             qlborrowForm.ShowDialog();
             this.Show();
         }
+
         private void btnQuanLyQuyenGop_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -48,11 +47,15 @@ namespace BookManagement
 
         private void btnDangXuat_Click(object sender, EventArgs e)
         {
-            var confirm = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất không?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            var confirm = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất không?",
+                                          "Xác nhận",
+                                          MessageBoxButtons.YesNo,
+                                          MessageBoxIcon.Question);
 
             if (confirm == DialogResult.Yes)
             {
-                Program.LoggedUserID = -1;
+                AuthSession.UserId = -1;
+                AuthSession.Token = "";
 
                 MessageBox.Show("Bạn đã đăng xuất!", "Thông báo");
 
@@ -60,6 +63,23 @@ namespace BookManagement
                 dn.Show();
                 this.Hide();
             }
+        }
+
+        // ===================================================
+        //   NÚT LỊCH SỬ GIAO DỊCH (ĐÃ SỬA ĐÚNG TOKEN)
+        // ===================================================
+        private void btnlichsu_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(AuthSession.Token))
+            {
+                MessageBox.Show("Lỗi: Token trống! Bạn cần đăng nhập lại.");
+                return;
+            }
+
+            LichSu f = new LichSu(AuthSession.Token);   // TRUYỀN TOKEN ĐÚNG
+            f.FormClosed += (s, args) => this.Show();
+            this.Hide();
+            f.Show();
         }
     }
 }

@@ -109,6 +109,13 @@
     <Compile Include="HoSoDKi.Designer.cs">
       <DependentUpon>HoSoDKi.cs</DependentUpon>
     </Compile>
+    <Compile Include="LichSu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LichSu.Designer.cs">
+      <DependentUpon>LichSu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LichSuDto.cs" />
     <Compile Include="Models\LoginRequest.cs" />
     <Compile Include="QuyenGopModel.cs" />
     <Compile Include="DangKy.cs">
@@ -243,6 +250,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="KhoSach.resx">
       <DependentUpon>KhoSach.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LichSu.resx">
+      <DependentUpon>LichSu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Muonsach.resx">
       <DependentUpon>Muonsach.cs</DependentUpon>

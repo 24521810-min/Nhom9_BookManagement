@@ -34,6 +34,7 @@
             this.btnQuanLyMuonTra = new System.Windows.Forms.Button();
             this.btnDangXuat = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnlichsu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.btnDangXuat)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -43,10 +44,10 @@
             this.button1.BackColor = System.Drawing.Color.FloralWhite;
             this.button1.Font = new System.Drawing.Font("Segoe UI Black", 13.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.button1.Location = new System.Drawing.Point(424, -2);
+            this.button1.Location = new System.Drawing.Point(377, -2);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(514, 64);
+            this.button1.Size = new System.Drawing.Size(457, 51);
             this.button1.TabIndex = 1;
             this.button1.Text = "ỨNG DỤNG QUẢN LÝ SÁCH";
             this.button1.UseVisualStyleBackColor = false;
@@ -56,10 +57,10 @@
             this.btnKhoSach.BackColor = System.Drawing.Color.FloralWhite;
             this.btnKhoSach.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnKhoSach.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnKhoSach.Location = new System.Drawing.Point(526, 164);
+            this.btnKhoSach.Location = new System.Drawing.Point(466, 119);
             this.btnKhoSach.Margin = new System.Windows.Forms.Padding(2);
             this.btnKhoSach.Name = "btnKhoSach";
-            this.btnKhoSach.Size = new System.Drawing.Size(323, 54);
+            this.btnKhoSach.Size = new System.Drawing.Size(287, 43);
             this.btnKhoSach.TabIndex = 2;
             this.btnKhoSach.Text = "KHO SÁCH";
             this.btnKhoSach.UseVisualStyleBackColor = false;
@@ -70,10 +71,10 @@
             this.btnQuanLyNguoiDung.BackColor = System.Drawing.Color.FloralWhite;
             this.btnQuanLyNguoiDung.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuanLyNguoiDung.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnQuanLyNguoiDung.Location = new System.Drawing.Point(526, 265);
+            this.btnQuanLyNguoiDung.Location = new System.Drawing.Point(466, 183);
             this.btnQuanLyNguoiDung.Margin = new System.Windows.Forms.Padding(2);
             this.btnQuanLyNguoiDung.Name = "btnQuanLyNguoiDung";
-            this.btnQuanLyNguoiDung.Size = new System.Drawing.Size(323, 54);
+            this.btnQuanLyNguoiDung.Size = new System.Drawing.Size(287, 43);
             this.btnQuanLyNguoiDung.TabIndex = 3;
             this.btnQuanLyNguoiDung.Text = "QUẢN LÝ NGƯỜI DÙNG";
             this.btnQuanLyNguoiDung.UseVisualStyleBackColor = false;
@@ -84,10 +85,10 @@
             this.btnQuanLyQuyenGop.BackColor = System.Drawing.Color.FloralWhite;
             this.btnQuanLyQuyenGop.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuanLyQuyenGop.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnQuanLyQuyenGop.Location = new System.Drawing.Point(526, 374);
+            this.btnQuanLyQuyenGop.Location = new System.Drawing.Point(466, 247);
             this.btnQuanLyQuyenGop.Margin = new System.Windows.Forms.Padding(2);
             this.btnQuanLyQuyenGop.Name = "btnQuanLyQuyenGop";
-            this.btnQuanLyQuyenGop.Size = new System.Drawing.Size(323, 54);
+            this.btnQuanLyQuyenGop.Size = new System.Drawing.Size(287, 43);
             this.btnQuanLyQuyenGop.TabIndex = 4;
             this.btnQuanLyQuyenGop.Text = "QUẢN LÝ QUYÊN GÓP";
             this.btnQuanLyQuyenGop.UseVisualStyleBackColor = false;
@@ -98,10 +99,10 @@
             this.btnQuanLyMuonTra.BackColor = System.Drawing.Color.FloralWhite;
             this.btnQuanLyMuonTra.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuanLyMuonTra.ForeColor = System.Drawing.Color.SaddleBrown;
-            this.btnQuanLyMuonTra.Location = new System.Drawing.Point(526, 483);
+            this.btnQuanLyMuonTra.Location = new System.Drawing.Point(466, 313);
             this.btnQuanLyMuonTra.Margin = new System.Windows.Forms.Padding(2);
             this.btnQuanLyMuonTra.Name = "btnQuanLyMuonTra";
-            this.btnQuanLyMuonTra.Size = new System.Drawing.Size(323, 54);
+            this.btnQuanLyMuonTra.Size = new System.Drawing.Size(287, 43);
             this.btnQuanLyMuonTra.TabIndex = 5;
             this.btnQuanLyMuonTra.Text = "QUẢN LÝ MƯỢN TRẢ";
             this.btnQuanLyMuonTra.UseVisualStyleBackColor = false;
@@ -110,10 +111,10 @@
             // btnDangXuat
             // 
             this.btnDangXuat.Image = global::BookManagement.Properties.Resources.dangxuat_removebg_preview;
-            this.btnDangXuat.Location = new System.Drawing.Point(834, 582);
+            this.btnDangXuat.Location = new System.Drawing.Point(741, 466);
             this.btnDangXuat.Margin = new System.Windows.Forms.Padding(2);
             this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(105, 78);
+            this.btnDangXuat.Size = new System.Drawing.Size(93, 62);
             this.btnDangXuat.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.btnDangXuat.TabIndex = 6;
             this.btnDangXuat.TabStop = false;
@@ -122,20 +123,34 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::BookManagement.Properties.Resources.z7092554007969_d04d396926354e33afc89cbec684fd2c;
-            this.pictureBox1.Location = new System.Drawing.Point(-6, -2);
+            this.pictureBox1.Location = new System.Drawing.Point(-5, -2);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(432, 662);
+            this.pictureBox1.Size = new System.Drawing.Size(384, 530);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // btnlichsu
+            // 
+            this.btnlichsu.BackColor = System.Drawing.Color.FloralWhite;
+            this.btnlichsu.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnlichsu.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnlichsu.Location = new System.Drawing.Point(466, 378);
+            this.btnlichsu.Margin = new System.Windows.Forms.Padding(2);
+            this.btnlichsu.Name = "btnlichsu";
+            this.btnlichsu.Size = new System.Drawing.Size(287, 43);
+            this.btnlichsu.TabIndex = 7;
+            this.btnlichsu.Text = "LỊCH SỬ GIAO DỊCH";
+            this.btnlichsu.UseVisualStyleBackColor = false;
+            // 
             // Admin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Tan;
-            this.ClientSize = new System.Drawing.Size(938, 662);
+            this.ClientSize = new System.Drawing.Size(834, 530);
+            this.Controls.Add(this.btnlichsu);
             this.Controls.Add(this.btnDangXuat);
             this.Controls.Add(this.btnQuanLyMuonTra);
             this.Controls.Add(this.btnQuanLyQuyenGop);
@@ -162,5 +177,6 @@
         private System.Windows.Forms.Button btnQuanLyQuyenGop;
         private System.Windows.Forms.Button btnQuanLyMuonTra;
         private System.Windows.Forms.PictureBox btnDangXuat;
+        private System.Windows.Forms.Button btnlichsu;
     }
 }

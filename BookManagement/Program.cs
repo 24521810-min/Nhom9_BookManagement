@@ -12,6 +12,7 @@ namespace BookManagement
     {
 
         public static int LoggedUserID = 0;
+        public static string Token = "";
 
         [STAThread]
         
