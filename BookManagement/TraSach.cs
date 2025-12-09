@@ -68,8 +68,8 @@ namespace BookManagement
                     foreach (var x in all)
                     {
                         if (x.IDUser == currentUserId &&
-                            !string.Equals(x.TrangThai, "DaTra", StringComparison.OrdinalIgnoreCase) &&
-                            !string.Equals(x.TrangThai, "TuChoi", StringComparison.OrdinalIgnoreCase))
+                            !string.Equals(x.TrangThai, "Đã Trả", StringComparison.OrdinalIgnoreCase) &&
+                            !string.Equals(x.TrangThai, "Từ Chối", StringComparison.OrdinalIgnoreCase))
                         {
                             list.Add(x);
                         }
@@ -143,7 +143,7 @@ namespace BookManagement
             {
                 IDMuon = m.IDMuon,
                 NgayTra = dateTimePicker_trathucte.Value,
-                TinhTrang = "TraBinhThuong",
+                TinhTrang = "Trả Bình Thường",
                 GhiChu = ""
             };
 

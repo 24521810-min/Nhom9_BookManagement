@@ -1,7 +1,6 @@
 ﻿using BookApi.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using BookApi.Data;
 using Server.Models;
 
 namespace Server.Controllers

@@ -93,7 +93,7 @@ namespace BookApi.Controllers
                     return BadRequest(new { message = "Không tìm thấy sách." });
 
                 // 4. Cập nhật trạng thái mượn + số lượng sách
-                muon.TrangThai = "DaTra";
+                muon.TrangThai = "Đã Trả";
                 sach.SoLuong += 1;
 
                 await _context.SaveChangesAsync();
@@ -101,7 +101,7 @@ namespace BookApi.Controllers
                 // 5. Gửi email cho user
                 var user = await _context.Users.FindAsync(muon.IDUser);
                 if (user != null)
-                {                    
+                {
                     string subject = "📚 Thông báo: Xác nhận trả sách thành công!";
                     string body = $@"
                         <h2>📚 Thông báo trả sách</h2>
@@ -143,6 +143,16 @@ namespace BookApi.Controllers
             {
                 return StatusCode(500, ex.ToString());
             }
+        }
+        [HttpGet("user/{id}/count")]
+        public async Task<IActionResult> CountByUser(int id)
+        {
+            int count = await _context.TraSach
+                .Include(t => t.MuonSach)
+                .Where(t => t.MuonSach != null && t.MuonSach.IDUser == id && t.MuonSach.TrangThai == "Đã Trả")
+                .CountAsync();
+
+            return Ok(count);
         }
     }
 }

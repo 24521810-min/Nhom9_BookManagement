@@ -225,5 +225,14 @@ Số lượng: <b>{item.SoLuong}</b></p>
 
             return Ok();
         }
+        [HttpGet("user/{id}/count")]
+        public async Task<IActionResult> CountByUser(int id)
+        {
+            int count = await _context.QuyenGop
+                .Where(q => q.IDUser == id && q.TrangThai == "Đã duyệt")
+                .CountAsync();
+
+            return Ok(count);
+        }
     }
 }

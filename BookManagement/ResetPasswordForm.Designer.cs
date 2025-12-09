@@ -164,7 +164,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.BurlyWood;
-            this.ClientSize = new System.Drawing.Size(600, 360);
+            this.ClientSize = new System.Drawing.Size(605, 377);
             this.Controls.Add(this.btnbackLogin);
             this.Controls.Add(this.txtConfirmPassword);
             this.Controls.Add(this.lblConfirmPassword);
@@ -178,6 +178,7 @@
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ResetPasswordForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ResetPasswordForm";
             this.ResumeLayout(false);
             this.PerformLayout();

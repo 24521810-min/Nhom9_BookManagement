@@ -155,5 +155,15 @@ namespace BookApi.Controllers
 
             return Ok();
         }
+        // GET: api/MuonSach/user/5/count
+        [HttpGet("user/{id}/count")]
+        public async Task<IActionResult> CountByUser(int id)
+        {
+            int count = await _context.MuonSach
+                .Where(m => m.IDUser == id && m.TrangThai == "Đã duyệt")
+                .CountAsync();
+
+            return Ok(count);
+        }
     }
 }

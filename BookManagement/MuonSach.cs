@@ -138,7 +138,7 @@ namespace BookManagement
                     IDSach = idSach,
                     NgayMuon = ngayMuon,
                     NgayTraDuKien = ngayTra,
-                    TrangThai = "ChoDuyet"
+                    TrangThai = "Chờ Duyệt"
                 };
 
                 danhSachGuiLen.Add(item);

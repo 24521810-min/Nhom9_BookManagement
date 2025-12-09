@@ -48,6 +48,25 @@ namespace BookManagement
             }).ToList();
 
             dsSach.DataSource = list;
+
+            CaiDatSach();
+        }
+        private void CaiDatSach()
+        {
+            dsSach.RowHeadersVisible = false;
+            dsSach.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dsSach.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dsSach.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dsSach.Columns["IDSach"].HeaderText = "Mã Sách";
+            dsSach.Columns["TenSach"].HeaderText = "Tên Sách";
+            dsSach.Columns["SoLuong"].HeaderText = "Số Lượng";
+            dsSach.Columns["TacGia"].HeaderText = "Tác Giả";
+            dsSach.Columns["LoaiSach"].HeaderText = "Loại Sách";
+            dsSach.Columns["IDSach"].FillWeight = 70;
+            dsSach.Columns["TenSach"].FillWeight = 150;
+            dsSach.Columns["SoLuong"].FillWeight = 80;
+            dsSach.Columns["TacGia"].FillWeight = 120;
+            dsSach.Columns["LoaiSach"].FillWeight = 120;
         }
         private async void btnviewSach_Click(object sender, EventArgs e)
         {
@@ -244,6 +263,19 @@ namespace BookManagement
             var data = JsonConvert.DeserializeObject<List<LoaiSach>>(json);
 
             dsLoaiSach.DataSource = data;
+
+            CaiDatLoaiSach();
+        }
+
+        private void CaiDatLoaiSach()
+        {
+            dsLoaiSach.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dsLoaiSach.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dsLoaiSach.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dsLoaiSach.Columns["IDLoaiSach"].HeaderText = "Mã Loại Sách";
+            dsLoaiSach.Columns["TenLoaiSach"].HeaderText = "Tên Loại Sách";
+            dsLoaiSach.Columns["IDLoaiSach"].FillWeight = 100;
+            dsLoaiSach.Columns["TenLoaiSach"].FillWeight = 200;
         }
         private async void btnviewLoaiSach_Click(object sender, EventArgs e)
         {
@@ -393,6 +425,18 @@ namespace BookManagement
             var data = JsonConvert.DeserializeObject<List<TacGia>>(json);
 
             dsTacGia.DataSource = data;
+
+            CaiDatTacGia();
+        }
+        private void CaiDatTacGia()
+        {
+            dsTacGia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dsTacGia.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
+            dsTacGia.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
+            dsTacGia.Columns["IDTacGia"].HeaderText = "Mã Tác Giả";
+            dsTacGia.Columns["HoTen"].HeaderText = "Họ Tên";
+            dsTacGia.Columns["IDTacGia"].FillWeight = 100;
+            dsTacGia.Columns["HoTen"].FillWeight = 200;
         }
         private async void btnviewTacGia_Click(object sender, EventArgs e)
         {
