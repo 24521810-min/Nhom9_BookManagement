@@ -1,4 +1,6 @@
-﻿public class User
+﻿using System;
+
+public class User
 {
     public int IDUser { get; set; }
     public string FullName { get; set; }
@@ -7,4 +9,7 @@
     public string Phone { get; set; }
     public string Role { get; set; }
     public bool IsLocked { get; set; } = false;
+
+    public DateTime? BirthDate { get; set; }
+    public string Gender { get; set; }
 }

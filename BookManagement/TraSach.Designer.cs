@@ -61,7 +61,6 @@
             this.label_tensach = new System.Windows.Forms.Label();
             this.label_soluong = new System.Windows.Forms.Label();
             this.label_thongtin = new System.Windows.Forms.Label();
-            this.button_trasach = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.bangds)).BeginInit();
             this.panel_thongtin.SuspendLayout();
             this.SuspendLayout();
@@ -424,25 +423,12 @@
             this.label_thongtin.TabIndex = 0;
             this.label_thongtin.Text = "THÔNG TIN TRẢ SÁCH";
             // 
-            // button_trasach
-            // 
-            this.button_trasach.BackColor = System.Drawing.Color.Tan;
-            this.button_trasach.Font = new System.Drawing.Font("Segoe UI Black", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button_trasach.Location = new System.Drawing.Point(543, 565);
-            this.button_trasach.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button_trasach.Name = "button_trasach";
-            this.button_trasach.Size = new System.Drawing.Size(255, 68);
-            this.button_trasach.TabIndex = 28;
-            this.button_trasach.Text = "Trả sách";
-            this.button_trasach.UseVisualStyleBackColor = false;
-            // 
             // Trasach
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FloralWhite;
             this.ClientSize = new System.Drawing.Size(1418, 711);
-            this.Controls.Add(this.button_trasach);
             this.Controls.Add(this.panel_thongtin);
             this.Controls.Add(this.bangds);
             this.Controls.Add(this.label_danhsach);
@@ -500,6 +486,5 @@
         private System.Windows.Forms.DateTimePicker dateTimePicker_ngaymuon;
         private System.Windows.Forms.DateTimePicker dateTimePicker_trathucte;
         private System.Windows.Forms.DateTimePicker dateTimePicker_tradukien;
-        private System.Windows.Forms.Button button_trasach;
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnexit = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.btnDuyet = new System.Windows.Forms.Button();
@@ -89,16 +89,15 @@
             // 
             // dsQuyengop
             // 
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dsQuyengop.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
-            this.dsQuyengop.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dsQuyengop.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dsQuyengop.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dsQuyengop.EnableHeadersVisualStyles = false;
             this.dsQuyengop.Location = new System.Drawing.Point(27, 43);
             this.dsQuyengop.Name = "dsQuyengop";
             this.dsQuyengop.RowHeadersWidth = 62;
             this.dsQuyengop.RowTemplate.Height = 28;
-            this.dsQuyengop.Size = new System.Drawing.Size(1058, 311);
+            this.dsQuyengop.Size = new System.Drawing.Size(1058, 324);
             this.dsQuyengop.TabIndex = 7;
             // 
             // btnTuchoi

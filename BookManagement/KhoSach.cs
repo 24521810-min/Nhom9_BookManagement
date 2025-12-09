@@ -38,16 +38,16 @@ namespace BookManagement
             var json = await response.Content.ReadAsStringAsync();
             var data = JsonConvert.DeserializeObject<List<Sach>>(json);
 
-            var table = data.Select(s => new
+            var list = data.Select(s => new
             {
                 IDSach = s.IDSach,
                 TenSach = s.TenSach,
+                SoLuong = s.SoLuong,
                 TacGia = s.TacGia?.HoTen,
-                LoaiSach = s.LoaiSach?.TenLoaiSach,
-                SoLuong = s.SoLuong
+                LoaiSach = s.LoaiSach?.TenLoaiSach
             }).ToList();
 
-            dsSach.DataSource = table;
+            dsSach.DataSource = list;
         }
         private async void btnviewSach_Click(object sender, EventArgs e)
         {

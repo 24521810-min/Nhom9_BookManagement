@@ -31,8 +31,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.dateMuon = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
             this.txtPhone = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtUserName = new System.Windows.Forms.TextBox();
@@ -45,15 +43,21 @@
             this.btnexitUser = new System.Windows.Forms.Button();
             this.btnclearUser = new System.Windows.Forms.Button();
             this.btnlockUser = new System.Windows.Forms.Button();
+            this.dateNgaySinh = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cmbGender = new System.Windows.Forms.ComboBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dsUsers)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.cmbGender);
             this.groupBox1.Controls.Add(this.txtEmail);
             this.groupBox1.Controls.Add(this.label5);
-            this.groupBox1.Controls.Add(this.dateMuon);
+            this.groupBox1.Controls.Add(this.dateNgaySinh);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtPhone);
             this.groupBox1.Controls.Add(this.label3);
@@ -86,26 +90,6 @@
             this.label5.Size = new System.Drawing.Size(74, 27);
             this.label5.TabIndex = 8;
             this.label5.Text = "Email:";
-            // 
-            // dateMuon
-            // 
-            this.dateMuon.CalendarFont = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateMuon.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateMuon.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateMuon.Location = new System.Drawing.Point(625, 108);
-            this.dateMuon.Name = "dateMuon";
-            this.dateMuon.Size = new System.Drawing.Size(179, 35);
-            this.dateMuon.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(464, 108);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(134, 27);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Ngày Mượn:";
             // 
             // txtPhone
             // 
@@ -232,6 +216,49 @@
             this.btnlockUser.UseVisualStyleBackColor = true;
             this.btnlockUser.Click += new System.EventHandler(this.btnlockUser_Click);
             // 
+            // dateNgaySinh
+            // 
+            this.dateNgaySinh.CalendarFont = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateNgaySinh.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateNgaySinh.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateNgaySinh.Location = new System.Drawing.Point(586, 97);
+            this.dateNgaySinh.Name = "dateNgaySinh";
+            this.dateNgaySinh.Size = new System.Drawing.Size(257, 35);
+            this.dateNgaySinh.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(446, 100);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(117, 27);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Ngày Sinh:";
+            // 
+            // cmbGender
+            // 
+            this.cmbGender.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbGender.FormattingEnabled = true;
+            this.cmbGender.Items.AddRange(new object[] {
+            "Nam",
+            "Nữ"});
+            this.cmbGender.Location = new System.Drawing.Point(586, 150);
+            this.cmbGender.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cmbGender.Name = "cmbGender";
+            this.cmbGender.Size = new System.Drawing.Size(257, 40);
+            this.cmbGender.TabIndex = 22;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(444, 158);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(103, 27);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Giới tính:";
+            // 
             // QuanLyNguoiDung
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -263,8 +290,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtFullName;
         private System.Windows.Forms.DataGridView dsUsers;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dateMuon;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label5;
@@ -273,5 +298,9 @@
         private System.Windows.Forms.Button btnexitUser;
         private System.Windows.Forms.Button btnclearUser;
         private System.Windows.Forms.Button btnlockUser;
+        private System.Windows.Forms.DateTimePicker dateNgaySinh;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox cmbGender;
     }
 }

@@ -42,10 +42,10 @@ namespace BookManagement
 
         private async void btnsearchUser_Click(object sender, EventArgs e)
         {
-            string keyword = txtUserName.Text.Trim();
+            string keyword = txtFullName.Text.Trim();
             if (string.IsNullOrEmpty(keyword))
             {
-                MessageBox.Show("Vui lòng nhập từ khóa tìm kiếm!");
+                MessageBox.Show("Vui lòng nhập tên người dùng cần tìm kiếm!");
                 return;
             }
 
@@ -140,6 +140,9 @@ namespace BookManagement
             txtUserName.Text = Convert.ToString(row.Cells["UserName"].Value ?? "");
             txtEmail.Text = Convert.ToString(row.Cells["Email"].Value ?? "");
             txtPhone.Text = Convert.ToString(row.Cells["Phone"].Value ?? "");
+            if (row.Cells["BirthDate"].Value != null)
+                dateNgaySinh.Text = Convert.ToDateTime(row.Cells["BirthDate"].Value).ToString("dd/MM/yyyy");
+            cmbGender.Text = Convert.ToString(row.Cells["Gender"].Value ?? "");
             bool isLocked = Convert.ToBoolean(dsUsers.Rows[e.RowIndex].Cells["IsLocked"].Value);
             btnlockUser.Text = isLocked ? "Mở khóa" : "Khóa";
         }
