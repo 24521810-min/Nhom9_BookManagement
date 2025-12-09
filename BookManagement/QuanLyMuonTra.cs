@@ -17,8 +17,9 @@ namespace BookManagement
         {
             BaseAddress = new Uri("https://localhost:7214/")
         };
+        private readonly string _token;
 
-        public QuanLyMuonTra()
+        public QuanLyMuonTra(string token)
         {
             InitializeComponent();
 
@@ -41,6 +42,8 @@ namespace BookManagement
 
             // Event trả sách (CHỈ GẮN 1 LẦN)
             cmbDocGia.SelectedIndexChanged += CmbDocGia_SelectedIndexChanged;
+            _token = token;
+            _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
         }
 
         // ====================== LOAD FORM ===============================
@@ -250,7 +253,7 @@ namespace BookManagement
         // ====================== THOÁT ===========================
         private void BtnThoat_Click(object sender, EventArgs e)
         {
-            var ad = new Admin();
+            var ad = new Admin(_token);
             ad.Show();
             this.Hide();
         }
@@ -288,7 +291,6 @@ namespace BookManagement
                 MessageBox.Show("Lỗi Từ Chối: " + ex.Message);
             }
         }
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             var confirm = MessageBox.Show("Bạn có chắc muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);

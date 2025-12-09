@@ -15,8 +15,8 @@ namespace BookManagement
         {
             BaseAddress = new Uri("https://localhost:7214/")
         };
-
-        public QuanLyQuyenGop()
+        private readonly string _token;
+        public QuanLyQuyenGop(string token)
         {
             InitializeComponent();
             dsQuyengop.AutoGenerateColumns = true;
@@ -24,6 +24,9 @@ namespace BookManagement
 
             Load += QuanLyQuyenGop_Load;
             button7.Click += BtnXem_Click;        // Xem danh sách Quyên Góp
+            _token = token;
+            _client.DefaultRequestHeaders.Authorization =
+        new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
         }
 
         // =======================================================

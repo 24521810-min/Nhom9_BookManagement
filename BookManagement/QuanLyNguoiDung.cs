@@ -13,9 +13,11 @@ namespace BookManagement
         private readonly HttpClient client = new HttpClient();
         private string apiUrl = "https://localhost:7214/api/Users";
 
-        public QuanLyNguoiDung()
+        private string _token;
+        public QuanLyNguoiDung(string token)
         {
             InitializeComponent();
+            _token = token;
 
             this.Load += QuanLyNguoiDung_Load;
             dsUsers.CellClick += dsUsers_CellClick;

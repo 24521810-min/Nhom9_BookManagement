@@ -1,13 +1,16 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Windows.Forms;
 
 namespace BookManagement
 {
     public partial class Admin : Form
     {
-        public Admin()
+        private string _token;
+        public Admin(string token)
         {
             InitializeComponent();
+            _token = token;
 
             // Gắn sự kiện cho nút Lịch Sử
             btnlichsu.Click += btnlichsu_Click;
@@ -24,7 +27,7 @@ namespace BookManagement
         private void btnQuanLyNguoiDung_Click(object sender, EventArgs e)
         {
             this.Hide();
-            QuanLyNguoiDung qlusersForm = new QuanLyNguoiDung();
+            QuanLyNguoiDung qlusersForm = new QuanLyNguoiDung(_token);
             qlusersForm.ShowDialog();
             this.Show();
         }
@@ -32,7 +35,7 @@ namespace BookManagement
         private void btnQuanLyMuonTra_Click(object sender, EventArgs e)
         {
             this.Hide();
-            QuanLyMuonTra qlborrowForm = new QuanLyMuonTra();
+            QuanLyMuonTra qlborrowForm = new QuanLyMuonTra(_token);
             qlborrowForm.ShowDialog();
             this.Show();
         }
@@ -40,7 +43,7 @@ namespace BookManagement
         private void btnQuanLyQuyenGop_Click(object sender, EventArgs e)
         {
             this.Hide();
-            QuanLyQuyenGop qldonateForm = new QuanLyQuyenGop();
+            QuanLyQuyenGop qldonateForm = new QuanLyQuyenGop(_token);
             qldonateForm.ShowDialog();
             this.Show();
         }

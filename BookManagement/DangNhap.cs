@@ -82,16 +82,20 @@ namespace BookManagement
                     if (role == "Admin")
                     {
                         MessageBox.Show("Bạn đang đăng nhập bằng quyền ADMIN");
-                        Admin adminForm = new Admin();
+                        Admin adminForm = new Admin(AuthSession.Token);
                         adminForm.Show();
                         this.Hide();
                     }
-                    else
+                    else if (role == "User")
                     {
                         MessageBox.Show("Bạn đang đăng nhập bằng quyền USER");
                         Users userForm = new Users();
                         userForm.Show();
                         this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Bạn không có quyền truy cập hệ thống!");
                     }
                 }
                 catch (Exception ex)
