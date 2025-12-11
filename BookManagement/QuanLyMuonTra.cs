@@ -7,8 +7,6 @@ using System.Net.Http.Json;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-using UserEntity = User;
-
 namespace BookManagement
 {
     public partial class QuanLyMuonTra : Form
@@ -17,228 +15,195 @@ namespace BookManagement
         {
             BaseAddress = new Uri("https://localhost:7214/")
         };
+
         private readonly string _token;
 
         public QuanLyMuonTra(string token)
         {
             InitializeComponent();
 
-            // Load form
+            _token = token;
+            _client.DefaultRequestHeaders.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+
             Load += QuanLyMuonTra_Load;
 
-            // Sự kiện MƯỢN
-            button6.Click += BtnMuonMoi_Click;
+            // BUTTON EVENTS
             button7.Click += BtnChoMuon_Click;
-
-            // Sự kiện TRẢ
-            btnTraSach.Click += BtnTraSach_Click;
-
-            //sự kiện từ chối
             btTuChoi.Click += BtTuChoi_Click;
+            btnTraSach.Click += BtnTraSach_Click;
+            button8.Click += BtnThoat_Click;
+            btnExit.Click += BtnThoat_Click;
 
-
-            // Event chọn sách
-            cmbMaSach.SelectedIndexChanged += CmbMaSach_SelectedIndexChanged;
-
-            // Event trả sách (CHỈ GẮN 1 LẦN)
+            // ComboBox chọn phiếu mượn để trả sách
             cmbDocGia.SelectedIndexChanged += CmbDocGia_SelectedIndexChanged;
-            _token = token;
-            _client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+
+            // ⭐⭐ THÊM DÒNG NÀY
+            dataGridView1.CellClick += DataGridView1_CellClick;
         }
 
-        // ====================== LOAD FORM ===============================
+
+        // ============================ LOAD FORM ===============================
         private async void QuanLyMuonTra_Load(object sender, EventArgs e)
         {
-            // ❌ XÓA LoadUsers() — combo bị trùng gây lỗi nhân bản
             await LoadSach();
             await LoadDanhSachMuon();
             await LoadDanhSachTra();
             await LoadMuonToTra();
         }
 
-        // ====================== LOAD SÁCH ================================
+        // ============================ LOAD SÁCH ===============================
         private async Task LoadSach()
         {
-            var sach = await _client.GetFromJsonAsync<List<Sach>>("api/Sach");
-
-            cmbMaSach.DataSource = sach;
-            cmbMaSach.DisplayMember = "TenSach";
-            cmbMaSach.ValueMember = "IDSach";
-
-            if (cmbMaSach.Items.Count > 0)
-                cmbMaSach.SelectedIndex = 0;
-        }
-
-        private void CmbMaSach_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbMaSach.SelectedItem is Sach s)
+            try
             {
-                // ====== THÔNG TIN SÁCH (GroupBox 1) ======
+                var sachList = await _client.GetFromJsonAsync<List<Sach>>("api/Sach");
+                if (sachList == null || sachList.Count == 0) return;
 
-                // Tên Sách
-                txtMaSach.Text = s.TenSach;
+                // HIỂN THỊ LÊN TEXTBOX (vì KHÔNG có combobox chọn sách)
+                var s = sachList[0];
 
-                // Loại Sách
-                txtMaLoai.Text = s.IDLoaiSach.ToString();
-
-                // Số lượng còn
-                txtSoLuong.Text = s.SoLuong.ToString();
-
-                // Tác giả
+                textBox2.Text = s.TenSach;            // Tên sách
+                txtMaSach.Text = s.IDSach.ToString(); // Mã Sách
                 txtMaTacGia.Text = s.IDTacGia.ToString();
-
-
-                // ====== CHO MƯỢN SÁCH (GroupBox 3) ======
-
-                // Mã sách mượn
-                txtMaSachMuon.Text = s.IDSach.ToString();
-
-                // luôn mặc định số lượng mượn = 1
-                txtSoLuongMuon.Text = "1";
+                txtSoLuong.Text = s.SoLuong.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi load sách: " + ex.Message);
             }
         }
 
-
-        // ====================== LOAD DS CHO MƯỢN =========================
+        // ============================ LOAD DANH SÁCH MƯỢN =====================
         private async Task LoadDanhSachMuon()
         {
             var list = await _client.GetFromJsonAsync<List<MuonSach>>("api/MuonSach");
+
             dataGridView1.DataSource = list;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridView1.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
-
-            dataGridView1.ColumnHeadersDefaultCellStyle.Font =
-                new Font("Segoe UI", 10, FontStyle.Bold);
-
-            dataGridView1.DefaultCellStyle.Font =
-                new Font("Segoe UI", 10);
-
-            dataGridView1.RowTemplate.Height = 28;
-
+            dataGridView1.Font = new Font("Segoe UI", 10);
         }
 
-        // ====================== LOAD DS TRẢ ===============================
+        // ============================ LOAD DANH SÁCH TRẢ =======================
         private async Task LoadDanhSachTra()
         {
             var list = await _client.GetFromJsonAsync<List<TraSach>>("api/TraSach");
+
             dataGridView2.DataSource = list;
             dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView2.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridView2.DefaultCellStyle.WrapMode = DataGridViewTriState.False;
-
-            dataGridView2.ColumnHeadersDefaultCellStyle.Font =
-                new Font("Segoe UI", 10, FontStyle.Bold);
-
-            dataGridView2.DefaultCellStyle.Font =
-                new Font("Segoe UI", 10);
-
-            dataGridView2.RowTemplate.Height = 28;
-
+            dataGridView2.Font = new Font("Segoe UI", 10);
         }
 
-        // ====================== LOAD COMBO TRẢ SÁCH ======================
+        // ============================ COMBO TRẢ SÁCH ==========================
         private async Task LoadMuonToTra()
         {
             var muon = await _client.GetFromJsonAsync<List<MuonSach>>("api/MuonSach");
 
             cmbDocGia.DataSource = muon;
-            cmbDocGia.DisplayMember = "IDUser";
-            cmbDocGia.ValueMember = "IDMuon";
-
-            if (cmbDocGia.Items.Count > 0)
-                cmbDocGia.SelectedIndex = 0;
+            cmbDocGia.DisplayMember = "IDUser";    // Show IDUser
+            cmbDocGia.ValueMember = "IDMuon";      // Lấy ID mượn
         }
 
-        // ====================== FILL THÔNG TIN KHI CHỌN PHIẾU MƯỢN =======
+        // ============================ FILL THÔNG TIN TRẢ ======================
         private void CmbDocGia_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var m = cmbDocGia.SelectedItem as MuonSach;
-            if (m == null) return;
-
-            txtMaSachTra.Text = m.IDSach.ToString();
-            txtSoLuongMuonTra.Text = "1";
-            dateMuonTra.Value = m.NgayMuon;
-            dateHenTraTra.Value = m.NgayTraDuKien;
+            if (cmbDocGia.SelectedItem is MuonSach m)
+            {
+                txtMaSachTra.Text = m.IDSach.ToString();
+                txtSoLuongMuonTra.Text = "1";
+                dateMuonTra.Value = m.NgayMuon;
+                dateHenTraTra.Value = m.NgayTraDuKien;
+            }
         }
 
-        // ====================== CLEAR FORM MƯỢN ==========================
-        private void BtnMuonMoi_Click(object sender, EventArgs e)
-        {
-            txtMaSachMuon.Clear();
-            txtSoLuongMuon.Clear();
-            dateMuon.Value = DateTime.Today;
-            dateHenTra.Value = DateTime.Today;
-        }
-
-        // ====================== ADMIN CHO MƯỢN ===========================
+        // ============================ DUYỆT CHO MƯỢN ==========================
         private async void BtnChoMuon_Click(object sender, EventArgs e)
         {
             try
             {
-                // Lấy dòng đang chọn
                 if (dataGridView1.CurrentRow == null)
                 {
-                    MessageBox.Show("Vui lòng chọn yêu cầu mượn để duyệt!");
+                    MessageBox.Show("Vui lòng chọn yêu cầu mượn!");
                     return;
                 }
 
-                // Lấy IDMuon
                 int idMuon = Convert.ToInt32(
-                    dataGridView1.CurrentRow.Cells["IDMuon"].Value
-                );
+                    dataGridView1.CurrentRow.Cells["IDMuon"].Value);
 
-                // Gọi API DUYỆT
-                var response = await _client.PutAsync(
-                    $"api/MuonSach/duyet/{idMuon}", null);
+                var res = await _client.PutAsync($"api/MuonSach/duyet/{idMuon}", null);
 
-                if (!response.IsSuccessStatusCode)
+                if (!res.IsSuccessStatusCode)
                 {
                     MessageBox.Show("Không duyệt được yêu cầu!");
                     return;
                 }
 
-                // Load lại danh sách mượn
-                await LoadDanhSachMuon();
+                MessageBox.Show("Duyệt thành công! Email đã được gửi");
 
-                MessageBox.Show("Duyệt thành công! Email đã được gửi.");
+                await LoadDanhSachMuon();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi duyệt: " + ex.Message);
+                MessageBox.Show("Lỗi duyệt mượn: " + ex.Message);
             }
         }
 
+        // ============================ TỪ CHỐI MƯỢN ============================
+        private async void BtTuChoi_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dataGridView1.CurrentRow == null)
+                {
+                    MessageBox.Show("Vui lòng chọn yêu cầu!");
+                    return;
+                }
 
-        // ====================== TRẢ SÁCH ===========================
+                int idMuon = Convert.ToInt32(
+                    dataGridView1.CurrentRow.Cells["IDMuon"].Value);
+
+                var res = await _client.PutAsync($"api/MuonSach/tuchoi/{idMuon}", null);
+
+                if (!res.IsSuccessStatusCode)
+                {
+                    MessageBox.Show("Không thể từ chối!");
+                    return;
+                }
+
+                MessageBox.Show("Đã TỪ CHỐI yêu cầu!");
+
+                await LoadDanhSachMuon();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi từ chối: " + ex.Message);
+            }
+        }
+
+        // ============================ DUYỆT TRẢ SÁCH ==========================
         private async void BtnTraSach_Click(object sender, EventArgs e)
         {
             try
             {
                 if (dataGridView2.CurrentRow == null)
                 {
-                    MessageBox.Show("Vui lòng chọn một yêu cầu TRẢ SÁCH ở bảng bên dưới!");
+                    MessageBox.Show("Vui lòng chọn yêu cầu trả sách!");
                     return;
                 }
 
-                // Lấy IDTra từ hàng đang chọn trong dataGridView2 (bảng TraSach)
                 int idTra = Convert.ToInt32(
-                    dataGridView2.CurrentRow.Cells["IDTra"].Value
-                );
+                    dataGridView2.CurrentRow.Cells["IDTra"].Value);
 
-                // Gọi API duyệt trả
                 var res = await _client.PutAsync($"api/TraSach/duyet/{idTra}", null);
 
                 if (!res.IsSuccessStatusCode)
                 {
-                    string err = await res.Content.ReadAsStringAsync();
-                    MessageBox.Show("Không duyệt được yêu cầu trả sách!\n" + err);
+                    MessageBox.Show("Không duyệt được yêu cầu trả!");
                     return;
                 }
 
-                MessageBox.Show("Đã DUYỆT TRẢ SÁCH thành công! Email đã được gửi cho người dùng.");
+                MessageBox.Show("Đã DUYỆT TRẢ SÁCH thành công! Email đã được gửi cho người dùng ");
 
-                // Load lại dữ liệu
                 await LoadDanhSachMuon();
                 await LoadDanhSachTra();
                 await LoadSach();
@@ -249,60 +214,58 @@ namespace BookManagement
             }
         }
 
-
-        // ====================== THOÁT ===========================
+        // ============================ THOÁT FORM ==============================
         private void BtnThoat_Click(object sender, EventArgs e)
         {
-            var ad = new Admin(_token);
-            ad.Show();
-            this.Hide();
+            this.Close();
         }
-        // =======từ chối====
-        private async void BtTuChoi_Click(object sender, EventArgs e)
+        private async void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0) return;
+
+            var row = dataGridView1.Rows[e.RowIndex];
+
+            // ====== LẤY ID USER & ID SÁCH TỪ DÒNG ĐANG CHỌN ======
+            int idUser = Convert.ToInt32(row.Cells["IDUser"].Value);
+            int idSach = Convert.ToInt32(row.Cells["IDSach"].Value);
+
+            // ====== LOAD USERNAME CHO Ô "Mã Độc Giả" ======
             try
             {
-                if (dataGridView1.CurrentRow == null)
-                {
-                    MessageBox.Show("Vui lòng chọn yêu cầu mượn để từ chối!");
-                    return;
-                }
-
-                int idMuon = Convert.ToInt32(
-                    dataGridView1.CurrentRow.Cells["IDMuon"].Value
-                );
-
-                var response = await _client.PutAsync(
-                    $"api/MuonSach/tuchoi/{idMuon}", null
-                );
-
-                if (!response.IsSuccessStatusCode)
-                {
-                    MessageBox.Show("Không thể từ chối yêu cầu này!");
-                    return;
-                }
-
-                MessageBox.Show("Đã TỪ CHỐI yêu cầu và gửi email thông báo!");
-
-                await LoadDanhSachMuon();
+                var user = await _client.GetFromJsonAsync<User>($"api/Users/{idUser}");
+                if (user != null)
+                    textBox1.Text = user.UserName;  // hoặc user.FullName nếu muốn
+                else
+                    textBox1.Text = "Không tìm thấy";
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("Lỗi Từ Chối: " + ex.Message);
+                textBox1.Text = "Lỗi tải user";
             }
-        }
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            var confirm = MessageBox.Show("Bạn có chắc muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (confirm == DialogResult.Yes)
-                this.Close();
+
+            // ====== LOAD THÔNG TIN SÁCH ĐÚNG THEO IDSach ======
+            try
+            {
+                var sach = await _client.GetFromJsonAsync<Sach>($"api/Sach/{idSach}");
+                if (sach != null)
+                {
+                    textBox2.Text = sach.TenSach;           // Chọn Sách
+                    txtMaSach.Text = sach.IDSach.ToString(); // Mã Sách
+                    txtMaTacGia.Text = sach.IDTacGia.ToString();
+                    txtSoLuong.Text = sach.SoLuong.ToString();
+                }
+            }
+            catch
+            {
+                // nếu lỗi thì giữ nguyên, không crash form
+            }
+
+            // ====== NGÀY MƯỢN + NGÀY HẸN TRẢ ======
+            dateMuon.Value = Convert.ToDateTime(row.Cells["NgayMuon"].Value);
+            dateHenTra.Value = Convert.ToDateTime(row.Cells["NgayTraDuKien"].Value);
         }
 
-        private void button8_Click(object sender, EventArgs e)
-        {
-            var confirm = MessageBox.Show("Bạn có chắc muốn thoát?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            if (confirm == DialogResult.Yes)
-                this.Close();
-        }
+
+
     }
 }

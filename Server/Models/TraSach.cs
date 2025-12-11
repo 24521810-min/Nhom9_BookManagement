@@ -8,6 +8,7 @@ public class TraSach
 
     [ForeignKey(nameof(MuonSach))]
     public int IDMuon { get; set; }
+    public int IDUser { get; set; }
 
     public DateTime NgayTra { get; set; }
 

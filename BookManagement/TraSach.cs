@@ -143,7 +143,7 @@ namespace BookManagement
             {
                 IDMuon = m.IDMuon,
                 NgayTra = dateTimePicker_trathucte.Value,
-                TinhTrang = "Trả Bình Thường",
+                TinhTrang = "Chưa Trả",
                 GhiChu = ""
             };
 
