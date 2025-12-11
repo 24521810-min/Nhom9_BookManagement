@@ -219,53 +219,31 @@ namespace BookManagement
         {
             this.Close();
         }
-        private async void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
             var row = dataGridView1.Rows[e.RowIndex];
+            var item = row.DataBoundItem as MuonSach;
 
-            // ====== LẤY ID USER & ID SÁCH TỪ DÒNG ĐANG CHỌN ======
-            int idUser = Convert.ToInt32(row.Cells["IDUser"].Value);
-            int idSach = Convert.ToInt32(row.Cells["IDSach"].Value);
+            if (item == null) return;
 
-            // ====== LOAD USERNAME CHO Ô "Mã Độc Giả" ======
-            try
+            // ------- Thông tin độc giả -------
+            textBox1.Text = item.IDUser.ToString(); // hoặc load user chi tiết nếu muốn
+
+            // ------- Lấy thông tin sách ngay từ JSON -------
+            if (item.Sach != null)
             {
-                var user = await _client.GetFromJsonAsync<User>($"api/Users/{idUser}");
-                if (user != null)
-                    textBox1.Text = user.UserName;  // hoặc user.FullName nếu muốn
-                else
-                    textBox1.Text = "Không tìm thấy";
-            }
-            catch
-            {
-                textBox1.Text = "Lỗi tải user";
+                textBox2.Text = item.Sach.TenSach;
+                txtMaSach.Text = item.Sach.IDSach.ToString();
+                txtMaTacGia.Text = item.Sach.IDTacGia.ToString();
+                txtSoLuong.Text = item.Sach.SoLuong.ToString();
             }
 
-            // ====== LOAD THÔNG TIN SÁCH ĐÚNG THEO IDSach ======
-            try
-            {
-                var sach = await _client.GetFromJsonAsync<Sach>($"api/Sach/{idSach}");
-                if (sach != null)
-                {
-                    textBox2.Text = sach.TenSach;           // Chọn Sách
-                    txtMaSach.Text = sach.IDSach.ToString(); // Mã Sách
-                    txtMaTacGia.Text = sach.IDTacGia.ToString();
-                    txtSoLuong.Text = sach.SoLuong.ToString();
-                }
-            }
-            catch
-            {
-                // nếu lỗi thì giữ nguyên, không crash form
-            }
-
-            // ====== NGÀY MƯỢN + NGÀY HẸN TRẢ ======
-            dateMuon.Value = Convert.ToDateTime(row.Cells["NgayMuon"].Value);
-            dateHenTra.Value = Convert.ToDateTime(row.Cells["NgayTraDuKien"].Value);
+            // ------- Ngày mượn -------
+            dateMuon.Value = item.NgayMuon;
+            dateHenTra.Value = item.NgayTraDuKien;
         }
-
-
 
     }
 }
