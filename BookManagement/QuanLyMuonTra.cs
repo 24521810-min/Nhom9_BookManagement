@@ -80,9 +80,15 @@ namespace BookManagement
             var list = await _client.GetFromJsonAsync<List<MuonSach>>("api/MuonSach");
 
             dataGridView1.DataSource = list;
+
+            // ẨN CỘT NAVIGATION "Sach"
+            if (dataGridView1.Columns["Sach"] != null)
+                dataGridView1.Columns["Sach"].Visible = false;
+
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.Font = new Font("Segoe UI", 10);
         }
+
 
         // ============================ LOAD DANH SÁCH TRẢ =======================
         private async Task LoadDanhSachTra()
