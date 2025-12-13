@@ -165,18 +165,39 @@ namespace BookManagement
                     return;
                 }
 
+                // Lấy dữ liệu từ dòng đang chọn
                 int idMuon = Convert.ToInt32(
                     dataGridView1.CurrentRow.Cells["IDMuon"].Value);
 
+                string trangThai = dataGridView1.CurrentRow.Cells["TrangThai"].Value.ToString();
+
+                // Chỉ cho phép từ chối khi CHỜ DUYỆT
+                if (!trangThai.Equals("Chờ duyệt", StringComparison.OrdinalIgnoreCase))
+                {
+                    MessageBox.Show("Chỉ có thể từ chối yêu cầu đang chờ duyệt!");
+                    return;
+                }
+
+                // Xác nhận
+                var confirm = MessageBox.Show(
+                    "Bạn có chắc chắn muốn TỪ CHỐI yêu cầu mượn này?",
+                    "Xác nhận",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Question);
+
+                if (confirm != DialogResult.Yes)
+                    return;
+
+                // Gọi API từ chối
                 var res = await _client.PutAsync($"api/MuonSach/tuchoi/{idMuon}", null);
 
                 if (!res.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("Không thể từ chối!");
+                    MessageBox.Show("Không thể từ chối yêu cầu!");
                     return;
                 }
 
-                MessageBox.Show("Đã TỪ CHỐI yêu cầu!");
+                MessageBox.Show("Đã từ chối yêu cầu mượn sách!\nEmail đã được gửi cho người dùng.");
 
                 await LoadDanhSachMuon();
             }
@@ -185,6 +206,7 @@ namespace BookManagement
                 MessageBox.Show("Lỗi từ chối: " + ex.Message);
             }
         }
+
 
         // ============================ DUYỆT TRẢ SÁCH ==========================
         private async void BtnTraSach_Click(object sender, EventArgs e)
