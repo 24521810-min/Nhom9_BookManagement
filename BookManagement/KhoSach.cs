@@ -23,12 +23,15 @@ namespace BookManagement
         }
         private async void KhoSach_Load(object sender, EventArgs e)
         {
-            client.BaseAddress = new Uri(ApiConfig.BaseUrl);
+            var baseUrl = ApiConfig.BaseUrl.TrimEnd('/') + "/api/";
+
+            client.BaseAddress = new Uri(baseUrl);
 
             await LoadSach();
             await LoadLoaiSach();
             await LoadTacGia();
         }
+
         // ========== Sách ==========
         private async Task LoadSach()
         {
