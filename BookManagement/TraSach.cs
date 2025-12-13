@@ -157,20 +157,23 @@ namespace BookManagement
         // =============== ĐIỀU HƯỚNG ===============
         private void button_TrangChu_Click(object sender, EventArgs e)
         {
-            new Users(currentUserId).Show();
-            this.Hide();
+            var f = new Users(currentUserId);   // Form Trang chủ
+            f.Show();
+            this.Close();                       // ❗ Đóng form hiện tại
         }
 
         private void button_Muon_Click(object sender, EventArgs e)
         {
-            new Muonsach(currentUserId).Show();
-            this.Hide();
+            var f = new Muonsach(currentUserId);
+            f.Show();
+            this.Close();
         }
 
         private void button_quyengop_Click(object sender, EventArgs e)
         {
-            new QuyenGopSach(currentUserId).Show();
-            this.Hide();
+            var f = new QuyenGopSach(currentUserId);
+            f.Show();
+            this.Close();
         }
 
         private void button_DXuat_Click(object sender, EventArgs e)

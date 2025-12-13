@@ -444,6 +444,10 @@
             this.Name = "Trasach";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Trả Sách";
+            this.button_guiyc.Click += new System.EventHandler(this.button_guiyc_Click);
+            this.button_TrangChu.Click += new System.EventHandler(this.button_TrangChu_Click);
+            this.button_Muon.Click += new System.EventHandler(this.button_Muon_Click);
+            this.button_quyengop.Click += new System.EventHandler(this.button_quyengop_Click);
             ((System.ComponentModel.ISupportInitialize)(this.bangds)).EndInit();
             this.panel_thongtin.ResumeLayout(false);
             this.panel_thongtin.PerformLayout();
