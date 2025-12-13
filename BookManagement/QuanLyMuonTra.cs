@@ -33,7 +33,6 @@ namespace BookManagement
             // BUTTON EVENTS
             button7.Click += BtnChoMuon_Click;
             btTuChoi.Click += BtTuChoi_Click;
-            btnTraSach.Click += BtnTraSach_Click;
             button8.Click += BtnThoat_Click;
             btnExit.Click += BtnThoat_Click;
 
@@ -211,7 +210,7 @@ namespace BookManagement
 
 
         // ============================ DUYỆT TRẢ SÁCH ==========================
-        private async void BtnTraSach_Click(object sender, EventArgs e)
+        private async void btnTraSach_Click(object sender, EventArgs e)
         {
             try
             {
@@ -274,6 +273,5 @@ namespace BookManagement
             dateMuon.Value = item.NgayMuon;
             dateHenTra.Value = item.NgayTraDuKien;
         }
-
     }
 }

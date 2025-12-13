@@ -131,6 +131,7 @@
             this.btnTraSach.TabIndex = 13;
             this.btnTraSach.Text = "Trả Sách";
             this.btnTraSach.UseVisualStyleBackColor = true;
+            this.btnTraSach.Click += new System.EventHandler(this.btnTraSach_Click);
             // 
             // groupBox5
             // 

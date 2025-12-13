@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using BookApi.Data;
 using BookApi.Models;
+using BookApi.Helpers;
 
 namespace BookApi.Controllers
 {
@@ -16,7 +17,7 @@ namespace BookApi.Controllers
             _context = context;
         }
 
-        // GET: api/TraSach
+        // ======================= GET ALL =======================
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -34,7 +35,7 @@ namespace BookApi.Controllers
             }
         }
 
-        // GET: api/TraSach/5
+        // ======================= GET BY ID =====================
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
@@ -55,18 +56,16 @@ namespace BookApi.Controllers
             }
         }
 
-        // POST: api/TraSach
+        // ======================= CREATE ========================
         [HttpPost]
         public async Task<IActionResult> Create(TraSach model)
         {
             try
             {
-                // 🔥 LẤY ĐÚNG IDUSER TỪ PHIẾU MƯỢN
                 var muon = await _context.MuonSach.FindAsync(model.IDMuon);
                 if (muon == null)
                     return BadRequest("Không tìm thấy phiếu mượn!");
 
-                // 🔥 TỰ GÁN IDUSER — KHÔNG LẤY TỪ WINFORMS NỮA
                 model.IDUser = muon.IDUser;
 
                 _context.TraSach.Add(model);
@@ -80,8 +79,7 @@ namespace BookApi.Controllers
             }
         }
 
-
-
+        // ======================= DUYỆT TRẢ =====================
         [HttpPut("duyet/{id}")]
         public async Task<IActionResult> DuyetTra(int id)
         {
@@ -99,25 +97,67 @@ namespace BookApi.Controllers
                 if (sach == null)
                     return BadRequest(new { message = "Không tìm thấy sách." });
 
-                // cập nhật trạng thái mượn
-                muon.TrangThai = "Đã Trả";
-                sach.SoLuong += 1;
+                var user = await _context.Users.FindAsync(muon.IDUser);
+                if (user == null)
+                    return BadRequest(new { message = "Không tìm thấy người dùng." });
 
-                // 🔥 Cập nhật trạng thái trả
+                // ===== CẬP NHẬT TRẠNG THÁI =====
+                muon.TrangThai = "Đã Trả";
                 tra.TinhTrang = "Trả Thành Công";
+                tra.NgayTra = DateTime.Now;   // 🔥 DÒNG QUYẾT ĐỊNH
+                sach.SoLuong += 1;
 
                 await _context.SaveChangesAsync();
 
-                return Ok(new { message = "Duyệt trả thành công!" });
+                // ===== NỘI DUNG EMAIL (GIỮ NGUYÊN) =====
+                string body = $@"
+<h2>📚 Thông báo trả sách</h2>
+
+<p>Xin chào <b>{user.FullName}</b>,</p>
+
+<p>
+Chúng tôi xin thông báo rằng <b>yêu cầu trả sách của bạn đã được duyệt thành công</b>.
+</p>
+
+<p>
+<b>Mã sách:</b> {sach.IDSach}<br/>
+<b>Ngày mượn:</b> {muon.NgayMuon:dd/MM/yyyy}<br/>
+<b>Ngày trả thực tế:</b> {tra.NgayTra:dd/MM/yyyy}
+</p>
+
+<p>
+Cảm ơn bạn đã thực hiện việc trả sách đúng quy định.
+</p>
+
+<br/>
+
+<p>
+Thân ái,<br/>
+<b>Hệ thống BookManagement</b>
+</p>
+";
+
+                // ===== GỬI MAIL =====
+                bool emailSent = await EmailHelper.SendMailAsync(
+                    user.Email,
+                    $"📚 [BookManagement] Trả sách thành công - Mã sách {sach.IDSach}",
+                    body,
+                    isHtml: true
+                );
+
+                return Ok(new
+                {
+                    message = "Duyệt trả sách thành công!",
+                    emailSent = emailSent
+                });
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.ToString());
+                return StatusCode(500, ex.Message);
             }
         }
 
-
-        // DELETE: api/TraSach/5
+        // ======================= DELETE ========================
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)
         {
@@ -138,12 +178,16 @@ namespace BookApi.Controllers
                 return StatusCode(500, ex.ToString());
             }
         }
+
+        // ======================= COUNT BY USER =================
         [HttpGet("user/{id}/count")]
         public async Task<IActionResult> CountByUser(int id)
         {
             int count = await _context.TraSach
                 .Include(t => t.MuonSach)
-                .Where(t => t.MuonSach != null && t.MuonSach.IDUser == id && t.MuonSach.TrangThai == "Đã Trả")
+                .Where(t => t.MuonSach != null
+                            && t.MuonSach.IDUser == id
+                            && t.MuonSach.TrangThai == "Đã Trả")
                 .CountAsync();
 
             return Ok(count);
