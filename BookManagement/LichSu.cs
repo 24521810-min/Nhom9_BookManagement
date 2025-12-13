@@ -18,7 +18,7 @@ namespace BookManagement
 
             // API đúng cổng swagger
             _client = new HttpClient();
-            _client.BaseAddress = new Uri("https://localhost:7214/");
+            _client.BaseAddress = new Uri(ApiConfig.BaseUrl);
             _client.DefaultRequestHeaders.Authorization =
                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", token);
 

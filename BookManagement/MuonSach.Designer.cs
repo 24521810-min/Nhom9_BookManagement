@@ -43,18 +43,18 @@
             this.textBox_timkiem = new System.Windows.Forms.TextBox();
             this.label_ds = new System.Windows.Forms.Label();
             this.bangds = new System.Windows.Forms.DataGridView();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tensach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_masach = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_tacgia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_sluongmuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_slconlai = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_chon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label_ngmuon = new System.Windows.Forms.Label();
             this.label_ngtradk = new System.Windows.Forms.Label();
             this.dateTimePicker_muon = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker_tradk = new System.Windows.Forms.DateTimePicker();
             this.button_muonsach = new System.Windows.Forms.Button();
-            this.Column_chon = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Column_slconlai = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_sluongmuon = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_tacgia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_masach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tensach = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bangds)).BeginInit();
             this.SuspendLayout();
             // 
@@ -237,6 +237,59 @@
             this.bangds.Size = new System.Drawing.Size(1059, 270);
             this.bangds.TabIndex = 19;
             // 
+            // STT
+            // 
+            this.STT.FillWeight = 33.14394F;
+            this.STT.HeaderText = "STT";
+            this.STT.MaxInputLength = 327;
+            this.STT.MinimumWidth = 10;
+            this.STT.Name = "STT";
+            // 
+            // tensach
+            // 
+            this.tensach.FillWeight = 104.1821F;
+            this.tensach.HeaderText = "Tên sách";
+            this.tensach.MinimumWidth = 10;
+            this.tensach.Name = "tensach";
+            // 
+            // Column_masach
+            // 
+            this.Column_masach.FillWeight = 45.52569F;
+            this.Column_masach.HeaderText = "Mã sách";
+            this.Column_masach.MaxInputLength = 327;
+            this.Column_masach.MinimumWidth = 10;
+            this.Column_masach.Name = "Column_masach";
+            // 
+            // Column_tacgia
+            // 
+            this.Column_tacgia.FillWeight = 132.0302F;
+            this.Column_tacgia.HeaderText = "Tác giả";
+            this.Column_tacgia.MinimumWidth = 10;
+            this.Column_tacgia.Name = "Column_tacgia";
+            // 
+            // Column_sluongmuon
+            // 
+            this.Column_sluongmuon.FillWeight = 140.0066F;
+            this.Column_sluongmuon.HeaderText = "Số lượng\nmượn";
+            this.Column_sluongmuon.MinimumWidth = 10;
+            this.Column_sluongmuon.Name = "Column_sluongmuon";
+            // 
+            // Column_slconlai
+            // 
+            this.Column_slconlai.FillWeight = 147.0387F;
+            this.Column_slconlai.HeaderText = "Số lượng\ncòn lại";
+            this.Column_slconlai.MinimumWidth = 10;
+            this.Column_slconlai.Name = "Column_slconlai";
+            // 
+            // Column_chon
+            // 
+            this.Column_chon.FillWeight = 98.07264F;
+            this.Column_chon.HeaderText = "Chọn";
+            this.Column_chon.MinimumWidth = 10;
+            this.Column_chon.Name = "Column_chon";
+            this.Column_chon.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column_chon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // label_ngmuon
             // 
             this.label_ngmuon.AutoSize = true;
@@ -292,59 +345,6 @@
             this.button_muonsach.TabIndex = 24;
             this.button_muonsach.Text = "Mượn sách";
             this.button_muonsach.UseVisualStyleBackColor = false;
-            // 
-            // Column_chon
-            // 
-            this.Column_chon.FillWeight = 98.07264F;
-            this.Column_chon.HeaderText = "Chọn";
-            this.Column_chon.MinimumWidth = 10;
-            this.Column_chon.Name = "Column_chon";
-            this.Column_chon.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column_chon.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // Column_slconlai
-            // 
-            this.Column_slconlai.FillWeight = 147.0387F;
-            this.Column_slconlai.HeaderText = "Số lượng\ncòn lại";
-            this.Column_slconlai.MinimumWidth = 10;
-            this.Column_slconlai.Name = "Column_slconlai";
-            // 
-            // Column_sluongmuon
-            // 
-            this.Column_sluongmuon.FillWeight = 140.0066F;
-            this.Column_sluongmuon.HeaderText = "Số lượng\nmượn";
-            this.Column_sluongmuon.MinimumWidth = 10;
-            this.Column_sluongmuon.Name = "Column_sluongmuon";
-            // 
-            // Column_tacgia
-            // 
-            this.Column_tacgia.FillWeight = 132.0302F;
-            this.Column_tacgia.HeaderText = "Tác giả";
-            this.Column_tacgia.MinimumWidth = 10;
-            this.Column_tacgia.Name = "Column_tacgia";
-            // 
-            // Column_masach
-            // 
-            this.Column_masach.FillWeight = 45.52569F;
-            this.Column_masach.HeaderText = "Mã sách";
-            this.Column_masach.MaxInputLength = 327;
-            this.Column_masach.MinimumWidth = 10;
-            this.Column_masach.Name = "Column_masach";
-            // 
-            // tensach
-            // 
-            this.tensach.FillWeight = 104.1821F;
-            this.tensach.HeaderText = "Tên sách";
-            this.tensach.MinimumWidth = 10;
-            this.tensach.Name = "tensach";
-            // 
-            // STT
-            // 
-            this.STT.FillWeight = 33.14394F;
-            this.STT.HeaderText = "STT";
-            this.STT.MaxInputLength = 327;
-            this.STT.MinimumWidth = 10;
-            this.STT.Name = "STT";
             // 
             // Muonsach
             // 

@@ -10,54 +10,46 @@ namespace BookManagement
 {
     public partial class Muonsach : Form
     {
-        private int currentUserId;
+        private readonly int _currentUserId;
+        private readonly string _baseAddress = ApiConfig.BaseUrl;
 
-        private readonly string baseAddress = "https://localhost:7214";
-
-        // ================== CONSTRUCTOR ==================
-        public Muonsach()
-        {
-            InitializeComponent();
-            currentUserId = AuthSession.UserId;
-            this.Load += MuonSach_Load;
-        }
-
+        // ===== CONSTRUCTOR DUY NHẤT =====
         public Muonsach(int userId)
         {
             InitializeComponent();
-            currentUserId = userId;
+            _currentUserId = userId;
+
             this.Load += MuonSach_Load;
         }
 
-        // ================== FORM LOAD ==================
+        // ===== FORM LOAD =====
         private async void MuonSach_Load(object sender, EventArgs e)
         {
-            // Gắn event CHỈ 1 LẦN
             textBox_timkiem.TextChanged += textBox_timkiem_TextChanged;
             button_muonsach.Click += button_muonsach_Click;
 
             await LoadDanhSachSachAsync();
         }
 
-        // ================== LOAD DANH SÁCH SÁCH ==================
+        // ===== LOAD DANH SÁCH SÁCH =====
         private async Task LoadDanhSachSachAsync()
         {
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri(baseAddress);
+                    client.BaseAddress = new Uri(_baseAddress);
 
-                    var response = await client.GetAsync("/api/Sach");
+                    var response = await client.GetAsync("api/Sach");
 
                     if (!response.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Không thể tải danh sách sách từ server!");
+                        MessageBox.Show("Không thể tải danh sách sách!");
                         return;
                     }
 
                     string json = await response.Content.ReadAsStringAsync();
-                    var list = JsonConvert.DeserializeObject<List<SachDto>>(json);
+                    var list = JsonConvert.DeserializeObject<List<SachDto>>(json) ?? new List<SachDto>();
 
                     bangds.Rows.Clear();
                     int stt = 1;
@@ -77,11 +69,11 @@ namespace BookManagement
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi tải danh sách sách từ server:\n" + ex.Message);
+                MessageBox.Show("Lỗi tải sách:\n" + ex.Message);
             }
         }
 
-        // ================== TÌM KIẾM ==================
+        // ===== TÌM KIẾM =====
         private void textBox_timkiem_TextChanged(object sender, EventArgs e)
         {
             string keyword = textBox_timkiem.Text.Trim().ToLower();
@@ -95,142 +87,111 @@ namespace BookManagement
             }
         }
 
-        // ================== GỬI YÊU CẦU MƯỢN SÁCH ==================
+        // ===== GỬI YÊU CẦU MƯỢN =====
         private async void button_muonsach_Click(object sender, EventArgs e)
         {
-            if (currentUserId <= 0)
+            if (_currentUserId <= 0)
             {
-                MessageBox.Show("Không xác định được người dùng đang đăng nhập!");
+                MessageBox.Show("Không xác định được người dùng!");
                 return;
             }
 
             DateTime ngayMuon = dateTimePicker_muon.Value;
             DateTime ngayTra = dateTimePicker_tradk.Value;
 
-            List<MuonSachDto> danhSachGuiLen = new List<MuonSachDto>();
+            var danhSachGui = new List<MuonSachDto>();
 
             foreach (DataGridViewRow row in bangds.Rows)
             {
                 if (row.IsNewRow) continue;
 
-                bool isChecked = Convert.ToBoolean(row.Cells[6].Value ?? false);
-                if (!isChecked) continue;
+                bool checkedRow = Convert.ToBoolean(row.Cells[6].Value ?? false);
+                if (!checkedRow) continue;
 
                 int idSach = Convert.ToInt32(row.Cells[2].Value);
                 int soLuongMuon = Convert.ToInt32(row.Cells[4].Value);
                 int soLuongCon = Convert.ToInt32(row.Cells[5].Value);
 
-                if (soLuongMuon <= 0)
+                if (soLuongMuon <= 0 || soLuongMuon > soLuongCon)
                 {
-                    MessageBox.Show("Số lượng mượn phải > 0.");
-                    continue;
+                    MessageBox.Show($"Số lượng mượn không hợp lệ (ID sách {idSach})");
+                    return;
                 }
 
-                if (soLuongMuon > soLuongCon)
+                danhSachGui.Add(new MuonSachDto
                 {
-                    MessageBox.Show($"Sách ID {idSach} không đủ số lượng để mượn.");
-                    continue;
-                }
-
-                var item = new MuonSachDto
-                {
-                    IDUser = currentUserId,
+                    IDUser = _currentUserId,
                     IDSach = idSach,
                     NgayMuon = ngayMuon,
                     NgayTraDuKien = ngayTra,
                     TrangThai = "Chờ Duyệt"
-                };
-
-                danhSachGuiLen.Add(item);
+                });
             }
 
-            if (danhSachGuiLen.Count == 0)
+            if (danhSachGui.Count == 0)
             {
-                MessageBox.Show("Bạn chưa chọn sách nào để mượn.");
+                MessageBox.Show("Bạn chưa chọn sách để mượn.");
                 return;
             }
-
-            bool allSuccess = true;
 
             try
             {
                 using (HttpClient client = new HttpClient())
                 {
-                    client.BaseAddress = new Uri(baseAddress);
+                    client.BaseAddress = new Uri(_baseAddress);
 
-                    foreach (var req in danhSachGuiLen)
+                    foreach (var req in danhSachGui)
                     {
-                        string json = JsonConvert.SerializeObject(req);
-                        var content = new StringContent(json, Encoding.UTF8, "application/json");
+                        var content = new StringContent(
+                            JsonConvert.SerializeObject(req),
+                            Encoding.UTF8,
+                            "application/json");
 
-                        var response = await client.PostAsync("/api/MuonSach", content);
+                        var response = await client.PostAsync("api/MuonSach", content);
 
                         if (!response.IsSuccessStatusCode)
                         {
-                            allSuccess = false;
                             string err = await response.Content.ReadAsStringAsync();
-                            MessageBox.Show($"Gửi yêu cầu thất bại IDSach = {req.IDSach}\n{err}");
+                            MessageBox.Show("Lỗi gửi yêu cầu:\n" + err);
+                            return;
                         }
                     }
                 }
 
-                if (allSuccess)
-                {
-                    MessageBox.Show("Đã gửi yêu cầu mượn sách.\nVui lòng chờ admin duyệt!");
-                    await LoadDanhSachSachAsync();
-                }
+                MessageBox.Show("Đã gửi yêu cầu mượn sách!\nVui lòng chờ admin duyệt.");
+                await LoadDanhSachSachAsync();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi khi gửi yêu cầu mượn sách:\n" + ex.Message);
+                MessageBox.Show("Lỗi gửi yêu cầu:\n" + ex.Message);
             }
         }
 
-        // ================== ĐIỀU HƯỚNG ==================
+        // ===== ĐIỀU HƯỚNG =====
         private void button_TrangChu_Click(object sender, EventArgs e)
         {
-            Users f = new Users();
-            f.Show();
+            new Users(_currentUserId).Show();
             this.Hide();
-        }
-
-        private void button_DangXuat_Click(object sender, EventArgs e)
-        {
-            var confirm = MessageBox.Show("Bạn có chắc chắn muốn đăng xuất không?",
-                "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            if (confirm == DialogResult.Yes)
-            {
-                Program.LoggedUserID = -1;
-
-                DangNhap dn = new DangNhap();
-                dn.Show();
-                this.Hide();
-            }
         }
 
         private void button_Tra_Click(object sender, EventArgs e)
         {
-            Trasach f = new Trasach();
-            f.Show();
+            new Trasach(_currentUserId).Show();
             this.Hide();
         }
 
         private void button_quyengop_Click(object sender, EventArgs e)
         {
-            QuyenGopSach f = new QuyenGopSach();
-            f.Show();
+            new QuyenGopSach(_currentUserId).Show();
             this.Hide();
         }
-        // ====== BỔ SUNG HÀM CHO DESIGNER GỌI (SỬA LỖI CS1061) ======
 
-        private void button_DXuat_Click(object sender, EventArgs e)
+        private void button_HSDKy_Click(object sender, EventArgs e)
         {
-            button_DangXuat_Click(sender, e);
+            new HoSoDKi(_currentUserId).Show();
+            this.Hide();
         }
-
-
-        // ================== DTO ==================
+        // ===== DTO =====
         private class SachDto
         {
             public int IDSach { get; set; }
@@ -253,11 +214,22 @@ namespace BookManagement
             public string TrangThai { get; set; }
         }
 
-        private void button_HSDKy_Click(object sender, EventArgs e)
+        private void button_DXuat_Click(object sender, EventArgs e)
         {
-            HoSoDKi hs = new HoSoDKi();
-            hs.Show();
-            this.Hide();
+            var confirm = MessageBox.Show(
+                "Bạn có chắc chắn muốn đăng xuất không?",
+                "Xác nhận",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirm == DialogResult.Yes)
+            {
+                Program.LoggedUserID = -1;
+                Program.Token = null;
+
+                new DangNhap().Show();
+                this.Close();
+            }
         }
     }
 }

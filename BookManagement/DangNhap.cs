@@ -9,7 +9,7 @@ namespace BookManagement
 {
     public partial class DangNhap : Form
     {
-        private readonly string apiLoginUrl = "https://localhost:7214/api/Users/login";
+        private readonly string apiLoginUrl = ApiConfig.BaseUrl + "/api/Users/login";
 
         public DangNhap()
         {
@@ -38,6 +38,7 @@ namespace BookManagement
 
             using (HttpClient client = new HttpClient())
             {
+                client.Timeout = TimeSpan.FromSeconds(5);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 try
@@ -72,8 +73,8 @@ namespace BookManagement
                     }
 
                     // Lưu ID người dùng
-                    AuthSession.UserId = (int)result.idUser;
-                    AuthSession.Token = (string)result.token;   
+                    UserSession.UserId = (int)result.idUser;
+                    UserSession.Token = (string)result.token;
                     string name = (string)result.fullName;
                     string role = (string)result.role;
 
@@ -82,14 +83,14 @@ namespace BookManagement
                     if (role == "Admin")
                     {
                         MessageBox.Show("Bạn đang đăng nhập bằng quyền ADMIN");
-                        Admin adminForm = new Admin(AuthSession.Token);
+                        Admin adminForm = new Admin(UserSession.Token);
                         adminForm.Show();
                         this.Hide();
                     }
                     else if (role == "User")
                     {
                         MessageBox.Show("Bạn đang đăng nhập bằng quyền USER");
-                        Users userForm = new Users();
+                        Users userForm = new Users(UserSession.UserId);
                         userForm.Show();
                         this.Hide();
                     }

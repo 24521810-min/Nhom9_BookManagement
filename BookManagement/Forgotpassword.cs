@@ -1,6 +1,7 @@
 ﻿using BookManagement.Services;
 using System;
 using System.Net.Http.Json;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace BookManagement
@@ -55,9 +56,14 @@ namespace BookManagement
                         "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+            catch (TaskCanceledException)
+            {
+                MessageBox.Show("Không thể kết nối server (hết thời gian chờ).",
+                    "Lỗi mạng", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show("Lỗi kết nối server: " + ex.Message,
+                MessageBox.Show("Lỗi hệ thống: " + ex.Message,
                     "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

@@ -23,7 +23,7 @@ namespace BookManagement
         }
         private async void KhoSach_Load(object sender, EventArgs e)
         {
-            client.BaseAddress = new Uri("https://localhost:7214/api/");
+            client.BaseAddress = new Uri(ApiConfig.BaseUrl);
 
             await LoadSach();
             await LoadLoaiSach();

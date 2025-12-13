@@ -15,9 +15,17 @@ namespace BookManagement
 {
     public partial class QuyenGopSach : Form
     {
-        public QuyenGopSach()
+        private readonly HttpClient _client;
+        private readonly int _userId;
+        public QuyenGopSach(int userId)
         {
             InitializeComponent();
+            _userId = userId;
+
+            _client = new HttpClient
+            {
+                BaseAddress = new Uri(ApiConfig.BaseUrl)
+            };
         }
 
         private void QuyenGopSach_Load(object sender, EventArgs e)
@@ -48,8 +56,7 @@ namespace BookManagement
             }
 
             // Lấy ID user đang đăng nhập (bạn phải gán khi đăng nhập)
-            int idUser = AuthSession.UserId;
-
+            int idUser = _userId;
 
             var model = new
             {
@@ -62,27 +69,28 @@ namespace BookManagement
                 GhiChu = ghiChu
             };
 
-            string json = JsonConvert.SerializeObject(model);
-
-            using (HttpClient client = new HttpClient())
+            try
             {
-                client.BaseAddress = new Uri("https://localhost:7214");
-
+                string json = JsonConvert.SerializeObject(model);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
-                var response = await client.PostAsync("/api/QuyenGop", content);
+
+                var response = await _client.PostAsync("api/QuyenGop", content);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("Gửi yêu cầu thành công!");
-                    LoadDanhSachQuyenGop();  // Cập nhật lại bảng bên phải
+                    MessageBox.Show("Gửi yêu cầu quyên góp thành công!");
                     ClearForm();
+                    LoadDanhSachQuyenGop();
                 }
                 else
                 {
                     string err = await response.Content.ReadAsStringAsync();
-                    MessageBox.Show("Gửi yêu cầu thất bại:\n" + response.StatusCode + "\n" + err);
+                    MessageBox.Show("Gửi yêu cầu thất bại:\n" + err);
                 }
-
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi kết nối:\n" + ex.Message);
             }
         }
         private void ClearForm()
@@ -102,22 +110,17 @@ namespace BookManagement
 
         private async void LoadDanhSachQuyenGop()
         {
-            int idUser = AuthSession.UserId;
-
-            using (HttpClient client = new HttpClient())
+            try
             {
-                string url = $"https://localhost:7214/api/QuyenGop/user/{idUser}";
-
-                var response = await client.GetAsync(url);
+                var response = await _client.GetAsync($"api/QuyenGop/user/{_userId}");
 
                 if (!response.IsSuccessStatusCode)
                 {
-                    MessageBox.Show("Không thể tải danh sách!");
+                    MessageBox.Show("Không thể tải danh sách quyên góp!");
                     return;
                 }
 
                 string data = await response.Content.ReadAsStringAsync();
-
                 var list = JsonConvert.DeserializeObject<List<QuyenGopModel>>(data);
 
                 bangds.Rows.Clear();
@@ -136,24 +139,28 @@ namespace BookManagement
                     );
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi tải dữ liệu:\n" + ex.Message);
+            }
         }
         
         private void button_TrangChu_Click(object sender, EventArgs e)
         {
-            Users f = new Users();
+            Users f = new Users(_userId);
             f.Show();
             this.Close();  
         }
         private void button_Muon_Click(object sender, EventArgs e)
         {
-            Muonsach f = new Muonsach();
+            Muonsach f = new Muonsach(_userId);
             f.Show();
             this.Hide();
         }
 
         private void button_Tra_Click(object sender, EventArgs e)
         {
-            Trasach f = new Trasach();
+            Trasach f = new Trasach(_userId);
             f.Show();
             this.Hide();
         }
@@ -175,7 +182,7 @@ namespace BookManagement
 
         private void button_HSDKy_Click(object sender, EventArgs e)
         {
-            HoSoDKi hs = new HoSoDKi();
+            HoSoDKi hs = new HoSoDKi(_userId);
             hs.Show();
             this.Hide();
         }        

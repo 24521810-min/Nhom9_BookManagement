@@ -11,10 +11,7 @@ namespace BookManagement
 {
     public partial class QuanLyQuyenGop : Form
     {
-        private readonly HttpClient _client = new HttpClient
-        {
-            BaseAddress = new Uri("https://localhost:7214/")
-        };
+        private readonly HttpClient _client;
         private readonly string _token;
         public QuanLyQuyenGop(string token)
         {
@@ -25,8 +22,14 @@ namespace BookManagement
             Load += QuanLyQuyenGop_Load;
             button7.Click += BtnXem_Click;        // Xem danh sách Quyên Góp
             _token = token;
+
+            _client = new HttpClient
+            {
+                BaseAddress = new Uri(ApiConfig.BaseUrl)
+            };
+
             _client.DefaultRequestHeaders.Authorization =
-        new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
         }
 
         // =======================================================

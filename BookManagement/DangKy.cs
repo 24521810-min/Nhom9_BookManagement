@@ -9,7 +9,7 @@ namespace BookManagement
 {
     public partial class DangKy : Form
     {
-        private readonly string apiUrl = "https://localhost:7214/api/Users/register";
+        private readonly string apiUrl = ApiConfig.BaseUrl + "/api/Users/register";
 
         public DangKy()
         {
@@ -77,6 +77,7 @@ namespace BookManagement
 
             using (HttpClient client = new HttpClient())
             {
+                client.Timeout = TimeSpan.FromSeconds(5);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 try

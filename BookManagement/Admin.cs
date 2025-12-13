@@ -57,8 +57,8 @@ namespace BookManagement
 
             if (confirm == DialogResult.Yes)
             {
-                AuthSession.UserId = -1;
-                AuthSession.Token = "";
+                UserSession.UserId = -1;
+                UserSession.Token = "";
 
                 MessageBox.Show("Bạn đã đăng xuất!", "Thông báo");
 
@@ -73,13 +73,13 @@ namespace BookManagement
         // ===================================================
         private void btnlichsu_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(AuthSession.Token))
+            if (string.IsNullOrEmpty(UserSession.Token))
             {
                 MessageBox.Show("Lỗi: Token trống! Bạn cần đăng nhập lại.");
                 return;
             }
 
-            LichSu f = new LichSu(AuthSession.Token);   // TRUYỀN TOKEN ĐÚNG
+            LichSu f = new LichSu(UserSession.Token);   // TRUYỀN TOKEN ĐÚNG
             f.FormClosed += (s, args) => this.Show();
             this.Hide();
             f.Show();

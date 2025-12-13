@@ -10,14 +10,24 @@ namespace BookManagement
 {
     public partial class QuanLyNguoiDung : Form
     {
-        private readonly HttpClient client = new HttpClient();
-        private string apiUrl = "https://localhost:7214/api/Users";
-
+        private readonly HttpClient client;
+        private readonly string apiUrl;
         private string _token;
+
         public QuanLyNguoiDung(string token)
         {
             InitializeComponent();
             _token = token;
+
+            client = new HttpClient
+            {
+                BaseAddress = new Uri(ApiConfig.BaseUrl)
+            };
+
+            client.DefaultRequestHeaders.Authorization =
+                new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
+
+            apiUrl = "api/Users";
 
             this.Load += QuanLyNguoiDung_Load;
             dsUsers.CellClick += dsUsers_CellClick;

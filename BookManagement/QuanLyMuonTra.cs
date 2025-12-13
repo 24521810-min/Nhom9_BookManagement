@@ -11,11 +11,7 @@ namespace BookManagement
 {
     public partial class QuanLyMuonTra : Form
     {
-        private readonly HttpClient _client = new HttpClient
-        {
-            BaseAddress = new Uri("https://localhost:7214/")
-        };
-
+        private readonly HttpClient _client;
         private readonly string _token;
 
         public QuanLyMuonTra(string token)
@@ -23,6 +19,12 @@ namespace BookManagement
             InitializeComponent();
 
             _token = token;
+
+            _client = new HttpClient
+            {
+                BaseAddress = new Uri(ApiConfig.BaseUrl)
+            };
+
             _client.DefaultRequestHeaders.Authorization =
                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", _token);
 
