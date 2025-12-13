@@ -226,17 +226,19 @@ namespace BookApi.Controllers
             if (user == null)
                 return NotFound(new { message = "Email chưa đăng ký trong hệ thống!" });
 
-            // Tạo mật khẩu tạm 8 ký tự
             string tempPass = Guid.NewGuid().ToString("N").Substring(0, 8);
 
-            // Hash và lưu vào PasswordHash
             user.PasswordHash = PasswordHelper.HashPassword(tempPass);
             await _context.SaveChangesAsync();
 
-            // Gửi email
-            bool sent = await EmailHelper.SendTemporaryPasswordMail(req.Email, tempPass);
-            if (!sent)
-                return StatusCode(500, new { message = "Không gửi được email. Kiểm tra lại cấu hình Gmail/Internet." });
+            try
+            {
+                await EmailHelper.SendTemporaryPasswordMail(req.Email, tempPass);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = ex.Message });
+            }
 
             return Ok(new { message = "Mật khẩu mới đã được gửi tới email của bạn. Vui lòng kiểm tra hộp thư." });
         }
