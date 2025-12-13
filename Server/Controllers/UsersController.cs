@@ -2,13 +2,14 @@
 using BookApi.Dtos;
 using BookApi.Helpers;
 using BookApi.Models;
+using BookApi.Models.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using BookApi.Models.Dtos;
 
 
 namespace BookApi.Controllers
@@ -214,6 +215,7 @@ namespace BookApi.Controllers
 
             return NoContent();
         }
+        [AllowAnonymous]
         [HttpPost("forget_password")]
         public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordRequest req)
         {
@@ -238,6 +240,7 @@ namespace BookApi.Controllers
 
             return Ok(new { message = "Mật khẩu mới đã được gửi tới email của bạn. Vui lòng kiểm tra hộp thư." });
         }
+        [AllowAnonymous]
         [HttpPost("reset_password")]
         public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordRequest req)
         {
