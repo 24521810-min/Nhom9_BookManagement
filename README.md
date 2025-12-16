@@ -38,11 +38,26 @@ Microsoft SQL Server 2022
 
 ## Cách cài đặt & chạy project: 
 ### 1. Clone repository về máy
-Sao chép repository từ GitHub về máy cục bộ:
-
-        git clone https://github.com/Hac1es/NT106-DoAn.git
-       cd NT106-DoAn
-
+* Sao chép repository từ GitHub về máy cục bộ:
+```
+   git clone https://github.com/24521810-min/Nhom9_BookManagement.git
+   cd Nhom9_BookManagement.git
+```
+* Sau khi clone xong, mở project trong Visual Studio bằng file .sln.
+* Chọn View --> Solution Explorer --> Kích chuột phải vào "Solution 'BookManagement' --> Configure Startup Projects --> Chọn Multiple startup projects để chạy cùng lúc Client và Server --> Thiết lập Client và Server: Start
 ### 2. Tạo cơ sở dữ liệu
+
+Trong tệp BookManagement, chạy file BookManagement.sql và Microsoft SQL Server Management Studio (SSMS) để tạo cơ sở dữ liệu cần thiết.
+
 ### 3. Sửa địa chỉ server
+* Mở appsettings.json trong Server
+* Cấu hình kết nối Sql
+```sql
+"ConnectionStrings": {
+  "DefaultConnection": "Data Source=localhost;Initial Catalog=BookManagementDB;Integrated Security=True;Encrypt=True;TrustServerCertificate=True"
+},
+```
+⚠️ Lưu ý: Cần thay thế localhost bằng tên Server và Instance thực tế trên máy tính của bạn.
 ### 4. Khởi chạy dự án
+
+Sử dụng Visual Studio để mở và chạy dự án.
